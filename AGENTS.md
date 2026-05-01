@@ -165,6 +165,36 @@ The repository must adhere to the following directory tree layout to maintain mo
 
 ---
 
+## Available Skills
+
+Use these slash commands to trigger specialized agents:
+
+### Project Skills
+
+| Command | Description | File |
+|---------|-------------|------|
+| `/test` | Run unit/integration tests with Vitest | [`.claude/commands/test.md`](.claude/commands/test.md) |
+| `/e2e` | Run end-to-end tests with Playwright | [`.claude/commands/e2e.md`](.claude/commands/e2e.md) |
+| `/style` | Manage Tailwind CSS v4 styling and components | [`.claude/commands/style.md`](.claude/commands/style.md) |
+| `/validate` | Define and validate Zod schemas | [`.claude/commands/validate.md`](.claude/commands/validate.md) |
+| `/state` | Manage Zustand global state stores | [`.claude/commands/state.md`](.claude/commands/state.md) |
+| `/git_commit` | Commit changes using conventional commits | [`.claude/commands/git_commit.md`](.claude/commands/git_commit.md) |
+
+### Auto-invoke Skills
+
+When performing these actions, ALWAYS invoke the corresponding skill FIRST:
+
+| Action | Skill |
+|--------|-------|
+| Writing or updating Vitest tests | `/test` |
+| Running or debugging Playwright tests | `/e2e` |
+| Modifying Tailwind classes or design tokens | `/style` |
+| Creating or updating Zod schemas | `/validate` |
+| Managing Zustand stores | `/state` |
+| Committing changes (general) | `/git_commit` |
+
+---
+
 # Agent Rules & Constraints
 
 1.  **Execution Policy:** Read this `AGENTS.md` before executing any architectural changes.
