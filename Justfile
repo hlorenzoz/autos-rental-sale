@@ -11,6 +11,10 @@ default:
 dev:
     bun run dev
 
+# Start the development server with Spotlight enabled
+spotlight:
+    SENTRY_SPOTLIGHT=1 bun run dev
+
 # Install project dependencies
 install:
     bun install

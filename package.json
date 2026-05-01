@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
+    "@sentry/astro": "^10.51.0",
+    "@spotlightjs/astro": "^3.2.6",
     "astro": "^5.7.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
