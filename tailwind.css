@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  /* Typography */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand colors — override per design spec */
+  --color-brand-50: oklch(97% 0.02 250);
+  --color-brand-500: oklch(55% 0.2 250);
+  --color-brand-900: oklch(25% 0.1 250);
+
+  /* Spacing scale — base-8 */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+}
+
+/* Flash prevention for dark mode — see BaseLayout.astro */
+@layer base {
+  :root {
+    color-scheme: light dark;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+}
