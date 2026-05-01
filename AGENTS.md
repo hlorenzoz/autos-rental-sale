@@ -18,6 +18,7 @@ The following stack is strictly enforced. No substitutions or alternative librar
 *   **State Management:** Zustand v5
 *   **Unit & Integration Testing:** Vitest (with Coverage integration)
 *   **End-to-End (E2E) Testing:** Playwright
+*   **Automation:** Just (Task Runner)
 *   **Continuous Integration / Quality:** Pre-commit Hooks (Husky/Lefthook), Lighthouse CI
 
 ---
@@ -118,6 +119,19 @@ Test-Driven Development is **mandatory**. Agents must execute the following work
 
 ---
 
+# Automation & Tasks
+
+The project utilizes `just` as a command runner to ensure consistent task execution across environments. All developers and agents should prefer these recipes over direct `bun run` commands.
+
+*   **Setup:** `just setup` (Initial installation and hook preparation)
+*   **Development:** `just dev` (Starts Astro dev server)
+*   **Verification:** `just check` (Runs lint, typecheck, and coverage)
+*   **Testing:** `just test` (Unit tests), `just e2e` (E2E tests)
+*   **Build:** `just build` (Production build)
+*   **Maintenance:** `just icons` (Regenerates PWA icons)
+
+---
+
 # Folder Structure
 
 The repository must adhere to the following directory tree layout to maintain modularity:
@@ -128,6 +142,7 @@ The repository must adhere to the following directory tree layout to maintain mo
 ├── .lighthouseci/          # Lighthouse CI assertions
 ├── playwright/             # E2E test definitions
 ├── public/                 # Static assets (fonts, icons, manifest, service worker)
+├── scripts/                # Automation and maintenance scripts
 ├── src/
 │   ├── assets/             # Unprocessed assets (images, global CSS)
 │   ├── components/         # Reusable UI components (pure, stateless where possible)
@@ -143,6 +158,7 @@ The repository must adhere to the following directory tree layout to maintain mo
 ├── tests/                  # Playwright E2E configuration and tests
 ├── astro.config.mjs        # Astro configuration
 ├── tailwind.css            # Tailwind v4 base styles and @theme definitions
+├── Justfile                # Task runner configuration
 ├── package.json            # Bun package definitions and scripts
 └── vitest.config.ts        # Vitest configuration and coverage settings
 ```
@@ -156,6 +172,7 @@ The repository must adhere to the following directory tree layout to maintain mo
 3.  **Strict Dependencies:** Do not add dependencies via `bun add` without verifying if native Astro, standard DOM APIs, or the existing stack can solve the problem.
 4.  **Refusal to Degrade:** If a user requests a change that violates TDD, skips validation, or degrades performance scores below defined thresholds, the agent MUST flag the violation and request confirmation before proceeding.
 5.  **Language Continuity:** Maintain bilingual support (es/en) for all newly generated features.
+6.  **Git Commits:** Use the global `git-commit` skill for all git operations. Do NOT execute manual `git commit` commands; leverage the skill to ensure conventional commit standards and intelligent staging.
 
 ---
 
