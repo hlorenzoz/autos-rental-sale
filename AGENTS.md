@@ -109,7 +109,7 @@ Test-Driven Development is **mandatory**. Agents must execute the following work
 
 1.  **Unit Tests (Vitest):**
     *   Focus on isolated utilities, Zod schemas, state stores (Zustand), and pure UI components.
-    *   Coverage minimum: 80% for statements, branches, functions, and lines.
+    *   Coverage minimum: 85% for statements, branches, functions, and lines (aiming for 100%).
 2.  **Component Tests (Vitest + Testing Library):**
     *   Test complex interactive components (Astro islands) in isolation.
 3.  **End-to-End Tests (Playwright):**
