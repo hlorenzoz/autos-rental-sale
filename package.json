@@ -15,11 +15,11 @@
     "prepare": "lefthook install"
   },
   "dependencies": {
-    "astro": "^5.7.0",
     "@astrojs/react": "^4.3.0",
+    "astro": "^5.7.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "zod": "^3.24.0",
+    "zod": "4.4.1",
     "zustand": "^5.0.0"
   },
   "devDependencies": {
