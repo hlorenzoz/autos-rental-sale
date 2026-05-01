@@ -12,14 +12,16 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'lcov', 'html'],
+      all: true,
       thresholds: {
-        statements: 20,
-        branches: 20,
-        functions: 20,
-        lines: 20,
+        statements: 90,
+        branches: 90,
+        functions: 90,
+        lines: 90,
       },
       exclude: [
         'node_modules/**',
+        '.agents/**',
         'src/tests/**',
         'src/env.d.ts',
         '**/*.config.*',
@@ -27,7 +29,6 @@ export default defineConfig({
         '.astro/**',
         '**/*.astro',
         'tests/**',
-        'src/schemas/env.ts',
       ],
     },
   },

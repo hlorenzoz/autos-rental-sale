@@ -20,6 +20,8 @@ The following stack is strictly enforced. No substitutions or alternative librar
 *   **End-to-End (E2E) Testing:** Playwright
 *   **Automation:** Just (Task Runner)
 *   **Continuous Integration / Quality:** Pre-commit Hooks (Husky/Lefthook), Lighthouse CI
+*   **Monitoring & Error Tracking:** Sentry (with Spotlight integration)
+    *   **Filtering Policy:** Errors originating from `node_modules` or core node modules are strictly excluded via `beforeSend` to minimize noise in Spotlight and Sentry.
 
 ---
 
@@ -107,7 +109,7 @@ Test-Driven Development is **mandatory**. Agents must execute the following work
 
 1.  **Unit Tests (Vitest):**
     *   Focus on isolated utilities, Zod schemas, state stores (Zustand), and pure UI components.
-    *   Coverage minimum: 85% for statements, branches, functions, and lines.
+    *   Coverage minimum: 80% for statements, branches, functions, and lines.
 2.  **Component Tests (Vitest + Testing Library):**
     *   Test complex interactive components (Astro islands) in isolation.
 3.  **End-to-End Tests (Playwright):**
@@ -157,6 +159,8 @@ The repository must adhere to the following directory tree layout to maintain mo
 │   └── tests/              # Unit and integration tests (or colocated .test.ts files)
 ├── tests/                  # Playwright E2E configuration and tests
 ├── astro.config.mjs        # Astro configuration
+├── sentry.client.config.ts # Sentry client-side configuration
+├── sentry.server.config.ts # Sentry server-side configuration
 ├── tailwind.css            # Tailwind v4 base styles and @theme definitions
 ├── Justfile                # Task runner configuration
 ├── package.json            # Bun package definitions and scripts
