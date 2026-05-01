@@ -20,8 +20,9 @@ export default defineConfig({
     { name: 'mobile-safari', use: { ...devices['iPhone 12'] } },
   ],
   webServer: {
-    command: 'bun run preview',
+    command: 'bun run dev',
     url: 'http://localhost:4321',
     reuseExistingServer: !process.env.CI,
+    timeout: 120 * 1000,
   },
 });

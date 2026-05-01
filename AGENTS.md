@@ -22,6 +22,7 @@ The following stack is strictly enforced. No substitutions or alternative librar
 *   **Continuous Integration / Quality:** Pre-commit Hooks (Husky/Lefthook), Lighthouse CI
 *   **Monitoring & Error Tracking:** Sentry (with Spotlight integration)
     *   **Filtering Policy:** Errors originating from `node_modules` or core node modules are strictly excluded via `beforeSend` to minimize noise in Spotlight and Sentry.
+*   **Design Aesthetic:** Glassmorphism (Atmospheric Precision)
 
 ---
 
@@ -39,7 +40,8 @@ The following stack is strictly enforced. No substitutions or alternative librar
 
 If a specific design specification is provided in a feature request, it must be followed pixel-perfectly. If no design is provided, the agent must implement a default UI system with the following characteristics:
 
-*   **Aesthetic:** Clean, modern, professional, and slightly futuristic.
+*   **Aesthetic:** Clean, modern, professional, and slightly futuristic (Atmospheric Precision).
+*   **Glassmorphism:** Use frosted glass effects (`backdrop-blur-md`, `bg-white/10` or `bg-black/10`) for overlays, cards, and navigation elements, complemented by fine, semi-transparent borders.
 *   **Spacing & Grid:** Base-8 spacing system utilizing Tailwind's utility classes.
 *   **Typography:** highly legible sans-serif stack (e.g., Inter or Roboto default).
 *   **Corners & Borders:** Subtle rounded corners (e.g., `rounded-lg` or `rounded-xl`) with fine borders (`border-white/10` in dark mode, `border-gray-200` in light mode).

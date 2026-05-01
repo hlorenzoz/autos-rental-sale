@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AeroDrive - Redefining Mobility</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#ffb4a2",
+                      "primary-fixed-dim": "#b6c4ff",
+                      "surface-dim": "#cbdbf5",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#eff4ff",
+                      "on-primary-container": "#e5e8ff",
+                      "primary-fixed": "#dce1ff",
+                      "secondary-container": "#3fff8b",
+                      "on-surface": "#0b1c30",
+                      "on-surface-variant": "#434656",
+                      "on-background": "#0b1c30",
+                      "on-secondary-fixed-variant": "#005226",
+                      "inverse-surface": "#213145",
+                      "on-tertiary": "#ffffff",
+                      "inverse-primary": "#b6c4ff",
+                      "tertiary-container": "#c72e00",
+                      "on-secondary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-primary-fixed-variant": "#003ab2",
+                      "tertiary": "#9c2200",
+                      "secondary-fixed-dim": "#00e475",
+                      "outline": "#737688",
+                      "on-primary-fixed": "#001550",
+                      "background": "#f8f9ff",
+                      "on-tertiary-container": "#ffe4dd",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed": "#ffdad2",
+                      "surface-tint": "#004ee7",
+                      "on-secondary-container": "#007237",
+                      "surface-container-highest": "#d3e4fe",
+                      "primary-container": "#0057ff",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed": "#00210b",
+                      "surface-container-high": "#dce9ff",
+                      "surface": "#f8f9ff",
+                      "surface-container": "#e5eeff",
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#62ff96",
+                      "primary": "#0043c8",
+                      "secondary": "#006d35",
+                      "outline-variant": "#c3c5d9",
+                      "on-tertiary-fixed": "#3c0700",
+                      "surface-variant": "#d3e4fe",
+                      "on-error-container": "#93000a",
+                      "surface-bright": "#f8f9ff",
+                      "on-tertiary-fixed-variant": "#8a1d00"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin": "48px",
+                      "md": "24px",
+                      "xl": "64px",
+                      "lg": "40px",
+                      "sm": "12px",
+                      "base": "8px",
+                      "xs": "4px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "h3": [
+                              "Space Grotesk"
+                      ],
+                      "display": [
+                              "Space Grotesk"
+                      ],
+                      "h1": [
+                              "Space Grotesk"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "h2": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h3": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "h1": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h2": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl dark:bg-slate-900/80 border-b border-slate-100/50 dark:border-slate-800/50 shadow-[0_20px_40px_rgba(0,87,255,0.05)] font-['Space_Grotesk'] antialiased">
+<div class="flex justify-between items-center h-20 px-8 max-w-7xl mx-auto">
+<a class="text-2xl font-bold tracking-tighter text-blue-600 dark:text-blue-400" href="#">
+                AeroDrive
+            </a>
+<div class="hidden md:flex items-center space-x-lg">
+<a class="text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 pb-1 hover:text-blue-500 dark:hover:text-blue-300 transition-all duration-300 active:scale-95 transition-transform" href="#">Overview</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-blue-500 dark:hover:text-blue-300 transition-all duration-300 active:scale-95 transition-transform" href="#">For Rent</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-blue-500 dark:hover:text-blue-300 transition-all duration-300 active:scale-95 transition-transform" href="#">For Sale</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-blue-500 dark:hover:text-blue-300 transition-all duration-300 active:scale-95 transition-transform" href="#">Locations</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-blue-500 dark:hover:text-blue-300 transition-all duration-300 active:scale-95 transition-transform" href="#">Reviews</a>
+</div>
+<div class="flex items-center space-x-md">
+<button class="hidden md:flex items-center justify-center text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">search</span>
+</button>
+<a class="bg-primary-container text-on-primary-container font-h3 text-h3 px-md py-sm rounded-full hover:shadow-[0_10px_20px_rgba(0,87,255,0.15)] transition-all active:scale-95" href="#">
+                    Get Started
+                </a>
+</div>
+</div>
+</nav>
+<main class="flex-grow pt-20">
+<!-- Hero Section -->
+<section class="relative w-full min-h-[921px] flex flex-col items-center justify-center px-margin py-xl overflow-hidden">
+<div class="absolute inset-0 z-0 flex items-center justify-center opacity-10">
+<div class="w-[80vw] h-[80vw] bg-primary-container rounded-full blur-[100px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+</div>
+<div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center text-center gap-lg">
+<h1 class="font-display text-display text-on-surface max-w-4xl tracking-tighter">
+                    Redefining Mobility.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    Experience the pinnacle of automotive engineering and design. Whether for a weekend escape or permanent ownership, AeroDrive delivers unparalleled performance and luxury.
+                </p>
+<!-- Floating Search Bar -->
+<div class="bg-surface-container-lowest p-sm rounded-full shadow-[0_20px_40px_rgba(0,0,0,0.08)] flex items-center gap-md border border-outline-variant/30 mt-md w-full max-w-2xl">
+<div class="flex bg-surface-container rounded-full p-xs">
+<button class="px-md py-xs bg-surface-container-lowest rounded-full font-label-caps text-label-caps text-on-surface shadow-sm transition-all">BUY</button>
+<button class="px-md py-xs text-on-surface-variant font-label-caps text-label-caps rounded-full hover:bg-surface-container-low transition-all">RENT</button>
+</div>
+<div class="h-8 w-px bg-outline-variant/50"></div>
+<input class="flex-grow bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-surface placeholder:text-outline outline-none" placeholder="Search models, brands, or locations..." type="text"/>
+<button class="bg-primary text-on-primary w-12 h-12 rounded-full flex items-center justify-center hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="relative z-10 w-full max-w-6xl mx-auto mt-xl flex justify-center">
+<img alt="AeroDrive Premium Vehicle" class="w-full max-w-4xl h-auto object-contain drop-shadow-[0_40px_60px_rgba(0,0,0,0.15)]" data-alt="A sleek, high-end sports car positioned centrally in a minimalist, brightly lit studio environment. The vehicle features a pristine, aerodynamic design with subtle curves reflecting the high-key white lighting. The overall aesthetic is clean, modern, and aligned with a premium, light-mode corporate design language. The background is a stark, flawless white, emphasizing the vehicle's structural perfection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLcWZftdND4mNWm3xfUwI1yoT3BmZy8f9QQ6qN4A4Xl8MYZUVnDli9fRB7AIp0h8cqPiooJopiaAD7rY1HFbM6Hn2vZVU2fWBolp0bIuG176DLlVz-yyULimKLAVcQfjvjZ7K22-iWXCKOiJCvouFfpwelk6zs70QF5neqSup4HuqJU9VvYTiHsiep6EuJ4Of9GLyBZTLjaf4JVePZw_nJuLv__lXQae9Ik0Rker2vr_3HDTMwcKH98J2mctgclRsGaovR0FMmOAzj"/>
+</div>
+</section>
+<!-- Overview Section -->
+<section class="py-xl px-margin bg-surface-container-lowest relative z-20">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="flex flex-col gap-sm p-lg bg-surface rounded-xl border border-outline-variant/20 hover:shadow-[0_20px_40px_rgba(0,87,255,0.05)] transition-shadow duration-300">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center text-primary mb-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface">Precision Engineering</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Every vehicle in our fleet represents the apex of mechanical perfection, rigorously maintained for flawless performance.</p>
+</div>
+<div class="flex flex-col gap-sm p-lg bg-surface rounded-xl border border-outline-variant/20 hover:shadow-[0_20px_40px_rgba(0,87,255,0.05)] transition-shadow duration-300">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center text-primary mb-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">car_rental</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface">Flexible Ownership</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Choose between short-term thrills or long-term commitment. Our tailored plans adapt to your specific lifestyle demands.</p>
+</div>
+<div class="flex flex-col gap-sm p-lg bg-surface rounded-xl border border-outline-variant/20 hover:shadow-[0_20px_40px_rgba(0,87,255,0.05)] transition-shadow duration-300">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center text-primary mb-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">language</span>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface">Global Network</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Access our exclusive collection across major international hubs. Seamless mobility, wherever your journey takes you.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 mt-20 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-900 font-['Space_Grotesk'] text-sm tracking-wide">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+<div class="flex flex-col gap-sm">
+<span class="text-xl font-bold text-slate-900 dark:text-white">AeroDrive</span>
+<p class="text-slate-400 dark:text-slate-500">© 2024 AeroDrive Global. Engineered for performance.</p>
+</div>
+<div class="flex flex-wrap gap-md md:justify-end">
+<a class="text-slate-400 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors opacity-100 hover:opacity-80 duration-200" href="#">Privacy Policy</a>
+<a class="text-slate-400 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors opacity-100 hover:opacity-80 duration-200" href="#">Terms of Service</a>
+<a class="text-slate-400 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors opacity-100 hover:opacity-80 duration-200" href="#">Cookie Settings</a>
+<a class="text-slate-400 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors opacity-100 hover:opacity-80 duration-200" href="#">Contact</a>
+<a class="text-slate-400 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors opacity-100 hover:opacity-80 duration-200" href="#">Careers</a>
+</div>
+</div>
+</footer>
+</body></html>

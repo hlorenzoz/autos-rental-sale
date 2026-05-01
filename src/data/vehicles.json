@@ -1,0 +1,232 @@
+{
+  "vehicles": [
+    {
+      "id": "1",
+      "slug": "tesla-model-s-plaid",
+      "brand": "Tesla",
+      "model": "Model S Plaid",
+      "year": 2024,
+      "category": "electric-sedan",
+      "type": "both",
+      "price": { "sale": 89990, "rent": 299 },
+      "specs": {
+        "acceleration": "1.99s",
+        "range": "396 mi",
+        "drivetrain": "AWD",
+        "seats": 5,
+        "fuel": "Electric"
+      },
+      "image": "/vehicles/tesla-model-s-plaid.webp",
+      "featured": true,
+      "available": true
+    },
+    {
+      "id": "2",
+      "slug": "porsche-911-turbo-s",
+      "brand": "Porsche",
+      "model": "911 Turbo S",
+      "year": 2024,
+      "category": "sports-coupe",
+      "type": "rent",
+      "price": { "rent": 350 },
+      "specs": {
+        "acceleration": "2.6s",
+        "drivetrain": "AWD",
+        "seats": 2,
+        "fuel": "Gasoline"
+      },
+      "image": "/vehicles/porsche-911-turbo-s.webp",
+      "featured": true,
+      "available": true
+    },
+    {
+      "id": "3",
+      "slug": "range-rover-autobiography",
+      "brand": "Range Rover",
+      "model": "Autobiography",
+      "year": 2024,
+      "category": "luxury-suv",
+      "type": "both",
+      "price": { "sale": 179990, "rent": 320 },
+      "specs": {
+        "drivetrain": "AWD",
+        "seats": 5,
+        "fuel": "Hybrid"
+      },
+      "image": "/vehicles/range-rover-autobiography.webp",
+      "featured": true,
+      "available": true
+    },
+    {
+      "id": "4",
+      "slug": "lamborghini-huracan-evo",
+      "brand": "Lamborghini",
+      "model": "Huracan EVO",
+      "year": 2023,
+      "category": "sports-coupe",
+      "type": "rent",
+      "price": { "rent": 340 },
+      "specs": {
+        "acceleration": "2.9s",
+        "drivetrain": "AWD",
+        "seats": 2,
+        "fuel": "Gasoline"
+      },
+      "image": "/vehicles/lamborghini-huracan-evo.webp",
+      "featured": false,
+      "available": true
+    },
+    {
+      "id": "5",
+      "slug": "bmw-m5-competition",
+      "brand": "BMW",
+      "model": "M5 Competition",
+      "year": 2024,
+      "category": "sedan",
+      "type": "sale",
+      "price": { "sale": 119900 },
+      "specs": {
+        "acceleration": "3.1s",
+        "drivetrain": "AWD",
+        "seats": 5,
+        "fuel": "Gasoline"
+      },
+      "image": "/vehicles/bmw-m5-competition.webp",
+      "featured": false,
+      "available": true
+    },
+    {
+      "id": "6",
+      "slug": "mercedes-amg-g63",
+      "brand": "Mercedes",
+      "model": "AMG G63",
+      "year": 2024,
+      "category": "suv",
+      "type": "both",
+      "price": { "sale": 174900, "rent": 310 },
+      "specs": {
+        "acceleration": "4.5s",
+        "drivetrain": "AWD",
+        "seats": 5,
+        "fuel": "Gasoline"
+      },
+      "image": "/vehicles/mercedes-amg-g63.webp",
+      "featured": false,
+      "available": true
+    },
+    {
+      "id": "7",
+      "slug": "ferrari-roma",
+      "brand": "Ferrari",
+      "model": "Roma",
+      "year": 2023,
+      "category": "convertible",
+      "type": "rent",
+      "price": { "rent": 340 },
+      "specs": {
+        "acceleration": "3.4s",
+        "drivetrain": "RWD",
+        "seats": 2,
+        "fuel": "Gasoline"
+      },
+      "image": "/vehicles/ferrari-roma.webp",
+      "featured": false,
+      "available": true
+    },
+    {
+      "id": "8",
+      "slug": "audi-e-tron-gt",
+      "brand": "Audi",
+      "model": "e-tron GT",
+      "year": 2024,
+      "category": "electric-sedan",
+      "type": "sale",
+      "price": { "sale": 104900 },
+      "specs": {
+        "acceleration": "3.1s",
+        "range": "238 mi",
+        "drivetrain": "AWD",
+        "seats": 4,
+        "fuel": "Electric"
+      },
+      "image": "/vehicles/audi-e-tron-gt.webp",
+      "featured": false,
+      "available": true
+    },
+    {
+      "id": "9",
+      "slug": "toyota-land-cruiser-300",
+      "brand": "Toyota",
+      "model": "Land Cruiser 300",
+      "year": 2024,
+      "category": "suv",
+      "type": "sale",
+      "price": { "sale": 85900 },
+      "specs": {
+        "drivetrain": "AWD",
+        "seats": 7,
+        "fuel": "Gasoline"
+      },
+      "image": "/vehicles/toyota-land-cruiser-300.webp",
+      "featured": false,
+      "available": true
+    },
+    {
+      "id": "10",
+      "slug": "ford-f150-raptor",
+      "brand": "Ford",
+      "model": "F-150 Raptor",
+      "year": 2024,
+      "category": "truck",
+      "type": "sale",
+      "price": { "sale": 78990 },
+      "specs": {
+        "drivetrain": "AWD",
+        "seats": 5,
+        "fuel": "Gasoline"
+      },
+      "image": "/vehicles/ford-f150-raptor.webp",
+      "featured": false,
+      "available": false
+    },
+    {
+      "id": "11",
+      "slug": "bmw-x7-m60i",
+      "brand": "BMW",
+      "model": "X7 M60i",
+      "year": 2024,
+      "category": "luxury-suv",
+      "type": "both",
+      "price": { "sale": 124900, "rent": 280 },
+      "specs": {
+        "acceleration": "4.7s",
+        "drivetrain": "AWD",
+        "seats": 7,
+        "fuel": "Gasoline"
+      },
+      "image": "/vehicles/bmw-x7-m60i.webp",
+      "featured": false,
+      "available": true
+    },
+    {
+      "id": "12",
+      "slug": "mercedes-eqs-580",
+      "brand": "Mercedes",
+      "model": "EQS 580",
+      "year": 2024,
+      "category": "electric-sedan",
+      "type": "rent",
+      "price": { "rent": 220 },
+      "specs": {
+        "acceleration": "4.1s",
+        "range": "350 mi",
+        "drivetrain": "AWD",
+        "seats": 5,
+        "fuel": "Electric"
+      },
+      "image": "/vehicles/mercedes-eqs-580.webp",
+      "featured": false,
+      "available": true
+    }
+  ]
+}

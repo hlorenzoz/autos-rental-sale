@@ -1,0 +1,112 @@
+---
+import type { Locale } from '@/i18n/utils';
+import { getDictionary } from '@/i18n/utils';
+import ThemeToggle from '@/components/ui/ThemeToggle';
+
+interface Props {
+  locale: Locale;
+  currentPath: string;
+  lightLabel: string;
+  darkLabel: string;
+}
+
+const { locale, currentPath, lightLabel, darkLabel } = Astro.props;
+const t = getDictionary(locale);
+
+const isVehiclesPage =
+  currentPath.includes('/vehicles') || currentPath.includes('/vehiculos');
+
+interface NavLink {
+  href: string;
+  label: string;
+}
+
+const landingLinks: NavLink[] = [
+  { href: `/${locale}/`, label: t.nav.overview },
+  { href: `/${locale}/#for-rent`, label: t.nav.forRent },
+  { href: `/${locale}/#for-sale`, label: t.nav.forSale },
+  { href: `/${locale}/#locations`, label: t.nav.locations },
+  { href: `/${locale}/#reviews`, label: t.nav.reviews },
+];
+
+const vehiclesLinks: NavLink[] = [
+  { href: `/${locale}/vehicles/`, label: t.nav.inventory },
+  { href: `/${locale}/vehicles/sell/`, label: t.nav.sell },
+  { href: `/${locale}/vehicles/services/`, label: t.nav.services },
+  { href: `/${locale}/about/`, label: t.nav.about },
+];
+
+const navLinks = isVehiclesPage ? vehiclesLinks : landingLinks;
+
+function isActive(href: string): boolean {
+  return currentPath === href;
+}
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 nav-shadow">
+  <nav class="bg-surface-container-lowest/80 backdrop-blur-xl border-b border-outline-variant/30">
+    <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <a
+        href={`/${locale}/`}
+        class="text-2xl font-black tracking-tighter font-display text-primary"
+        aria-label="AeroDrive — Home"
+      >
+        AeroDrive
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="hidden md:flex items-center space-x-lg" role="list">
+        {
+          navLinks.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                class={
+                  isActive(href)
+                    ? 'text-primary border-b-2 border-primary pb-1 font-body text-body-md transition-colors duration-300'
+                    : 'text-on-surface-variant hover:text-primary font-body text-body-md transition-colors duration-300'
+                }
+                aria-current={isActive(href) ? 'page' : undefined}
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Actions -->
+      <div class="flex items-center space-x-md">
+        <div class="hidden sm:flex items-center bg-surface-container-high rounded-full p-1 mr-2">
+          {
+            ['EN', 'ES'].map((lang) => {
+              const l = lang.toLowerCase() as Locale;
+              const isActive = locale === l;
+              return (
+                <a
+                  href={`/${l}${Astro.url.pathname.substring(3)}`}
+                  class={`px-3 py-1 rounded-full text-[10px] font-black transition-all duration-300 ${
+                    isActive
+                      ? 'bg-primary text-on-primary shadow-sm'
+                      : 'text-on-surface-variant hover:text-primary'
+                  }`}
+                >
+                  {lang}
+                </a>
+              );
+            })
+          }
+        </div>
+        <ThemeToggle lightLabel={lightLabel} darkLabel={darkLabel} client:load />
+        <a
+          href="#"
+          class="hidden md:inline-flex rounded-full bg-primary text-on-primary px-md py-2 text-label-caps uppercase tracking-[0.05em] font-semibold font-body hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 active:scale-95"
+        >
+          {t.nav.signIn}
+        </a>
+      </div>
+
+    </div>
+  </nav>
+</header>

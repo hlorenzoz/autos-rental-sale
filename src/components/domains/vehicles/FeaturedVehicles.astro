@@ -1,0 +1,42 @@
+---
+import type { Locale } from '@/i18n/utils';
+import { getDictionary } from '@/i18n/utils';
+import { getFeaturedVehicles } from '@/lib/vehicles';
+import VehicleGrid from './VehicleGrid.astro';
+import Button from '@/components/ui/Button.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+const featuredVehicles = getFeaturedVehicles(3);
+---
+
+<section class="py-xl bg-surface-container-low/30">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="flex justify-between items-end mb-lg">
+      <div class="space-y-xs">
+        <h2 class="text-h2 font-display font-black tracking-tight text-on-surface">
+          {t.vehicles.featuredInventory}
+        </h2>
+        <p class="text-body-md text-on-surface-variant max-w-[60ch]">
+          {t.hero.subheadline.split('.')[0]}.
+        </p>
+      </div>
+      <Button href={`/${locale}/vehicles`} variant="ghost" class="hidden md:flex items-center gap-xs">
+        {t.vehicles.viewAll}
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </Button>
+    </div>
+
+    <VehicleGrid vehicles={featuredVehicles} locale={locale} />
+
+    <div class="mt-lg md:hidden">
+      <Button href={`/${locale}/vehicles`} variant="secondary" class="w-full justify-center">
+        {t.vehicles.viewAll}
+      </Button>
+    </div>
+  </div>
+</section>

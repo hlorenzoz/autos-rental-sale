@@ -1,33 +1,40 @@
 import { describe, it, expect } from 'vitest';
-import { getLocaleFromUrl, getDictionary, defaultLocale } from './utils';
+import { getDictionary, getLocaleFromUrl, getLocalizedPath, defaultLocale } from './utils';
 
 describe('i18n utils', () => {
-  describe('getLocaleFromUrl', () => {
-    it('returns the locale from a valid URL', () => {
-      const url = new URL('https://example.com/es/about');
-      expect(getLocaleFromUrl(url)).toBe('es');
+  describe('getDictionary', () => {
+    it('should return the english dictionary', () => {
+      const dict = getDictionary('en');
+      expect(dict.nav.contact).toBe('Contact');
     });
 
-    it('returns the default locale for an invalid locale', () => {
-      const url = new URL('https://example.com/fr/about');
-      expect(getLocaleFromUrl(url)).toBe(defaultLocale);
-    });
-
-    it('returns the default locale for a root URL', () => {
-      const url = new URL('https://example.com/');
-      expect(getLocaleFromUrl(url)).toBe(defaultLocale);
+    it('should return the spanish dictionary', () => {
+      const dict = getDictionary('es');
+      expect(dict.nav.contact).toBe('Contacto');
     });
   });
 
-  describe('getDictionary', () => {
-    it('returns the dictionary for a valid locale', () => {
-      const dictionary = getDictionary('es');
-      expect(dictionary.site.name).toBe('Autos Alquiler y Venta');
+  describe('getLocaleFromUrl', () => {
+    it('should extract locale from URL', () => {
+      expect(getLocaleFromUrl(new URL('https://example.com/en/test'))).toBe('en');
+      expect(getLocaleFromUrl(new URL('https://example.com/es/test'))).toBe('es');
     });
 
-    it('returns the default dictionary for a valid locale (en)', () => {
-      const dictionary = getDictionary('en');
-      expect(dictionary.site.name).toBe('Autos Rental & Sale');
+    it('should return default locale for invalid paths', () => {
+      expect(getLocaleFromUrl(new URL('https://example.com/fr/test'))).toBe(defaultLocale);
+      expect(getLocaleFromUrl(new URL('https://example.com/'))).toBe(defaultLocale);
+    });
+  });
+
+  describe('getLocalizedPath', () => {
+    it('should replace current locale with target locale', () => {
+      const url = new URL('https://example.com/en/vehicles');
+      expect(getLocalizedPath(url, 'es')).toBe('/es/vehicles');
+    });
+
+    it('should prepend target locale if no locale in path', () => {
+      const url = new URL('https://example.com/vehicles');
+      expect(getLocalizedPath(url, 'es')).toBe('/es/vehicles');
     });
   });
 });

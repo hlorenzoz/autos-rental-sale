@@ -1,20 +1,132 @@
 @import "tailwindcss";
 
 @theme {
-  /* Typography */
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  /* FONTS */
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  /* Brand colors — override per design spec */
-  --color-brand-50: oklch(97% 0.02 250);
-  --color-brand-500: oklch(55% 0.2 250);
-  --color-brand-900: oklch(25% 0.1 250);
+  /* COLORS — Material Design 3 tonal system (Atmospheric Precision) */
 
-  /* Spacing scale — base-8 */
-  --spacing-18: 4.5rem;
-  --spacing-22: 5.5rem;
+  /* Primary */
+  --color-primary: #0043c8;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #0057ff;
+  --color-on-primary-container: #e5e8ff;
+  --color-primary-fixed: #dce1ff;
+  --color-primary-fixed-dim: #b6c4ff;
+  --color-inverse-primary: #b6c4ff;
+  --color-on-primary-fixed: #001550;
+  --color-on-primary-fixed-variant: #003ab2;
+  --color-surface-tint: #004ee7;
+
+  /* Secondary */
+  --color-secondary: #006d35;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #3fff8b;
+  --color-on-secondary-container: #007237;
+  --color-secondary-fixed: #62ff96;
+  --color-secondary-fixed-dim: #00e475;
+  --color-on-secondary-fixed: #00210b;
+  --color-on-secondary-fixed-variant: #005226;
+
+  /* Tertiary */
+  --color-tertiary: #9c2200;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #c72e00;
+  --color-on-tertiary-container: #ffe4dd;
+  --color-tertiary-fixed: #ffdad2;
+  --color-tertiary-fixed-dim: #ffb4a2;
+  --color-on-tertiary-fixed: #3c0700;
+  --color-on-tertiary-fixed-variant: #8a1d00;
+
+  /* Error */
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  /* Surface */
+  --color-surface: #f8f9ff;
+  --color-surface-bright: #f8f9ff;
+  --color-surface-dim: #cbdbf5;
+  --color-surface-variant: #d3e4fe;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #eff4ff;
+  --color-surface-container: #e5eeff;
+  --color-surface-container-high: #dce9ff;
+  --color-surface-container-highest: #d3e4fe;
+  --color-background: #f8f9ff;
+  --color-on-background: #0b1c30;
+
+  /* On-surface */
+  --color-on-surface: #0b1c30;
+  --color-on-surface-variant: #434656;
+  --color-inverse-surface: #213145;
+  --color-inverse-on-surface: #eaf1ff;
+
+  /* Outline */
+  --color-outline: #737688;
+  --color-outline-variant: #c3c5d9;
+
+  /* SPACING SCALE — base-8 */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-base: 0.5rem; /* 8px */
+  --spacing-sm: 0.75rem; /* 12px */
+  --spacing-md: 1.5rem; /* 24px */
+  --spacing-lg: 2.5rem; /* 40px */
+  --spacing-xl: 4rem; /* 64px */
+  --spacing-margin: 3rem; /* 48px */
+  --spacing-gutter: 1.5rem; /* 24px */
+
+  /* FONT SIZES + LINE HEIGHTS + TRACKING */
+  --text-display: 3rem;
+  --text-display--line-height: 1.1;
+  --tracking-display: -0.02em;
+
+  --text-h1: 2rem;
+  --text-h1--line-height: 1.2;
+  --tracking-h1: -0.01em;
+
+  --text-h2: 1.5rem;
+  --text-h2--line-height: 1.3;
+
+  --text-h3: 1.25rem;
+  --text-h3--line-height: 1.4;
+
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.6;
+
+  --text-body-md: 1rem;
+  --text-body-md--line-height: 1.5;
+
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.5;
+
+  --text-label-caps: 0.75rem;
+  --text-label-caps--line-height: 1.2;
+  --tracking-label-caps: 0.05em;
+
+  /* BORDER RADIUS */
+  --radius-sm: 0.25rem; /* 4px */
+  --radius-DEFAULT: 0.5rem; /* 8px */
+  --radius-md: 0.75rem; /* 12px */
+  --radius-lg: 1rem; /* 16px */
+  --radius-xl: 1.5rem; /* 24px */
+  --radius-full: 9999px;
 }
 
-/* Flash prevention for dark mode — see BaseLayout.astro */
+@utility atmospheric-shadow {
+  box-shadow: 0 20px 40px -10px rgba(0, 67, 200, 0.08);
+}
+
+@utility nav-shadow {
+  box-shadow: 0 2px 15px -3px rgba(0, 87, 255, 0.07);
+}
+
+@utility hero-shadow {
+  box-shadow: 0 40px 60px rgba(0, 0, 0, 0.15);
+}
+
 @layer base {
   :root {
     color-scheme: light dark;
@@ -24,5 +136,29 @@
   *::before,
   *::after {
     box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-body);
+    color: var(--color-on-surface);
+    background-color: var(--color-background);
+  }
+
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    user-select: none;
+    font-size: inherit;
+    line-height: 1;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .material-symbols-outlined.filled {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+
+  ::selection {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
   }
 }

@@ -1,4 +1,56 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <rect width="128" height="128" rx="24" fill="#1e40af"/>
-  <text x="64" y="88" font-size="72" text-anchor="middle" fill="white" font-family="system-ui">🚗</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="carGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="512" height="512" rx="100" fill="#0f172a" />
+  
+  <!-- Subtle inner border -->
+  <rect x="10" y="10" width="492" height="492" rx="90" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+
+  <!-- Car Silhouette (Stylized) -->
+  <g transform="translate(60, 200) scale(0.8)">
+    <path 
+      d="M20,180 
+         C20,170 50,150 100,140 
+         C150,130 180,60 250,50 
+         C320,40 450,120 480,140 
+         C510,160 520,190 510,210 
+         L510,230 
+         C510,240 480,240 450,240 
+         L430,240 
+         C420,200 370,200 360,240 
+         L160,240 
+         C150,200 100,200 90,240 
+         L40,240 
+         C20,240 20,200 20,180 Z" 
+      fill="url(#carGradient)" 
+      filter="url(#glow)"
+    />
+    
+    <!-- Wheels -->
+    <circle cx="90" cy="240" r="35" fill="#0f172a" stroke="#64748b" stroke-width="8" />
+    <circle cx="360" cy="240" r="35" fill="#0f172a" stroke="#64748b" stroke-width="8" />
+    
+    <!-- Highlights -->
+    <path 
+      d="M110,155 C160,145 190,85 245,75 C290,67 360,110 390,130" 
+      fill="none" 
+      stroke="white" 
+      stroke-width="4" 
+      stroke-linecap="round" 
+      opacity="0.5" 
+    />
+  </g>
 </svg>

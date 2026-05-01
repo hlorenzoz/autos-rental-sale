@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Velocity - Discover Vehicles</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#62ff96",
+                        "primary-fixed": "#dce1ff",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-secondary-container": "#007237",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#005226",
+                        "outline": "#737688",
+                        "surface-tint": "#004ee7",
+                        "primary-container": "#0057ff",
+                        "inverse-primary": "#b6c4ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary-container": "#ffe4dd",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#00210b",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#8a1d00",
+                        "on-tertiary-fixed": "#3c0700",
+                        "tertiary-fixed": "#ffdad2",
+                        "surface-variant": "#d3e4fe",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#c72e00",
+                        "surface": "#f8f9ff",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#006d35",
+                        "primary": "#0043c8",
+                        "on-surface-variant": "#434656",
+                        "on-surface": "#0b1c30",
+                        "tertiary-fixed-dim": "#ffb4a2",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary-container": "#e5e8ff",
+                        "outline-variant": "#c3c5d9",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-background": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "background": "#f8f9ff",
+                        "surface-container": "#e5eeff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-dim": "#cbdbf5",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#00e475",
+                        "secondary-container": "#3fff8b",
+                        "inverse-surface": "#213145",
+                        "on-primary-fixed": "#001550",
+                        "tertiary": "#9c2200",
+                        "on-primary-fixed-variant": "#003ab2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "xl": "64px",
+                        "base": "8px",
+                        "md": "24px",
+                        "lg": "40px",
+                        "xs": "4px",
+                        "margin": "48px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display": ["Space Grotesk"],
+                        "h3": ["Space Grotesk"],
+                        "h1": ["Space Grotesk"],
+                        "h2": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "h3": ["20px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "h1": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h2": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .atmospheric-shadow {
+            box-shadow: 0 20px 40px -10px rgba(0, 67, 200, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 border-b border-slate-100 bg-white/80 backdrop-blur-xl shadow-[0_2px_15px_-3px_rgba(0,87,255,0.07)]">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-20">
+<!-- Brand -->
+<a class="text-xl font-black tracking-tighter text-slate-950 font-display" href="#">VELOCITY</a>
+<!-- Navigation Links (Hidden on Mobile) -->
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-['Space_Grotesk'] text-sm font-medium tracking-tight text-blue-600 border-b-2 border-blue-600 pb-1 active:scale-95 transition-transform hover:text-blue-600 transition-colors duration-300" href="#">Inventory</a>
+<a class="font-['Space_Grotesk'] text-sm font-medium tracking-tight text-slate-500 hover:text-blue-600 transition-colors duration-300 active:scale-95 transition-transform" href="#">Sell</a>
+<a class="font-['Space_Grotesk'] text-sm font-medium tracking-tight text-slate-500 hover:text-blue-600 transition-colors duration-300 active:scale-95 transition-transform" href="#">Services</a>
+<a class="font-['Space_Grotesk'] text-sm font-medium tracking-tight text-slate-500 hover:text-blue-600 transition-colors duration-300 active:scale-95 transition-transform" href="#">About</a>
+</div>
+<!-- Actions -->
+<div class="flex items-center space-x-6">
+<!-- Search Icon (Mobile) -->
+<button class="md:hidden text-slate-500 hover:text-blue-600 transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<a class="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-primary text-on-primary rounded-full font-label-caps uppercase tracking-wider hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm" href="#">
+                    Sign In
+                </a>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-[140px] pb-32 px-6 max-w-7xl mx-auto">
+<!-- Hero & Search Section -->
+<section class="mb-24 flex flex-col items-center text-center">
+<h1 class="font-display text-display text-on-surface mb-8 max-w-3xl">Find your next vehicle.</h1>
+<!-- Minimal Search Pill -->
+<div class="w-full max-w-2xl bg-surface-container-lowest rounded-full atmospheric-shadow p-2 flex items-center border border-outline-variant/30">
+<!-- Buy/Rent Toggle -->
+<div class="flex items-center bg-surface-container rounded-full p-1 mr-4">
+<button class="px-6 py-2 rounded-full bg-surface-container-lowest text-on-surface font-label-caps shadow-sm transition-all">Buy</button>
+<button class="px-6 py-2 rounded-full text-on-surface-variant font-label-caps hover:text-on-surface transition-all">Rent</button>
+</div>
+<!-- Search Input -->
+<div class="flex-grow flex items-center px-4">
+<span class="material-symbols-outlined text-outline mr-3" data-icon="search">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-body-lg text-on-surface placeholder:text-outline-variant p-0" placeholder="Search make, model, or type..." type="text"/>
+</div>
+<!-- Filter Button -->
+<button class="p-3 rounded-full bg-primary-container text-on-primary-container hover:bg-primary hover:text-on-primary transition-colors ml-2 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+</button>
+</div>
+<!-- Quick Tags -->
+<div class="flex flex-wrap justify-center gap-3 mt-8">
+<button class="px-4 py-1.5 rounded-full bg-surface-container text-on-surface font-label-caps hover:bg-surface-dim transition-colors">Electric</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container text-on-surface font-label-caps hover:bg-surface-dim transition-colors">SUV</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container text-on-surface font-label-caps hover:bg-surface-dim transition-colors">Luxury</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container text-on-surface font-label-caps hover:bg-surface-dim transition-colors">Under $50k</button>
+</div>
+</section>
+<!-- Vehicle Grid -->
+<section>
+<div class="flex justify-between items-end mb-8">
+<h2 class="font-h2 text-h2 text-on-surface">Featured Inventory</h2>
+<button class="text-primary font-label-caps hover:text-primary-container transition-colors flex items-center">
+                    View All <span class="material-symbols-outlined ml-1 text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Bento/Soft Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<article class="bg-surface-container-lowest rounded-[24px] p-6 atmospheric-shadow group hover:-translate-y-1 transition-transform duration-300 flex flex-col h-full border border-outline-variant/20">
+<div class="relative w-full h-48 mb-6 overflow-hidden flex items-center justify-center bg-transparent">
+<img alt="Tesla Model S" class="object-contain w-full h-full mix-blend-multiply group-hover:scale-105 transition-transform duration-500" data-alt="A high-key, studio-quality photograph of a sleek, white electric sedan isolated on a pure white background. The lighting is perfectly even, highlighting the aerodynamic curves and glass roof without harsh shadows. The image perfectly embodies an airy minimalist aesthetic, presenting the vehicle as an object in pure space. Professional automotive studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYkjrCZs34BpGK9TEOxqMR6OKZ927xuQFAX9BR7-DEg2E_-6AOdt29v06sNxypmCvVMS74jFVzFxoEXxRfsAQ2DjTkmAvN8eXT215VcuamdXpxB_khnxnXxKB21fEM6eL3OaRuE46-Mk7yak6zxgJUgI0gzQ6izxOadfKAxMUYL1b-52CjyBh5S81xN8tzG4tkJWYFiK9avxGkxIL-8j6BCdgSjZW8yMie-T5M9XDHT9jL9bMq-4rWm6Wre4D6kcPKzmvYFDBSF-0O"/>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="font-label-caps text-outline mb-1">ELECTRIC SEDAN</p>
+<h3 class="font-h3 text-h3 text-on-surface">Model S Plaid</h3>
+</div>
+<span class="font-h3 text-h3 text-primary">$89,990</span>
+</div>
+<div class="flex gap-4 mt-4 pt-4 border-t border-outline-variant/30">
+<div class="flex items-center text-on-surface-variant font-body-sm">
+<span class="material-symbols-outlined text-[18px] mr-1.5" data-icon="speed">speed</span> 1.99s
+                            </div>
+<div class="flex items-center text-on-surface-variant font-body-sm">
+<span class="material-symbols-outlined text-[18px] mr-1.5" data-icon="battery_charging_full">battery_charging_full</span> 396 mi
+                            </div>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container-lowest rounded-[24px] p-6 atmospheric-shadow group hover:-translate-y-1 transition-transform duration-300 flex flex-col h-full border border-outline-variant/20">
+<div class="relative w-full h-48 mb-6 overflow-hidden flex items-center justify-center bg-transparent">
+<img alt="Porsche 911" class="object-contain w-full h-full mix-blend-multiply group-hover:scale-105 transition-transform duration-500" data-alt="A pristine studio shot of a silver sports car against an infinite white background. The lighting is soft and diffused, emphasizing the classic curves and metallic finish of the vehicle. The minimal setting creates a weightless, premium feel consistent with a high-end digital dashboard. No background elements distract from the automotive subject." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZl8tfqHf_sQjRzIQVMLmcoZYuHWVbrmmt_5aniD86VGA5SVh4sE2qTiLTZjS0NWOULYZLVEX9zpfZnJmqviKPe3JbHSOy-uGwRKIQCNptfNHCftkm3s7W0oFznVz8QncqDPHqRevrRWN4kiHAqlVMDyXiA_Ql5Pt_XBcGbhDqLQP_jIkbZ6-HeSN6O-rVb-rol_KQf0rcjQhDjzYRwpRiFwZbDwqKBbeeBp2ZPFy4ulq2ZZWrl3hP406hnmO5RdhinF2PtPfti9ua"/>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="font-label-caps text-outline mb-1">SPORTS COUPE</p>
+<h3 class="font-h3 text-h3 text-on-surface">Carrera 4S</h3>
+</div>
+<span class="font-h3 text-h3 text-primary">$130,500</span>
+</div>
+<div class="flex gap-4 mt-4 pt-4 border-t border-outline-variant/30">
+<div class="flex items-center text-on-surface-variant font-body-sm">
+<span class="material-symbols-outlined text-[18px] mr-1.5" data-icon="speed">speed</span> 3.4s
+                            </div>
+<div class="flex items-center text-on-surface-variant font-body-sm">
+<span class="material-symbols-outlined text-[18px] mr-1.5" data-icon="settings">settings</span> AWD
+                            </div>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-container-lowest rounded-[24px] p-6 atmospheric-shadow group hover:-translate-y-1 transition-transform duration-300 flex flex-col h-full border border-outline-variant/20">
+<div class="relative w-full h-48 mb-6 overflow-hidden flex items-center justify-center bg-transparent">
+<img alt="Range Rover" class="object-contain w-full h-full mix-blend-multiply group-hover:scale-105 transition-transform duration-500" data-alt="A sophisticated luxury SUV presented on a pure white studio background. The vehicle is a subtle metallic gray, captured under expansive overhead softboxes to reveal every design detail without harsh contrast. The image exudes corporate minimalism and structural integrity, fitting perfectly into a clean, modern user interface. High-key, shadowless photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmYyLF9rynJQK49lVhKiKOe8HvE9eVIeCsb1matCYb0G51YDvPa-LbuKndwmf4106P6soA_OIgCEuQaL3i9l3Qh9lBemEBXuK8HQRnZcZW-ayZZEusw7bC-VrOeOK67bA8KA_Kg9ccbZX9AoXCcxP7PSXMCAUSd53sqTUdeAl05CPK_CFGxpbfpPZR-q6eTh9Czh-QIWjjzfjDQn_znYys3NHa22_lN2RmHnqrh7_H2ORaW9hpHWCfoz3ZZfNCAeN71JZdIzDyhiWK"/>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="font-label-caps text-outline mb-1">LUXURY SUV</p>
+<h3 class="font-h3 text-h3 text-on-surface">Autobiography</h3>
+</div>
+<span class="font-h3 text-h3 text-primary">$145,000</span>
+</div>
+<div class="flex gap-4 mt-4 pt-4 border-t border-outline-variant/30">
+<div class="flex items-center text-on-surface-variant font-body-sm">
+<span class="material-symbols-outlined text-[18px] mr-1.5" data-icon="airline_seat_recline_normal">airline_seat_recline_normal</span> 5 Seats
+                            </div>
+<div class="flex items-center text-on-surface-variant font-body-sm">
+<span class="material-symbols-outlined text-[18px] mr-1.5" data-icon="terrain">terrain</span> 4WD
+                            </div>
+</div>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-100 bg-white">
+<div class="max-w-7xl mx-auto px-8 py-16 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="text-lg font-bold text-slate-900 font-display">
+                VELOCITY
+            </div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-['Space_Grotesk'] text-xs uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors opacity-100 hover:opacity-80" href="#">Privacy Policy</a>
+<a class="font-['Space_Grotesk'] text-xs uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors opacity-100 hover:opacity-80" href="#">Terms of Service</a>
+<a class="font-['Space_Grotesk'] text-xs uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors opacity-100 hover:opacity-80" href="#">Contact</a>
+<a class="font-['Space_Grotesk'] text-xs uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors opacity-100 hover:opacity-80" href="#">Careers</a>
+<a class="font-['Space_Grotesk'] text-xs uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors opacity-100 hover:opacity-80" href="#">Press</a>
+</div>
+<div class="font-['Space_Grotesk'] text-xs uppercase tracking-widest text-slate-400">
+                © 2024 VELOCITY AUTOMOTIVE GROUP. PRECISION ENGINEERED.
+            </div>
+</div>
+</footer>
+</body></html>

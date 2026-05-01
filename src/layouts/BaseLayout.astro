@@ -28,6 +28,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="generator" content={Astro.generator} />
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;900&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- OpenGraph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
@@ -43,7 +51,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <title>{pageTitle}</title>
   </head>
-  <body class="bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-50 antialiased">
+  <body class="bg-background text-on-surface antialiased">
     <slot />
   </body>
 </html>

@@ -17,3 +17,16 @@ export function getLocaleFromUrl(url: URL): Locale {
   if (locales.includes(locale as Locale)) return locale as Locale;
   return defaultLocale;
 }
+
+export function getLocalizedPath(url: URL, targetLocale: Locale): string {
+  const parts = url.pathname.split('/');
+  // parts[0] is empty, parts[1] is the locale prefix
+  if (locales.includes(parts[1] as Locale)) {
+    parts[1] = targetLocale;
+  } else {
+    // If no locale in URL (shouldn't happen with our routing), prepend it
+    return `/${targetLocale}${url.pathname}`;
+  }
+  return parts.join('/');
+}
+

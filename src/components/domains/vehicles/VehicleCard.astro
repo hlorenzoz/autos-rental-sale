@@ -1,0 +1,119 @@
+---
+import type { Vehicle } from '@/schemas/vehicle';
+import { getDictionary } from '@/i18n/utils';
+import type { Locale } from '@/i18n/utils';
+import { formatCurrency } from '@/lib/formatters';
+import { getVehiclePriceInfo } from '@/lib/vehicles';
+import Badge from '@/components/ui/Badge.astro';
+import Button from '@/components/ui/Button.astro';
+
+interface Props {
+  vehicle: Vehicle;
+  locale: Locale;
+  preferredPriceType?: 'sale' | 'rent';
+}
+
+const { vehicle, locale, preferredPriceType } = Astro.props;
+const t = getDictionary(locale);
+
+const { price, isRent } = getVehiclePriceInfo(vehicle, preferredPriceType);
+
+const formattedPrice = price ? formatCurrency(price, locale) : '—';
+const priceSuffix = isRent ? ` ${t.vehicles.perDay}` : '';
+
+
+const cardLink = `/${locale}/vehicles/${vehicle.slug}`;
+---
+
+<article class="group bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/30 transition-all duration-500 hover:atmospheric-shadow hover:-translate-y-1">
+  <!-- Image Container -->
+  <div class="relative aspect-[16/10] overflow-hidden">
+    <img 
+      src={vehicle.image} 
+      alt={`${vehicle.brand} ${vehicle.model}`}
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+      loading="lazy"
+    />
+    
+    <!-- Top Badges -->
+    <div class="absolute top-sm left-sm flex flex-row flex-wrap gap-xs max-w-[calc(100%-2rem)]">
+      <Badge variant="tertiary" class="bg-surface/80 backdrop-blur-sm">
+        {t.categories[vehicle.category as keyof typeof t.categories]}
+      </Badge>
+      {vehicle.type === 'rent' && <Badge variant="secondary">{t.filters.forRent}</Badge>}
+      {vehicle.type === 'sale' && <Badge variant="primary">{t.filters.forSale}</Badge>}
+      {vehicle.type === 'both' && (
+        <>
+          <Badge variant="primary">{t.filters.forSale}</Badge>
+          <Badge variant="secondary">{t.filters.forRent}</Badge>
+        </>
+      )}
+    </div>
+
+    {!vehicle.available && (
+      <div class="absolute inset-0 bg-surface/60 backdrop-blur-[2px] flex items-center justify-center">
+        <Badge variant="outline" class="bg-surface/80 text-on-surface font-bold px-lg py-sm">
+          {t.vehicles.unavailable}
+        </Badge>
+      </div>
+    )}
+  </div>
+
+  <!-- Content -->
+  <div class="p-md flex flex-col gap-sm">
+    <div class="flex justify-between items-start gap-xs">
+      <div>
+        <p class="text-label-caps text-on-surface-variant font-medium tracking-wider mb-xs">
+          {vehicle.year} • {vehicle.brand}
+        </p>
+        <h3 class="text-h3 font-display font-bold text-on-surface leading-tight">
+          {vehicle.model}
+        </h3>
+      </div>
+      <div class="text-right">
+        <p class="text-h3 font-display font-bold text-primary">
+          {formattedPrice}<span class="text-body-sm font-body text-on-surface-variant font-normal">{priceSuffix}</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Quick Specs -->
+    <div class="grid grid-cols-2 gap-y-xs gap-x-md py-sm border-y border-outline-variant/20">
+      {vehicle.specs.acceleration && (
+        <div class="flex items-center gap-xs text-body-sm text-on-surface-variant">
+          <span class="material-symbols-outlined text-lg opacity-60">speed</span>
+          <span>{vehicle.specs.acceleration}</span>
+        </div>
+      )}
+      {vehicle.specs.range && (
+        <div class="flex items-center gap-xs text-body-sm text-on-surface-variant">
+          <span class="material-symbols-outlined text-lg opacity-60">bolt</span>
+          <span>{vehicle.specs.range}</span>
+        </div>
+      )}
+      {vehicle.specs.seats && (
+        <div class="flex items-center gap-xs text-body-sm text-on-surface-variant">
+          <span class="material-symbols-outlined text-lg opacity-60">group</span>
+          <span>{vehicle.specs.seats} {t.vehicles.seats}</span>
+        </div>
+      )}
+      {vehicle.specs.fuel && (
+        <div class="flex items-center gap-xs text-body-sm text-on-surface-variant">
+          <span class="material-symbols-outlined text-lg opacity-60">local_gas_station</span>
+          <span>{vehicle.specs.fuel}</span>
+        </div>
+      )}
+    </div>
+
+    <!-- Action -->
+    <div class="mt-xs">
+      <Button 
+        href={cardLink} 
+        variant={vehicle.available ? 'primary' : 'secondary'} 
+        class="w-full justify-center text-center"
+      >
+        {vehicle.type === 'rent' ? t.vehicles.bookNow : t.vehicles.inquire}
+      </Button>
+    </div>
+  </div>
+</article>

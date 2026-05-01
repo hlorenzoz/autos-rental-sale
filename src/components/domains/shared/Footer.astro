@@ -1,0 +1,85 @@
+---
+import type { Locale } from '@/i18n/utils';
+import { getDictionary } from '@/i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+---
+
+<footer class="bg-surface-container-lowest border-t border-outline-variant/30 py-xl">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-lg">
+      <!-- Brand -->
+      <div class="md:col-span-1">
+        <a href={`/${locale}/`} class="text-2xl font-black tracking-tighter font-display text-primary">
+          AeroDrive
+        </a>
+        <p class="mt-md text-on-surface-variant font-body text-body-sm leading-relaxed">
+          {t.site.description}
+        </p>
+      </div>
+
+      <!-- Links Column 1 -->
+      <div>
+        <h4 class="font-display text-label-caps uppercase tracking-wider text-on-surface font-bold mb-md">
+          {t.nav.inventory}
+        </h4>
+        <ul class="space-y-sm">
+          <li><a href={`/${locale}/cars/#rent`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.forRent}</a></li>
+          <li><a href={`/${locale}/cars/#sale`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.forSale}</a></li>
+          <li><a href={`/${locale}/cars/`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.overview}</a></li>
+        </ul>
+      </div>
+
+      <!-- Links Column 2 -->
+      <div>
+        <h4 class="font-display text-label-caps uppercase tracking-wider text-on-surface font-bold mb-md">
+          {t.footer.contact}
+        </h4>
+        <ul class="space-y-sm">
+          <li><a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.careers}</a></li>
+          <li><a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.contact}</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <h4 class="font-display text-label-caps uppercase tracking-wider text-on-surface font-bold mb-md">
+          Legal
+        </h4>
+        <ul class="space-y-sm">
+          <li><a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.privacy}</a></li>
+          <li><a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.terms}</a></li>
+          <li><a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.cookies}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-xl pt-lg border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center gap-md">
+      <p class="text-on-surface-variant font-body text-body-sm">
+        {t.footer.copyright}
+      </p>
+      <div class="flex items-center space-x-lg">
+        {
+          ['en', 'es'].map((l) => (
+            <a 
+              href={`/${l}${Astro.url.pathname.substring(3)}`} 
+              class={`text-body-sm transition-colors duration-300 ${
+                locale === l 
+                  ? 'text-primary font-black' 
+                  : 'text-on-surface-variant hover:text-primary'
+              }`}
+            >
+              {l.toUpperCase()}
+            </a>
+          ))
+        }
+      </div>
+
+    </div>
+  </div>
+</footer>
