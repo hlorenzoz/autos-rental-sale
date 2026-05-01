@@ -9,13 +9,16 @@ export default defineConfig({
   site: 'http://localhost:4321',
   integrations: [
     react(),
-    sentry({
-      spotlight: process.env.SENTRY_SPOTLIGHT === '1',
-    }),
+    sentry(),
     spotlightjs(),
   ],
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      watch: {
+        ignored: ['**/coverage/**'],
+      },
+    },
   },
   i18n: {
     defaultLocale: 'es',

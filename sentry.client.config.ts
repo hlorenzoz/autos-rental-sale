@@ -1,6 +1,7 @@
 import * as Sentry from '@sentry/astro';
 
 Sentry.init({
+  spotlight: process.env.SENTRY_SPOTLIGHT === '1',
   // Exclude noise from node_modules as per project requirements
   beforeSend(event) {
     const isNodeModules = event.exception?.values?.some((value) =>
