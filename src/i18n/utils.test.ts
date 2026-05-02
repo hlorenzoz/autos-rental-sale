@@ -27,14 +27,24 @@ describe('i18n utils', () => {
   });
 
   describe('getLocalizedPath', () => {
-    it('should replace current locale with target locale', () => {
-      const url = new URL('https://example.com/en/vehicles');
-      expect(getLocalizedPath(url, 'es')).toBe('/es/vehicles');
+    it('should translate known paths when switching locale', () => {
+      const url = new URL('https://example.com/en/vehicles/');
+      expect(getLocalizedPath(url, 'es')).toBe('/es/vehiculos/');
     });
 
-    it('should prepend target locale if no locale in path', () => {
-      const url = new URL('https://example.com/vehicles');
-      expect(getLocalizedPath(url, 'es')).toBe('/es/vehicles');
+    it('should handle vehicle details with localized slugs', () => {
+      const url = new URL('https://example.com/en/vehicles/tesla-model-s/');
+      expect(getLocalizedPath(url, 'es')).toBe('/es/vehiculos/tesla-model-s/');
+    });
+
+    it('should prepend target locale and add trailing slash for known paths without locale prefix', () => {
+      const url = new URL('https://example.com/contact');
+      expect(getLocalizedPath(url, 'es')).toBe('/es/contacto/');
+    });
+
+    it('should handle unmapped paths without locale prefix by prepending target locale', () => {
+      const url = new URL('https://example.com/random-page');
+      expect(getLocalizedPath(url, 'es')).toBe('/es/random-page');
     });
   });
 });

@@ -23,8 +23,8 @@ export const es: Dictionary = {
     // Nueva estructura de navegación unificada
     links: {
       inventory: '/vehiculos/',
-      forRent: '/vehiculos/alquiler/',
-      forSale: '/vehiculos/venta/',
+      forRent: '/vehiculos/en-alquiler/',
+      forSale: '/vehiculos/en-venta/',
       contact: '/contacto/',
     },
     slugs: {

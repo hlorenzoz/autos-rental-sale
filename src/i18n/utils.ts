@@ -19,14 +19,34 @@ export function getLocaleFromUrl(url: URL): Locale {
 }
 
 export function getLocalizedPath(url: URL, targetLocale: Locale): string {
+  const currentLocale = getLocaleFromUrl(url);
+  const tCurrent = getDictionary(currentLocale);
+  const tTarget = getDictionary(targetLocale);
+
+  // Remove locale prefix for matching
+  const pathWithoutLocale = url.pathname.replace(`/${currentLocale}`, '') || '/';
+  
+  // Find which key in tCurrent.nav.links matches the current path
+  const linkKey = Object.entries(tCurrent.nav.links).find(
+    ([, path]) => path === pathWithoutLocale || path === `${pathWithoutLocale}/`
+  )?.[0] as keyof typeof tTarget.nav.links | undefined;
+
+  if (linkKey) {
+    return `/${targetLocale}${tTarget.nav.links[linkKey]}`;
+  }
+
+  // Fallback for non-mapped routes (like vehicle details)
   const parts = url.pathname.split('/');
-  // parts[0] is empty, parts[1] is the locale prefix
   if (locales.includes(parts[1] as Locale)) {
     parts[1] = targetLocale;
+    // Special case for vehicles slug in detail pages
+    if (parts[2] === tCurrent.nav.slugs.vehicles) {
+      parts[2] = tTarget.nav.slugs.vehicles;
+    }
   } else {
-    // If no locale in URL (shouldn't happen with our routing), prepend it
     return `/${targetLocale}${url.pathname}`;
   }
-  return parts.join('/');
+  
+  return parts.join('/').replace(/\/$/, '') + '/';
 }
 

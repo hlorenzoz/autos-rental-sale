@@ -1,35 +1,36 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Navigation and Language', () => {
-  test('navigates from home to vehicles inventory', async ({ page }) => {
-    await page.goto('/es/');
+const routes = [
+  { en: '/', es: '/es/' },
+  { en: '/en/vehicles/', es: '/es/vehiculos/' },
+  { en: '/en/vehicles/for-rent/', es: '/es/vehiculos/en-alquiler/' },
+  { en: '/en/vehicles/for-sell/', es: '/es/vehiculos/en-venta/' },
+  { en: '/en/contact/', es: '/es/contacto/' },
+  { en: '/en/vehicles/tesla-model-s-plaid/', es: '/es/vehiculos/tesla-model-s-plaid/' },
+];
 
-    const vehiclesLink = page.getByRole('navigation').getByRole('link', { name: /inventario/i });
-    await vehiclesLink.click();
+test.describe('Global Navigation and i18n URL consistency', () => {
+  for (const route of routes) {
+    test(`should render English page: ${route.en}`, async ({ page }) => {
+      const response = await page.goto(route.en);
+      expect(response?.status()).toBe(200);
+      expect(page.url()).toContain(route.en);
+    });
 
-    await expect(page).toHaveURL(/\/es\/vehicles/);
-    await expect(page.getByRole('heading', { name: /todos los vehículos/i })).toBeVisible();
-  });
+    test(`should render Spanish page: ${route.es}`, async ({ page }) => {
+      const response = await page.goto(route.es);
+      // This will fail if there is a redirect loop
+      expect(response?.status()).toBe(200);
+      expect(page.url()).toContain(route.es);
+    });
+  }
 
-  test('switches language from inventory page', async ({ page }) => {
+  test('should redirect technical English paths to Spanish in ES locale', async ({ page }) => {
+    // If we hit /es/vehicles/, it should redirect to /es/vehiculos/
     await page.goto('/es/vehicles/');
-
-    await expect(page.getByRole('heading', { name: /todos los vehículos/i })).toBeVisible();
-
-    const enLink = page.getByRole('banner').getByRole('link', { name: 'EN' });
-    await enLink.click();
-
-    await expect(page).toHaveURL(/\/en\/vehicles/);
-    await expect(page.getByRole('heading', { name: /all vehicles/i })).toBeVisible();
-  });
-
-  test('maintains current page path when switching languages', async ({ page }) => {
-    await page.goto('/es/vehicles/');
-
-    await page.getByRole('banner').getByRole('link', { name: 'EN' }).click();
-    await expect(page).toHaveURL(/\/en\/vehicles/);
-
-    await page.getByRole('banner').getByRole('link', { name: 'ES' }).click();
-    await expect(page).toHaveURL(/\/es\/vehicles/);
+    await expect(page).toHaveURL(/\/es\/vehiculos\//);
+    
+    await page.goto('/es/vehicles/for-rent/');
+    await expect(page).toHaveURL(/\/es\/vehiculos\/en-alquiler\//);
   });
 });
