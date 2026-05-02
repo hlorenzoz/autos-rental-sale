@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "autos-rental-sale",
+  "name": "autos-rental",
   "compatibility_date": "2026-05-02",
   "observability": {
     "enabled": true
@@ -11,7 +11,7 @@
   ],
   "routes": [
     {
-      "pattern": "autos-rental.hlorenzoz.com/*",
+      "pattern": "autos-rental.hlorenzoz.com",
       "custom_domain": true
     }
   ],
@@ -19,13 +19,14 @@
     "staging": {
       "routes": [
         {
-          "pattern": "staging.autos-rental.hlorenzoz.com/*",
+          "pattern": "staging.autos-rental.hlorenzoz.com",
           "custom_domain": true
         }
       ]
     }
   }
 }
+
 
 
 
