@@ -9,10 +9,11 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'http://localhost:4321',
+  prefetch: true,
   integrations: [
     react(),
     sentry(),
-    spotlightjs(),
+    process.env.NODE_ENV === 'development' ? spotlightjs() : [],
     sitemap({
       serialize(item) {
         // Only vehicles still need mapping

@@ -65,6 +65,10 @@ e2e:
 e2e-ui:
     bun run test:e2e:ui
 
+# Run Lighthouse CI performance and SEO audit (requires build)
+lighthouse:
+    bun run lighthouse
+
 # --- Utilities ---
 
 # Regenerate all PWA/Favicon icons from a source image
