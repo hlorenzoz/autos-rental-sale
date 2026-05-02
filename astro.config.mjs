@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
-import cloudflare from '@astrojs/cloudflare';
+import vercel from '@astrojs/vercel';
 
 import sentry from '@sentry/astro';
 import spotlightjs from '@spotlightjs/astro';
@@ -10,11 +10,9 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://autos-rental.hlorenzoz.com',
-  output: 'static',
-  adapter: cloudflare({
-    runtime: {
-      mode: 'off',
-    },
+  output: 'server',
+  adapter: vercel({
+    edgeMiddleware: true,
   }),
   prefetch: true,
   integrations: [
