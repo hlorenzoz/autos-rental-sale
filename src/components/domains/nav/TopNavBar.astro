@@ -32,18 +32,18 @@ function isActive(href: string): boolean {
 
 <header class="fixed top-0 left-0 right-0 z-50 nav-shadow">
   <nav class="bg-surface-container-lowest/80 backdrop-blur-xl border-b border-outline-variant/30">
-    <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
       <!-- Logo -->
       <a
         href={`/${locale}/`}
-        class="text-2xl font-black tracking-tighter font-display text-primary"
+        class="text-xl md:text-2xl font-black tracking-tighter font-display text-primary shrink-0"
         aria-label="AeroDrive — Home"
       >
         AeroDrive
       </a>
 
       <!-- Desktop Nav Links -->
-      <ul class="hidden md:flex items-center space-x-lg" role="list">
+      <ul class="hidden lg:flex items-center space-x-lg" role="list">
         {
           navLinks.map(({ href, label }) => (
             <li>
@@ -64,8 +64,9 @@ function isActive(href: string): boolean {
       </ul>
 
       <!-- Actions -->
-      <div class="flex items-center space-x-md">
-        <div class="hidden sm:flex items-center bg-surface-container-high rounded-full p-1 mr-2">
+      <div class="flex items-center space-x-4 md:space-x-6">
+        <!-- Lang Selector -->
+        <div class="flex items-center bg-surface-container-high rounded-full p-1.5 shadow-inner">
           {
             ['EN', 'ES'].map((lang) => {
               const l = lang.toLowerCase() as Locale;
@@ -73,9 +74,9 @@ function isActive(href: string): boolean {
               return (
                 <a
                   href={getLocalizedPath(Astro.url, l)}
-                  class={`px-3 py-1 rounded-full text-[10px] font-black transition-all duration-300 ${
+                  class={`px-3 py-1.5 rounded-full text-[10px] md:text-[11px] font-black transition-all duration-300 ${
                     isActive
-                      ? 'bg-primary text-on-primary shadow-sm'
+                      ? 'bg-primary text-on-primary shadow-md scale-105'
                       : 'text-on-surface-variant hover:text-primary'
                   }`}
                 >
@@ -85,15 +86,126 @@ function isActive(href: string): boolean {
             })
           }
         </div>
-        <ThemeToggle lightLabel={lightLabel} darkLabel={darkLabel} client:load />
+
+        <div class="scale-110 md:scale-100">
+          <ThemeToggle lightLabel={lightLabel} darkLabel={darkLabel} client:load />
+        </div>
+
+        <!-- Phone -->
         <a
           href="tel:+34600123456"
-          class="hidden md:inline-flex rounded-full bg-primary text-on-primary px-md py-2 text-label-caps uppercase tracking-[0.05em] font-semibold font-body hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 active:scale-95"
+          class="inline-flex items-center justify-center w-12 h-12 md:w-auto md:h-auto md:rounded-full bg-primary text-on-primary md:px-lg md:py-2.5 rounded-full hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 active:scale-90"
+          aria-label={t.whatsapp.label}
         >
-          {t.nav.phone}
+          <span class="material-symbols-outlined md:hidden text-[24px]">call</span>
+          <span class="hidden md:inline text-label-caps uppercase tracking-[0.05em] font-semibold font-body">{t.nav.phone}</span>
         </a>
-      </div>
 
+        <!-- Burger Button -->
+        <button
+          id="mobile-menu-button"
+          class="lg:hidden flex items-center justify-center w-12 h-12 bg-transparent text-on-surface-variant hover:text-primary transition-all duration-300 relative"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Toggle menu"
+        >
+          <span class="material-symbols-outlined menu-icon text-[32px] absolute transition-all duration-300">menu</span>
+          <span class="material-symbols-outlined close-icon text-[32px] absolute transition-all duration-300 opacity-0 scale-50">close</span>
+        </button>
+      </div>
     </div>
   </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div
+    id="mobile-menu"
+    class="fixed inset-0 top-20 bg-surface/95 backdrop-blur-2xl lg:hidden translate-x-full transition-transform duration-500 ease-out z-40"
+  >
+    <div class="flex flex-col h-full p-8">
+      <ul class="space-y-6" role="list">
+        {
+          navLinks.map(({ href, label }) => (
+            <li class="translate-y-8 opacity-0 transition-all duration-500 delay-100 mobile-nav-item">
+              <a
+                href={href}
+                class={
+                  isActive(href)
+                    ? 'text-4xl font-display font-black text-primary'
+                    : 'text-4xl font-display font-black text-on-surface-variant hover:text-primary transition-colors'
+                }
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      
+      <div class="mt-auto pt-8 border-t border-outline-variant/20 translate-y-8 opacity-0 transition-all duration-500 delay-300 mobile-nav-item">
+        <p class="text-label-caps text-on-surface-variant/60 mb-4">{t.contact.title}</p>
+        <a href="mailto:info@aerodrive.com" class="text-xl font-body text-on-surface hover:text-primary transition-colors">
+          info@aerodrive.com
+        </a>
+      </div>
+    </div>
+  </div>
 </header>
+
+<script>
+  const button = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+  const menuIcon = button?.querySelector('.menu-icon');
+  const closeIcon = button?.querySelector('.close-icon');
+  const navItems = document.querySelectorAll('.mobile-nav-item');
+
+  let isOpen = false;
+
+  function toggleMenu() {
+    isOpen = !isOpen;
+    
+    // Toggle menu visibility
+    menu?.classList.toggle('translate-x-full', !isOpen);
+    
+    // Toggle icons with animations
+    if (isOpen) {
+      menuIcon?.classList.add('opacity-0', 'scale-50', 'rotate-90');
+      closeIcon?.classList.remove('opacity-0', 'scale-50');
+      closeIcon?.classList.add('opacity-100', 'scale-100', 'rotate-0');
+    } else {
+      menuIcon?.classList.remove('opacity-0', 'scale-50', 'rotate-90');
+      closeIcon?.classList.add('opacity-0', 'scale-50');
+      closeIcon?.classList.remove('opacity-100', 'scale-100', 'rotate-0');
+    }
+    
+    // Body scroll lock
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    
+    // Animate items
+    navItems.forEach((item, index) => {
+      if (isOpen) {
+        setTimeout(() => {
+          item.classList.remove('translate-y-8', 'opacity-0');
+        }, 100 + index * 50);
+      } else {
+        item.classList.add('translate-y-8', 'opacity-0');
+      }
+    });
+
+    button?.setAttribute('aria-expanded', isOpen.toString());
+  }
+
+  button?.addEventListener('click', toggleMenu);
+
+  // Close menu on link click
+  navItems.forEach(item => {
+    item.querySelector('a')?.addEventListener('click', () => {
+      if (isOpen) toggleMenu();
+    });
+  });
+</script>
+
+<style>
+  .nav-shadow {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+  }
+</style>

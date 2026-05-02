@@ -84,7 +84,7 @@ export default function SearchPill({
 
   return (
     <div className="w-full max-w-2xl animate-in fade-in zoom-in duration-1000 delay-300 relative">
-      <div className="bg-surface/80 backdrop-blur-xl rounded-full p-1.5 shadow-lg border border-white/20 flex flex-col sm:flex-row items-stretch sm:items-center gap-1.5 transition-all duration-300 hover:shadow-xl hover:border-white/40">
+      <div className="bg-surface/80 backdrop-blur-xl rounded-[2rem] sm:rounded-full p-1.5 shadow-lg border border-white/20 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-1.5 transition-all duration-300 hover:shadow-xl hover:border-white/40">
         
         {/* Toggle Group */}
         <div className="bg-surface-container-high rounded-full p-1 flex items-center shrink-0">
@@ -110,33 +110,36 @@ export default function SearchPill({
           </button>
         </div>
 
-        {/* Search Input Group */}
-        <div className="flex-1 flex items-center px-4 min-w-0">
-          <span className="material-symbols-outlined text-on-surface-variant text-xl mr-3 opacity-50 shrink-0">search</span>
-          <input
-            type="text"
-            value={query}
-            onChange={handleQueryChange}
-            placeholder={placeholder}
-            className="w-full bg-transparent border-none outline-none text-on-surface placeholder:text-on-surface-variant/50 text-body-md py-2 sm:py-0"
-          />
-        </div>
+        {/* Search and Filter Row for Mobile / Integrated for Desktop */}
+        <div className="flex flex-1 items-center gap-1.5 min-w-0">
+          {/* Search Input Group */}
+          <div className="flex-1 flex items-center px-4 min-w-0 bg-surface-container-highest/30 sm:bg-transparent rounded-full h-11 sm:h-auto">
+            <span className="material-symbols-outlined text-on-surface-variant text-xl mr-3 opacity-50 shrink-0">search</span>
+            <input
+              type="text"
+              value={query}
+              onChange={handleQueryChange}
+              placeholder={placeholder}
+              className="w-full bg-transparent border-none outline-none text-on-surface placeholder:text-on-surface-variant/50 text-body-md py-2 sm:py-0"
+            />
+          </div>
 
-        {/* Filter Trigger */}
-        <button 
-          onClick={() => { setIsFilterOpen(!isFilterOpen); }}
-          className={`flex items-center gap-2 px-6 py-2.5 rounded-full transition-all duration-300 shrink-0 relative ${
-            isFilterOpen || hasActiveFilters
-              ? 'bg-primary text-on-primary shadow-md'
-              : 'bg-surface-container-highest text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface'
-          }`}
-        >
-          <span className="material-symbols-outlined text-xl">tune</span>
-          <span className="text-label-sm font-bold hidden lg:inline">{filterLabel}</span>
-          {hasActiveFilters && (
-            <span className="absolute top-1 right-1 w-2 h-2 bg-error rounded-full border border-surface shadow-sm animate-pulse" />
-          )}
-        </button>
+          {/* Filter Trigger */}
+          <button 
+            onClick={() => { setIsFilterOpen(!isFilterOpen); }}
+            className={`flex items-center justify-center gap-2 px-4 sm:px-6 h-11 sm:h-10 rounded-full transition-all duration-300 shrink-0 relative ${
+              isFilterOpen || hasActiveFilters
+                ? 'bg-primary text-on-primary shadow-md'
+                : 'bg-surface-container-highest text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface'
+            }`}
+          >
+            <span className="material-symbols-outlined text-xl">tune</span>
+            <span className="text-label-sm font-bold hidden lg:inline">{filterLabel}</span>
+            {hasActiveFilters && (
+              <span className="absolute top-1 right-1 w-2 h-2 bg-error rounded-full border border-surface shadow-sm animate-pulse" />
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Filter Menu Dropdown */}

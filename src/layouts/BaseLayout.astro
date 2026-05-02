@@ -20,7 +20,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang={locale}>
+<html lang={locale} class="overflow-x-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -54,7 +54,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <title>{pageTitle}</title>
   </head>
-  <body class="bg-background text-on-surface antialiased">
+  <body class="bg-background text-on-surface antialiased overflow-x-hidden">
     <slot />
     <div id="below-the-fold-trigger" class="absolute top-[100vh] h-1 w-full pointer-events-none"></div>
     <WhatsAppWidget locale={locale} />
