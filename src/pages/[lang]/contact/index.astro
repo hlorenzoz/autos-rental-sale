@@ -58,8 +58,8 @@ const MAPS_FULL_URL =
 
         <!-- LEFT: 3/5 — info strip + form -->
         <div class="lg:col-span-3 space-y-lg">
-          <!-- Info strip: 3 cards -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-md">
+          <!-- Info strip: 4 cards in 2x2 grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
             <a
               href={MAPS_FULL_URL}
               target="_blank"
@@ -75,6 +75,13 @@ const MAPS_FULL_URL =
             >
               <span class="material-symbols-outlined text-xl text-primary">phone</span>
               <span class="text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">+34 600 123 456</span>
+            </a>
+            <a
+              href={`mailto:${t.contact.emailLabel}`}
+              class="group flex items-center gap-sm p-md bg-surface-container rounded-xl border border-outline-variant/20 hover:border-primary/30 hover:bg-surface-container-high transition-all"
+            >
+              <span class="material-symbols-outlined text-xl text-primary">mail</span>
+              <span class="text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">{t.contact.emailLabel}</span>
             </a>
             <div class="flex items-center gap-sm p-md bg-surface-container rounded-xl border border-outline-variant/20">
               <span class="material-symbols-outlined text-xl text-primary">schedule</span>

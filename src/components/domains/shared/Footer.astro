@@ -63,9 +63,15 @@ const t = getDictionary(locale);
       <p class="text-on-surface-variant font-body text-body-sm">
         {t.footer.copyright}
       </p>
-      <a href="tel:+34600123456" class="text-primary font-bold font-body text-body-sm hover:underline transition-colors">
-        {t.footer.phone}
-      </a>
+      <div class="flex items-center gap-md">
+        <a href="tel:+34600123456" class="text-primary font-bold font-body text-body-sm hover:underline transition-colors">
+          {t.footer.phone}
+        </a>
+        <span class="text-on-surface-variant/30">•</span>
+        <a href="mailto:info@aerodrive.com" class="text-primary font-bold font-body text-body-sm hover:underline transition-colors">
+          {t.footer.email}
+        </a>
+      </div>
       <div class="flex items-center space-x-lg">
         {
           ['en', 'es'].map((l) => (

@@ -105,6 +105,7 @@ export const en = {
     contact: 'Contact',
     company: 'Company',
     phone: '+34 600 123 456',
+    email: 'info@aerodrive.com',
   },
   theme: {
     toggleLight: 'Switch to light mode',
@@ -135,6 +136,7 @@ export const en = {
     viewOnMaps: 'View on Maps',
     hoursLabel: 'Mon–Sat, 9:00–19:00',
     mapTitle: 'AeroDrive location in Ourense',
+    emailLabel: 'info@aerodrive.com',
   },
   vehicleDetail: {
     backToInventory: 'Back to Inventory',

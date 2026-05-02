@@ -107,6 +107,7 @@ export const es: Dictionary = {
     contact: 'Contacto',
     company: 'Compañía',
     phone: '+34 600 123 456',
+    email: 'info@aerodrive.com',
   },
   theme: {
     toggleLight: 'Cambiar a modo claro',
@@ -137,6 +138,7 @@ export const es: Dictionary = {
     viewOnMaps: 'Ver en Maps',
     hoursLabel: 'Lun–Sáb, 9:00–19:00',
     mapTitle: 'Ubicación de AeroDrive en Ourense',
+    emailLabel: 'info@aerodrive.com',
   },
   vehicleDetail: {
     backToInventory: 'Volver al Inventario',
