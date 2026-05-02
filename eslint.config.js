@@ -17,6 +17,6 @@ export default tseslint.config(
     },
   },
   {
-    ignores: ['dist/', '.astro/', 'node_modules/', 'coverage/', '*.config.*', '.claude/', '.agents/', 'public/', 'scratch/'],
+    ignores: ['dist/', '.astro/', 'node_modules/', 'coverage/', '*.config.*', '.claude/', '.agents/', 'public/', 'scratch/', '.vercel/', 'playwright-report/'],
   },
 );

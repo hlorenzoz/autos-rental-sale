@@ -11,9 +11,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://autos-rental.hlorenzoz.com',
   output: 'server',
-  adapter: vercel({
-    edgeMiddleware: true,
-  }),
+  adapter: vercel(),
   prefetch: true,
   integrations: [
     react(),

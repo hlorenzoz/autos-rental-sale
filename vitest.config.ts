@@ -30,6 +30,8 @@ export default defineConfig({
         '**/*.astro',
         'tests/**',
         'public/**',
+        '.vercel/**',
+        'playwright-report/**',
         'src/components/ui/HeroSearchIsland.tsx',
         'src/components/ui/SearchPill.tsx',
       ],
