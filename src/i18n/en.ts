@@ -238,6 +238,9 @@ export const en = {
       ]
     },
     cookies: {
+      banner: 'We use cookies to enhance your experience and analyze site traffic.',
+      accept: 'Accept',
+      settings: 'Settings',
       intro: 'We use cookies to enhance your experience, analyze site traffic, and serve personalized content. You can manage your preferences below.',
       essential: {
         title: 'Essential Cookies',

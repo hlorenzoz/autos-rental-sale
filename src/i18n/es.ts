@@ -240,6 +240,9 @@ export const es: Dictionary = {
       ]
     },
     cookies: {
+      banner: 'Utilizamos cookies para mejorar tu experiencia y analizar el tráfico.',
+      accept: 'Aceptar',
+      settings: 'Configurar',
       intro: 'Utilizamos cookies para mejorar tu experiencia, analizar el tráfico del sitio y ofrecer contenido personalizado. Podés gestionar tus preferencias a continuación.',
       essential: {
         title: 'Cookies Esenciales',
