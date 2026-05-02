@@ -42,3 +42,7 @@ coverage/
 
 # SDD tooling
 .atl/
+
+# Wrangler
+.wrangler/
+
