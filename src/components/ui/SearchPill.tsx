@@ -73,6 +73,11 @@ export default function SearchPill({
     const nextFilters = { ...filters, [key]: value === '' ? undefined : value };
     setFilters(nextFilters);
     onFilterChange?.(nextFilters);
+    
+    // Auto-close menu on selection (but not while typing price)
+    if (key !== 'maxPrice') {
+      setIsFilterOpen(false);
+    }
   }
 
   const hasActiveFilters = filters.brand || filters.category || filters.maxPrice;
