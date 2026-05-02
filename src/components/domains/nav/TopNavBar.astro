@@ -13,35 +13,19 @@ interface Props {
 const { locale, currentPath, lightLabel, darkLabel } = Astro.props;
 const t = getDictionary(locale);
 
-const isVehiclesPage =
-  currentPath.includes('/vehicles') ||
-  currentPath.includes('/vehiculos') ||
-  currentPath.includes('/about');
-
-interface NavLink {
-  href: string;
-  label: string;
-}
-
-const landingLinks: NavLink[] = [
+const navLinks = [
   { href: `/${locale}/`, label: t.nav.overview },
-  { href: `/${locale}/#for-rent`, label: t.nav.forRent },
-  { href: `/${locale}/#for-sale`, label: t.nav.forSale },
-  { href: `/${locale}/#locations`, label: t.nav.locations },
-  { href: `/${locale}/contact/`, label: t.nav.contact },
+  { href: `/${locale}${t.nav.links.inventory}`, label: t.nav.inventory },
+  { href: `/${locale}${t.nav.links.forRent}`, label: t.nav.forRent },
+  { href: `/${locale}${t.nav.links.forSale}`, label: t.nav.forSale },
+  { href: `/${locale}${t.nav.links.contact}`, label: t.nav.contact },
 ];
-
-const vehiclesLinks: NavLink[] = [
-  { href: `/${locale}/vehicles/`, label: t.nav.inventory },
-  { href: `/${locale}/vehicles/rent/`, label: t.nav.rental },
-  { href: `/${locale}/vehicles/sell/`, label: t.nav.sell },
-  { href: `/${locale}/about/`, label: t.nav.about },
-];
-
-const navLinks = isVehiclesPage ? vehiclesLinks : landingLinks;
 
 function isActive(href: string): boolean {
-  return currentPath === href;
+  // Ensure we match the path correctly even with trailing slashes
+  const normalizedPath = currentPath.replace(/\/$/, '');
+  const normalizedHref = href.replace(/\/$/, '');
+  return normalizedPath === normalizedHref;
 }
 ---
 

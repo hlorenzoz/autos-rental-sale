@@ -41,7 +41,7 @@ const description = t.vehicles.forRentSubline;
           </p>
         </div>
         <a
-          href={`/${locale}/vehicles/`}
+          href={`/${locale}${t.nav.links.inventory}`}
           class="hidden md:inline-flex items-center gap-xs text-body-sm text-on-surface-variant hover:text-primary transition-colors"
         >
           <span class="material-symbols-outlined text-base">arrow_back</span>
@@ -64,6 +64,7 @@ const description = t.vehicles.forRentSubline;
           found: t.vehicles.viewAll,
           all: t.filters.all,
         }}
+        vehiclesSlug={t.nav.slugs.vehicles}
       />
     </div>
   </main>

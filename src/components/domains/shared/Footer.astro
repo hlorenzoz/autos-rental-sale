@@ -29,9 +29,9 @@ const t = getDictionary(locale);
           {t.nav.inventory}
         </h4>
         <ul class="space-y-sm">
-          <li><a href={`/${locale}/vehicles/`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.inventory}</a></li>
-          <li><a href={`/${locale}/vehicles/rent/`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.forRent}</a></li>
-          <li><a href={`/${locale}/vehicles/sell/`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.forSale}</a></li>
+          <li><a href={`/${locale}${t.nav.links.inventory}`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.inventory}</a></li>
+          <li><a href={`/${locale}${t.nav.links.forRent}`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.forRent}</a></li>
+          <li><a href={`/${locale}${t.nav.links.forSale}`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.forSale}</a></li>
         </ul>
       </div>
 
@@ -42,7 +42,7 @@ const t = getDictionary(locale);
         </h4>
         <ul class="space-y-sm">
           <li><a href={`/${locale}/about/`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.about}</a></li>
-          <li><a href={`/${locale}/contact/`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.contact}</a></li>
+          <li><a href={`/${locale}${t.nav.links.contact}`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.contact}</a></li>
         </ul>
       </div>
 

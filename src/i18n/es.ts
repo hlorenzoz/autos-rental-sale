@@ -20,6 +20,17 @@ export const es: Dictionary = {
     services: 'Servicios',
     signIn: 'Ingresar',
     phone: '+34 600 123 456',
+    // Nueva estructura de navegación unificada
+    links: {
+      inventory: '/vehiculos/',
+      forRent: '/vehiculos/alquiler/',
+      forSale: '/vehiculos/venta/',
+      contact: '/contacto/',
+    },
+    slugs: {
+      vehicles: 'vehiculos',
+      contact: 'contacto',
+    }
   },
   common: {
     learnMore: 'Ver más',

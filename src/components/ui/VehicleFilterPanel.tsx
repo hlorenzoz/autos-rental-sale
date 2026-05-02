@@ -23,15 +23,17 @@ interface VehicleFilterPanelProps {
   locale: Locale;
   mode: 'sale' | 'rent';
   labels: FilterPanelLabels;
+  vehiclesSlug: string;
 }
 
 interface VehicleCardMiniProps {
   vehicle: Vehicle;
   locale: Locale;
   mode: 'sale' | 'rent';
+  vehiclesSlug: string;
 }
 
-function VehicleCardMini({ vehicle, locale, mode }: VehicleCardMiniProps) {
+function VehicleCardMini({ vehicle, locale, mode, vehiclesSlug }: VehicleCardMiniProps) {
   const price =
     mode === 'rent' ? vehicle.price.rent : vehicle.price.sale;
   const formatted = price ? formatCurrency(price, locale) : '—';
@@ -72,7 +74,7 @@ function VehicleCardMini({ vehicle, locale, mode }: VehicleCardMiniProps) {
           </p>
         </div>
         <a
-          href={`/${locale}/vehicles/${vehicle.slug}`}
+          href={`/${locale}/${vehiclesSlug}/${vehicle.slug}`}
           className="mt-xs block text-center bg-primary text-on-primary rounded-xl px-md py-sm text-label-caps uppercase tracking-[0.05em] font-semibold hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 active:scale-95"
         >
           {mode === 'rent' ? 'Book Now' : 'Inquire'}
@@ -87,6 +89,7 @@ export default function VehicleFilterPanel({
   locale,
   mode,
   labels,
+  vehiclesSlug,
 }: VehicleFilterPanelProps) {
   const [brand, setBrand] = useState('');
   const [category, setCategory] = useState('');
@@ -222,7 +225,7 @@ export default function VehicleFilterPanel({
               key={vehicle.id}
               className="animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-both"
             >
-              <VehicleCardMini vehicle={vehicle} locale={locale} mode={mode} />
+              <VehicleCardMini vehicle={vehicle} locale={locale} mode={mode} vehiclesSlug={vehiclesSlug} />
             </div>
           ))}
         </div>

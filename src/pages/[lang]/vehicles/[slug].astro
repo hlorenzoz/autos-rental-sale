@@ -50,7 +50,7 @@ const specsEntries = [
     <div class="max-w-7xl mx-auto px-8">
       <!-- Back link -->
       <a
-        href={`/${locale}/vehicles/`}
+        href={`/${locale}${t.nav.links.inventory}`}
         class="inline-flex items-center gap-xs text-body-sm text-on-surface-variant hover:text-primary transition-colors mb-lg"
       >
         <span class="material-symbols-outlined text-base">arrow_back</span>
@@ -134,7 +134,7 @@ const specsEntries = [
           <div class="flex flex-col sm:flex-row gap-sm pt-sm">
             {vehicle.available ? (
               <a
-                href={`/${locale}/contact/`}
+                href={`/${locale}${t.nav.links.contact}`}
                 class="flex-1 text-center bg-primary text-on-primary rounded-xl px-md py-sm text-label-caps uppercase tracking-[0.05em] font-semibold hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 active:scale-95"
               >
                 {vehicle.type === 'rent' ? t.vehicleDetail.bookVehicle : t.vehicleDetail.inquireVehicle}
@@ -145,7 +145,7 @@ const specsEntries = [
               </span>
             )}
             <a
-              href={`/${locale}/vehicles/`}
+              href={`/${locale}${t.nav.links.inventory}`}
               class="flex-1 text-center bg-transparent text-on-surface border border-outline rounded-xl px-md py-sm text-label-caps uppercase tracking-[0.05em] font-semibold hover:bg-surface-container transition-all duration-300"
             >
               {t.vehicleDetail.viewAll}

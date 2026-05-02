@@ -33,6 +33,7 @@ interface VehicleHubIslandProps {
   vehicles: Vehicle[];
   locale: Locale;
   labels: VehicleHubLabels;
+  vehiclesSlug: string;
 }
 
 interface VehicleCardMiniProps {
@@ -41,9 +42,10 @@ interface VehicleCardMiniProps {
   mode: 'buy' | 'rent';
   bookNow: string;
   inquire: string;
+  vehiclesSlug: string;
 }
 
-function VehicleCardMini({ vehicle, locale, mode, bookNow, inquire }: VehicleCardMiniProps) {
+function VehicleCardMini({ vehicle, locale, mode, bookNow, inquire, vehiclesSlug }: VehicleCardMiniProps) {
   const price = mode === 'rent' ? vehicle.price.rent : vehicle.price.sale;
   const formatted = price ? formatCurrency(price, locale) : '—';
   const suffix = mode === 'rent' ? ' / day' : '';
@@ -83,7 +85,7 @@ function VehicleCardMini({ vehicle, locale, mode, bookNow, inquire }: VehicleCar
           </p>
         </div>
         <a
-          href={`/${locale}/vehicles/${vehicle.slug}`}
+          href={`/${locale}/${vehiclesSlug}/${vehicle.slug}`}
           className="mt-xs block text-center bg-primary text-on-primary rounded-xl px-md py-sm text-label-caps uppercase tracking-[0.05em] font-semibold hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 active:scale-95"
         >
           {mode === 'rent' ? bookNow : inquire}
@@ -93,7 +95,7 @@ function VehicleCardMini({ vehicle, locale, mode, bookNow, inquire }: VehicleCar
   );
 }
 
-export default function VehicleHubIsland({ vehicles, locale, labels }: VehicleHubIslandProps) {
+export default function VehicleHubIsland({ vehicles, locale, labels, vehiclesSlug }: VehicleHubIslandProps) {
   const [mode, setMode] = useState<'buy' | 'rent'>('buy');
   const [query, setQuery] = useState('');
   const [filters, setFilters] = useState<FilterState>({});
@@ -185,6 +187,7 @@ export default function VehicleHubIsland({ vehicles, locale, labels }: VehicleHu
                 mode={mode}
                 bookNow={labels.bookNow}
                 inquire={labels.inquire}
+                vehiclesSlug={vehiclesSlug}
               />
             </div>
           ))}

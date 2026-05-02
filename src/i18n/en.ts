@@ -18,6 +18,17 @@ export const en = {
     services: 'Services',
     signIn: 'Sign In',
     phone: '+34 600 123 456',
+    // New unified navigation structure
+    links: {
+      inventory: '/vehicles/',
+      forRent: '/vehicles/for-rent/',
+      forSale: '/vehicles/for-sell/',
+      contact: '/contact/',
+    },
+    slugs: {
+      vehicles: 'vehicles',
+      contact: 'contact',
+    }
   },
   common: {
     learnMore: 'Learn more',

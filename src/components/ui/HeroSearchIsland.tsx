@@ -20,6 +20,7 @@ interface HeroSearchIslandProps {
   noResults: string;
   noResultsHint: string;
   perDay: string;
+  vehiclesSlug: string;
 }
 
 interface FilterState {
@@ -37,6 +38,7 @@ export default function HeroSearchIsland({
   noResults,
   noResultsHint,
   perDay,
+  vehiclesSlug,
 }: HeroSearchIslandProps) {
   const [mode, setMode] = useState<'buy' | 'rent'>('buy');
   const [query, setQuery] = useState('');
@@ -141,7 +143,7 @@ export default function HeroSearchIsland({
                 return (
                   <li key={v.id}>
                     <a
-                      href={`/${locale}/vehicles/${v.slug}`}
+                      href={`/${locale}/${vehiclesSlug}/${v.slug}`}
                       className="flex items-center gap-md px-lg py-sm hover:bg-surface-container transition-colors duration-150 group"
                       onClick={() => { setQuery(''); }}
                     >
