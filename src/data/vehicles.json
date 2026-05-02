@@ -227,6 +227,196 @@
       "image": "/vehicles/mercedes-eqs-580.webp",
       "featured": false,
       "available": true
+    },
+    {
+      "id": "13",
+      "slug": "byd-dolphin-surf-2026",
+      "brand": "BYD",
+      "model": "Dolphin Surf",
+      "year": 2026,
+      "category": "electric-sedan",
+      "type": "both",
+      "price": { "sale": 35990, "rent": 120 },
+      "specs": {
+        "drivetrain": "FWD",
+        "seats": 5,
+        "fuel": "Electric"
+      },
+      "image": "/vehicles/byd-dolphin-surf-2026.webp",
+      "featured": false,
+      "available": true,
+      "sdd": "automático, híbrido"
+    },
+    {
+      "id": "14",
+      "slug": "byd-seal-2026",
+      "brand": "BYD",
+      "model": "Seal (Actualización 2026)",
+      "year": 2026,
+      "category": "electric-sedan",
+      "type": "both",
+      "price": { "sale": 49990, "rent": 180 },
+      "specs": {
+        "drivetrain": "AWD",
+        "seats": 5,
+        "fuel": "Electric"
+      },
+      "image": "/vehicles/byd-seal-2026.webp",
+      "featured": false,
+      "available": true,
+      "sdd": "automático, híbrido"
+    },
+    {
+      "id": "15",
+      "slug": "byd-seal-u-2026",
+      "brand": "BYD",
+      "model": "Seal U",
+      "year": 2026,
+      "category": "suv",
+      "type": "both",
+      "price": { "sale": 42990, "rent": 150 },
+      "specs": {
+        "drivetrain": "FWD",
+        "seats": 5,
+        "fuel": "Electric"
+      },
+      "image": "/vehicles/byd-seal-u-2026.webp",
+      "featured": false,
+      "available": true,
+      "sdd": "automático, híbrido"
+    },
+    {
+      "id": "16",
+      "slug": "byd-seal-u-dmi-2026",
+      "brand": "BYD",
+      "model": "Seal U DM-i",
+      "year": 2026,
+      "category": "suv",
+      "type": "both",
+      "price": { "sale": 38990, "rent": 140 },
+      "specs": {
+        "drivetrain": "AWD",
+        "seats": 5,
+        "fuel": "Hybrid"
+      },
+      "image": "/vehicles/byd-seal-u-dmi-2026.webp",
+      "featured": false,
+      "available": true,
+      "sdd": "automático, híbrido"
+    },
+    {
+      "id": "17",
+      "slug": "byd-seal-6-2026",
+      "brand": "BYD",
+      "model": "Seal 6",
+      "year": 2026,
+      "category": "sedan",
+      "type": "both",
+      "price": { "sale": 45990, "rent": 160 },
+      "specs": {
+        "drivetrain": "AWD",
+        "seats": 5,
+        "fuel": "Electric"
+      },
+      "image": "/vehicles/byd-seal-6-2026.webp",
+      "featured": false,
+      "available": true,
+      "sdd": "automático, híbrido"
+    },
+    {
+      "id": "18",
+      "slug": "byd-seal-6-dmi-touring-2026",
+      "brand": "BYD",
+      "model": "Seal 6 DM-i Touring",
+      "year": 2026,
+      "category": "sedan",
+      "type": "both",
+      "price": { "sale": 47990, "rent": 170 },
+      "specs": {
+        "drivetrain": "AWD",
+        "seats": 5,
+        "fuel": "Hybrid"
+      },
+      "image": "/vehicles/byd-seal-6-dmi-touring-2026.webp",
+      "featured": false,
+      "available": true,
+      "sdd": "automático, híbrido"
+    },
+    {
+      "id": "19",
+      "slug": "byd-sealion-7-2026",
+      "brand": "BYD",
+      "model": "Sealion 7",
+      "year": 2026,
+      "category": "suv",
+      "type": "both",
+      "price": { "sale": 52990, "rent": 190 },
+      "specs": {
+        "drivetrain": "AWD",
+        "seats": 5,
+        "fuel": "Electric"
+      },
+      "image": "/vehicles/byd-sealion-7-2026.webp",
+      "featured": false,
+      "available": true,
+      "sdd": "automático, híbrido"
+    },
+    {
+      "id": "20",
+      "slug": "byd-atto-2-2026",
+      "brand": "BYD",
+      "model": "Atto 2",
+      "year": 2026,
+      "category": "suv",
+      "type": "both",
+      "price": { "sale": 29990, "rent": 110 },
+      "specs": {
+        "drivetrain": "FWD",
+        "seats": 5,
+        "fuel": "Electric"
+      },
+      "image": "/vehicles/byd-atto-2-2026.webp",
+      "featured": false,
+      "available": true,
+      "sdd": "automático, híbrido"
+    },
+    {
+      "id": "21",
+      "slug": "byd-atto-2-dmi-2026",
+      "brand": "BYD",
+      "model": "Atto 2 DM-i",
+      "year": 2026,
+      "category": "suv",
+      "type": "both",
+      "price": { "sale": 31990, "rent": 115 },
+      "specs": {
+        "drivetrain": "FWD",
+        "seats": 5,
+        "fuel": "Hybrid"
+      },
+      "image": "/vehicles/byd-atto-2-dmi-2026.webp",
+      "featured": false,
+      "available": true,
+      "sdd": "automático, híbrido"
+    },
+    {
+      "id": "22",
+      "slug": "byd-atto-3-evo-2026",
+      "brand": "BYD",
+      "model": "Atto 3 Evo (Restyling 2026)",
+      "year": 2026,
+      "category": "suv",
+      "type": "both",
+      "price": { "sale": 37990, "rent": 130 },
+      "specs": {
+        "drivetrain": "FWD",
+        "seats": 5,
+        "fuel": "Electric"
+      },
+      "image": "/vehicles/byd-atto-3-evo-2026.webp",
+      "featured": false,
+      "available": true,
+      "sdd": "automático, híbrido"
     }
   ]
 }

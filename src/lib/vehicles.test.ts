@@ -12,8 +12,8 @@ import type { Vehicle, VehicleType } from '../schemas/vehicle';
 
 
 describe('getAllVehicles', () => {
-  it('returns all 12 vehicles', () => {
-    expect(getAllVehicles()).toHaveLength(12);
+  it('returns all 22 vehicles', () => {
+    expect(getAllVehicles()).toHaveLength(22);
   });
 
   it('every vehicle has required fields', () => {
