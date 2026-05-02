@@ -4,6 +4,7 @@ import { getDictionary } from '@/i18n/utils';
 import type { Locale } from '@/i18n/utils';
 import WhatsAppWidget from '@/components/ui/WhatsAppWidget.astro';
 import CookieBanner from '@/components/ui/CookieBanner.astro';
+import PWAInstaller from '@/components/ui/PWAInstaller.astro';
 
 interface Props {
   locale: Locale;
@@ -55,7 +56,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body class="bg-background text-on-surface antialiased">
     <slot />
+    <div id="below-the-fold-trigger" class="absolute top-[100vh] h-1 w-full pointer-events-none"></div>
     <WhatsAppWidget locale={locale} />
     <CookieBanner locale={locale} />
+    <PWAInstaller locale={locale} />
   </body>
 </html>

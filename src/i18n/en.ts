@@ -259,6 +259,11 @@ export const en = {
       requiredBadge: 'Required',
       success: 'Your cookie preferences have been saved.',
     },
+    pwa: {
+      title: 'Access Luxury...',
+      description: 'Install our premium properties catalog for offline browsing.',
+      install: 'Install',
+    },
     backToMain: 'Back to Main',
   },
   services: {

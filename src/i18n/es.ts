@@ -261,6 +261,11 @@ export const es: Dictionary = {
       requiredBadge: 'Requerido',
       success: 'Tus preferencias de cookies han sido guardadas.',
     },
+    pwa: {
+      title: 'Accede a Lujo...',
+      description: 'Instala nuestro catálogo de propiedades premium para navegar sin conexión.',
+      install: 'Instalar',
+    },
     backToMain: 'Volver al Inicio',
   },
   services: {
