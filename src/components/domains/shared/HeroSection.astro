@@ -2,6 +2,7 @@
 import type { Locale } from '@/i18n/utils';
 import { getDictionary } from '@/i18n/utils';
 import HeroSearchIsland from '@/components/ui/HeroSearchIsland';
+import { getAllVehicles } from '@/lib/vehicles';
 
 interface Props {
   locale: Locale;
@@ -9,6 +10,8 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = getDictionary(locale);
+const vehicles = getAllVehicles();
+const vehicleCount = vehicles.length;
 ---
 
 <section class="relative min-h-[90vh] flex items-center pt-20 bg-surface z-20">
@@ -45,7 +48,7 @@ const t = getDictionary(locale);
         <!-- Stats/Trust -->
         <div class="mt-md flex items-center space-x-lg text-on-surface-variant/60">
           <div class="flex items-center gap-xs">
-            <span class="text-h3 font-display font-bold text-on-surface">500+</span>
+            <span class="text-h3 font-display font-bold text-on-surface">{vehicleCount}+</span>
             <span class="text-label-caps uppercase tracking-wider">{t.nav.inventory}</span>
           </div>
           <div class="h-8 w-px bg-outline-variant/30"></div>
