@@ -8,24 +8,9 @@
   "compatibility_flags": [
     "global_fetch_strictly_public",
     "nodejs_compat"
-  ],
-  "routes": [
-    {
-      "pattern": "autos-rental.hlorenzoz.com",
-      "custom_domain": true
-    }
-  ],
-  "env": {
-    "staging": {
-      "routes": [
-        {
-          "pattern": "staging.autos-rental.hlorenzoz.com",
-          "custom_domain": true
-        }
-      ]
-    }
-  }
+  ]
 }
+
 
 
 

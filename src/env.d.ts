@@ -8,6 +8,14 @@ interface ImportMetaEnv {
   readonly SENTRY_SPOTLIGHT: string;
 }
 
+
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+declare namespace App {
+  interface Locals {
+    isInternalRewrite?: boolean;
+  }
+}
+

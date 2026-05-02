@@ -5,30 +5,33 @@ export const onRequest: MiddlewareHandler = async (context, next) => {
   const { pathname } = url;
 
   // Check if this is an internal rewrite already handled by us
-  // @ts-expect-error - isInternalRewrite is a custom property added to locals for loop prevention
+  // Prevent infinite loops during internal rewrites
   if (locals.isInternalRewrite) {
     return next();
   }
 
-  // Only handle Spanish localized URLs
+  // Handle localized path rewrites
   if (pathname.startsWith('/es/')) {
-    
-    // 1. PUBLIC SPANISH -> TECHNICAL ENGLISH (Transparent Rewrite)
     const handleRewrite = (target: string) => {
-      // @ts-expect-error - Adding custom property to locals object to flag the internal rewrite
+      // Flag this as an internal rewrite to prevent loops
       locals.isInternalRewrite = true;
       return context.rewrite(target);
     };
 
+    // 1. Direct path matches (e.g., /es/vehiculos -> /es/vehicles)
     if (pathname === '/es/vehiculos' || pathname === '/es/vehiculos/') {
       return handleRewrite('/es/vehicles/');
     }
+
+    // 2. Filtered list matches (e.g., /es/vehiculos/en-alquiler -> /es/vehicles/for-rent)
     if (pathname === '/es/vehiculos/en-alquiler' || pathname === '/es/vehiculos/en-alquiler/') {
       return handleRewrite('/es/vehicles/for-rent/');
     }
     if (pathname === '/es/vehiculos/en-venta' || pathname === '/es/vehiculos/en-venta/') {
       return handleRewrite('/es/vehicles/for-sell/');
     }
+
+    // 3. Dynamic vehicle slug matches (e.g., /es/vehiculos/byd-atto-3 -> /es/vehicles/byd-atto-3)
     if (pathname.startsWith('/es/vehiculos/')) {
       const slug = pathname.replace('/es/vehiculos/', '').replace(/\/$/, '');
       if (slug && slug !== 'en-alquiler' && slug !== 'en-venta') {
@@ -36,10 +39,11 @@ export const onRequest: MiddlewareHandler = async (context, next) => {
       }
     }
 
-    // 2. TECHNICAL ENGLISH -> PUBLIC SPANISH (Active Redirection)
+    // 4. Prevent direct access to technical paths by redirecting to localized ones
     if (pathname === '/es/vehicles' || pathname === '/es/vehicles/') {
       return context.redirect('/es/vehiculos/');
     }
+
     if (pathname === '/es/vehicles/for-rent' || pathname === '/es/vehicles/for-rent/') {
       return context.redirect('/es/vehiculos/en-alquiler/');
     }

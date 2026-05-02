@@ -12,7 +12,6 @@ export default defineConfig({
   site: 'https://autos-rental.hlorenzoz.com',
   output: 'static',
   adapter: cloudflare({
-    imageService: 'cloudflare',
     runtime: {
       mode: 'off',
     },
