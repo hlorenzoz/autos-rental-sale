@@ -46,6 +46,7 @@ If a specific design specification is provided in a feature request, it must be 
 *   **Typography:** highly legible sans-serif stack (e.g., Inter or Roboto default).
 *   **Corners & Borders:** Subtle rounded corners (e.g., `rounded-lg` or `rounded-xl`) with fine borders (`border-white/10` in dark mode, `border-gray-200` in light mode).
 *   **Interactions:** Smooth transitions on hover, focus, and active states (`transition-all duration-200 ease-in-out`).
+*   **Master Design Patterns:** The definitive source for all design tokens, color palettes, typography rules, and component-specific patterns is the `DESIGN.md` file. Agents MUST reference and adhere to this file for any UI-related implementation.
 
 ---
 
@@ -209,6 +210,7 @@ When performing these actions, ALWAYS invoke the corresponding skill FIRST:
 4.  **Refusal to Degrade:** If a user requests a change that violates TDD, skips validation, or degrades performance scores below defined thresholds, the agent MUST flag the violation and request confirmation before proceeding.
 5.  **Language Continuity:** Maintain bilingual support (es/en) for all newly generated features.
 6.  **Git Commits:** Use the global `git-commit` skill for all git operations. Do NOT execute manual `git commit` commands; leverage the skill to ensure conventional commit standards and intelligent staging.
+7.  **Design Adherence:** Agents MUST strictly follow the design patterns and architectural aesthetics defined in `DESIGN.md`. Any UI modification that deviates from these patterns without explicit justification is prohibited.
 
 ---
 
