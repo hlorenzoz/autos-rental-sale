@@ -1,0 +1,40 @@
+---
+import LegalLayout from '@/layouts/LegalLayout.astro';
+import LegalSection from '@/components/ui/LegalSection.astro';
+import { locales, getDictionary } from '@/i18n/utils';
+import type { Locale } from '@/i18n/utils';
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({ params: { locale } }));
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const t = getDictionary(locale);
+const legal = t.legal;
+---
+
+<LegalLayout 
+  locale={locale} 
+  title={legal.privacyTitle} 
+  lastUpdated={legal.privacyLastUpdated}
+>
+  <div class="space-y-12">
+    {legal.privacy.sections.map((section, index) => (
+      <LegalSection title={`${index + 1}. ${section.title}`} icon={section.icon}>
+        <p>{section.content}</p>
+        
+        {/* Special footer for User Rights section */}
+        {(section.title.includes('Rights') || section.title.includes('Derechos')) && (
+          <div class="mt-8 p-6 bg-surface-container rounded-lg border border-outline-variant">
+            <p class="text-sm text-on-surface">
+              {locale === 'en' 
+                ? 'To exercise any of these rights, please contact our Data Protection Officer at ' 
+                : 'Para ejercer cualquiera de estos derechos, por favor contactá a nuestro Oficial de Protección de Datos en '}
+              <a href="mailto:privacy@aerodrive.com" class="text-primary hover:underline font-bold">privacy@aerodrive.com</a>.
+            </p>
+          </div>
+        )}
+      </LegalSection>
+    ))}
+  </div>
+</LegalLayout>

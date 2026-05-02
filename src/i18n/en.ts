@@ -92,6 +92,7 @@ export const en = {
     terms: 'Terms of Service',
     cookies: 'Cookie Settings',
     contact: 'Contact',
+    company: 'Company',
     phone: '+34 600 123 456',
   },
   theme: {
@@ -118,6 +119,11 @@ export const en = {
     invalidEmail: 'Please enter a valid email address.',
     minMessage: 'Message must be at least 10 characters.',
     backHome: 'Back to Home',
+    headline: 'Get in Touch',
+    directionsCta: 'Get Directions',
+    viewOnMaps: 'View on Maps',
+    hoursLabel: 'Mon–Sat, 9:00–19:00',
+    mapTitle: 'AeroDrive location in Ourense',
   },
   vehicleDetail: {
     backToInventory: 'Back to Inventory',
@@ -158,6 +164,18 @@ export const en = {
     value3Title: 'Customer First',
     value3Body:
       'Your satisfaction drives everything we do. We are here before, during, and after every transaction.',
+    stat1Value: '10+',
+    stat1Label: 'Years of Experience',
+    stat2Value: '200+',
+    stat2Label: 'Vehicles in Fleet',
+    stat3Value: '5,000+',
+    stat3Label: 'Happy Clients',
+    stat4Value: '4.9★',
+    stat4Label: 'Average Rating',
+    commitmentTitle: 'Our Commitment to You',
+    commitmentBody:
+      'From the first inquiry to the final handover, we stand by every vehicle, every deal, every time.',
+    commitmentCta: 'Get in Touch',
   },
   legal: {
     privacyTitle: 'Privacy Policy',
@@ -166,6 +184,64 @@ export const en = {
     termsLastUpdated: 'Last updated: January 2025',
     cookiesTitle: 'Cookie Settings',
     cookiesLastUpdated: 'Last updated: January 2025',
+    privacy: {
+      sections: [
+        {
+          title: 'Information Collection',
+          icon: 'contact_page',
+          content: 'We collect information you provide directly to us, such as when you create an account, make a reservation, or contact us for support. This may include your name, email, phone number, and driver\'s license details.',
+        },
+        {
+          title: 'How We Use Data',
+          icon: 'database',
+          content: 'The information we collect is used to process your transactions, manage your rentals, and improve our services. We may also use it to send you administrative messages and promotional content.',
+        },
+        {
+          title: 'Data Security',
+          icon: 'shield_lock',
+          content: 'We implement industry-standard security measures to protect your personal information from unauthorized access, disclosure, or destruction.',
+        }
+      ]
+    },
+    terms: {
+      sections: [
+        {
+          title: 'Acceptance of Terms',
+          icon: 'gavel',
+          content: 'By accessing or using our services, you agree to be bound by these Terms of Service. If you do not agree to all terms, you may not use the services.',
+        },
+        {
+          title: 'User Responsibilities',
+          icon: 'person_check',
+          content: 'You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account. You agree to provide accurate and complete information.',
+        },
+        {
+          title: 'Liability',
+          icon: 'priority_high',
+          content: 'AeroDrive shall not be liable for any indirect, incidental, or consequential damages resulting from the use or inability to use our services.',
+        }
+      ]
+    },
+    cookies: {
+      intro: 'We use cookies to enhance your experience, analyze site traffic, and serve personalized content. You can manage your preferences below.',
+      essential: {
+        title: 'Essential Cookies',
+        description: 'Required for basic site functionality. Cannot be disabled.',
+      },
+      analytics: {
+        title: 'Analytics Cookies',
+        description: 'Help us understand how visitors interact with the site.',
+      },
+      marketing: {
+        title: 'Marketing Cookies',
+        description: 'Used to deliver relevant advertisements and track campaign performance.',
+      },
+      save: 'Save Preferences',
+      rejectAll: 'Reject All Non-Essential',
+      requiredBadge: 'Required',
+      success: 'Your cookie preferences have been saved.',
+    },
+    backToMain: 'Back to Main',
   },
   services: {
     title: 'Our Services',
@@ -197,6 +273,9 @@ export const en = {
     subtitle: 'Whether you want to rent, buy, or just have a question — we are here for you.',
     cta: 'Contact Us',
     ctaPhone: 'Call Us',
+  },
+  whatsapp: {
+    label: 'Chat with us on WhatsApp',
   },
 };
 

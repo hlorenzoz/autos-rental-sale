@@ -1,6 +1,6 @@
 ---
+import { getDictionary, getLocalizedPath } from '@/i18n/utils';
 import type { Locale } from '@/i18n/utils';
-import { getDictionary } from '@/i18n/utils';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 
 interface Props {
@@ -14,7 +14,9 @@ const { locale, currentPath, lightLabel, darkLabel } = Astro.props;
 const t = getDictionary(locale);
 
 const isVehiclesPage =
-  currentPath.includes('/vehicles') || currentPath.includes('/vehiculos');
+  currentPath.includes('/vehicles') ||
+  currentPath.includes('/vehiculos') ||
+  currentPath.includes('/about');
 
 interface NavLink {
   href: string;
@@ -26,7 +28,7 @@ const landingLinks: NavLink[] = [
   { href: `/${locale}/#for-rent`, label: t.nav.forRent },
   { href: `/${locale}/#for-sale`, label: t.nav.forSale },
   { href: `/${locale}/#locations`, label: t.nav.locations },
-  { href: `/${locale}/#reviews`, label: t.nav.reviews },
+  { href: `/${locale}/contact/`, label: t.nav.contact },
 ];
 
 const vehiclesLinks: NavLink[] = [
@@ -85,7 +87,7 @@ function isActive(href: string): boolean {
               const isActive = locale === l;
               return (
                 <a
-                  href={`/${l}${Astro.url.pathname.substring(3)}`}
+                  href={getLocalizedPath(Astro.url, l)}
                   class={`px-3 py-1 rounded-full text-[10px] font-black transition-all duration-300 ${
                     isActive
                       ? 'bg-primary text-on-primary shadow-sm'

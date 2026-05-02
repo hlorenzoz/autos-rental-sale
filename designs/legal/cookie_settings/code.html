@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cookie Settings - LUXE MOTORS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#e5e8ff",
+                      "surface": "#f8f9ff",
+                      "on-primary": "#ffffff",
+                      "secondary-container": "#3fff8b",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed-variant": "#005226",
+                      "inverse-surface": "#213145",
+                      "error": "#ba1a1a",
+                      "primary": "#0043c8",
+                      "on-background": "#0b1c30",
+                      "on-tertiary-container": "#ffe4dd",
+                      "surface-variant": "#d3e4fe",
+                      "on-tertiary-fixed-variant": "#8a1d00",
+                      "error-container": "#ffdad6",
+                      "surface-container": "#e5eeff",
+                      "surface-container-high": "#dce9ff",
+                      "secondary": "#006d35",
+                      "outline": "#737688",
+                      "inverse-on-surface": "#eaf1ff",
+                      "primary-container": "#0057ff",
+                      "on-primary-fixed-variant": "#003ab2",
+                      "surface-container-low": "#eff4ff",
+                      "primary-fixed-dim": "#b6c4ff",
+                      "on-error": "#ffffff",
+                      "surface-dim": "#cbdbf5",
+                      "secondary-fixed": "#62ff96",
+                      "surface-tint": "#004ee7",
+                      "on-surface-variant": "#434656",
+                      "on-surface": "#0b1c30",
+                      "tertiary-fixed": "#ffdad2",
+                      "primary-fixed": "#dce1ff",
+                      "tertiary-fixed-dim": "#ffb4a2",
+                      "outline-variant": "#c3c5d9",
+                      "on-primary-fixed": "#001550",
+                      "surface-container-highest": "#d3e4fe",
+                      "background": "#f8f9ff",
+                      "tertiary": "#9c2200",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed-dim": "#00e475",
+                      "inverse-primary": "#b6c4ff",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#007237",
+                      "on-tertiary-fixed": "#3c0700",
+                      "surface-bright": "#f8f9ff",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed": "#00210b",
+                      "tertiary-container": "#c72e00"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "8px",
+                      "xs": "4px",
+                      "gutter": "24px",
+                      "md": "24px",
+                      "xl": "64px",
+                      "sm": "12px",
+                      "margin": "48px",
+                      "lg": "40px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Space Grotesk"
+                      ],
+                      "h3": [
+                              "Space Grotesk"
+                      ],
+                      "h1": [
+                              "Space Grotesk"
+                      ],
+                      "h2": [
+                              "Space Grotesk"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "h3": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "h1": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h2": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl dark:bg-slate-900/80 border-b border-slate-100 dark:border-slate-800 shadow-[0_20px_40px_rgba(0,87,255,0.06)] font-['Space_Grotesk'] tracking-tight">
+<div class="max-w-7xl mx-auto px-8 flex justify-between items-center h-20">
+<div class="text-xl font-bold tracking-tighter text-slate-900 dark:text-white">LUXE MOTORS</div>
+<div class="hidden md:flex space-x-8">
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200" href="#">Inventory</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200" href="#">Experience</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200" href="#">Technology</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200" href="#">Support</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-slate-500 dark:text-slate-400 font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">Contact</button>
+<button class="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">Sign In</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow pt-32 pb-24 px-8 max-w-4xl mx-auto w-full">
+<header class="mb-16">
+<h1 class="font-h1 text-h1 text-on-background mb-4">Cookie Settings</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                We use cookies to ensure you get the best experience on our website, analyze site traffic, and deliver personalized content. You can manage your preferences below.
+            </p>
+</header>
+<div class="space-y-6">
+<!-- Essential Cookies -->
+<div class="bg-surface rounded-xl p-8 shadow-[0_20px_40px_rgba(0,87,255,0.06)] border border-surface-container-high relative overflow-hidden group">
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">security</span>
+<h2 class="font-h3 text-h3 text-on-background">Essential Cookies</h2>
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full font-label-caps text-label-caps ml-2">Required</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xl">
+                            These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services.
+                        </p>
+</div>
+<div class="relative flex items-center h-6">
+<!-- Toggle Disabled / Always On -->
+<div class="w-11 h-6 bg-primary rounded-full peer-focus:ring-4 peer-focus:ring-primary-container opacity-50 cursor-not-allowed"></div>
+<div class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition transform translate-x-5"></div>
+</div>
+</div>
+</div>
+<!-- Analytics Cookies -->
+<div class="bg-surface rounded-xl p-8 shadow-[0_20px_40px_rgba(0,87,255,0.06)] border border-surface-container-high relative overflow-hidden group hover:border-primary-container transition-colors duration-300">
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-on-surface-variant">bar_chart</span>
+<h2 class="font-h3 text-h3 text-on-background">Analytics Cookies</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xl">
+                            These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular.
+                        </p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-outline-variant rounded-full peer peer-focus:ring-4 peer-focus:ring-primary-container dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<!-- Marketing Cookies -->
+<div class="bg-surface rounded-xl p-8 shadow-[0_20px_40px_rgba(0,87,255,0.06)] border border-surface-container-high relative overflow-hidden group hover:border-primary-container transition-colors duration-300">
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-on-surface-variant">campaign</span>
+<h2 class="font-h3 text-h3 text-on-background">Marketing Cookies</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-xl">
+                            These cookies may be set through our site by our advertising partners. They may be used by those companies to build a profile of your interests and show you relevant adverts on other sites.
+                        </p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-outline-variant rounded-full peer peer-focus:ring-4 peer-focus:ring-primary-container dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<div class="mt-12 flex justify-end gap-4 border-t border-surface-container-high pt-8">
+<button class="px-6 py-3 font-body-md text-body-md font-medium text-on-surface-variant bg-transparent border border-outline-variant hover:bg-surface-container-high rounded transition-colors">
+                Reject All Non-Essential
+            </button>
+<button class="px-6 py-3 font-body-md text-body-md font-medium text-white bg-primary hover:bg-primary-container shadow-[0_8px_16px_rgba(0,87,255,0.2)] rounded transition-all hover:shadow-[0_12px_24px_rgba(0,87,255,0.3)]">
+                Save Preferences
+            </button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800 font-['Space_Grotesk'] text-sm tracking-wide">
+<div class="max-w-7xl mx-auto px-8 py-16 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-lg font-bold text-slate-900 dark:text-white">
+                © 2024 LUXE MOTORS. Engineered for Performance.
+            </div>
+<div class="flex flex-wrap gap-6 justify-center">
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Terms of Service</a>
+<a class="text-blue-600 dark:text-blue-400 font-medium underline underline-offset-4 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Cookie Settings</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Regulatory</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">Global Fleet</a>
+</div>
+</div>
+</footer>
+</body></html>

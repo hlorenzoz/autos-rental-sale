@@ -94,6 +94,7 @@ export const es: Dictionary = {
     terms: 'Términos de Servicio',
     cookies: 'Configuración de Cookies',
     contact: 'Contacto',
+    company: 'Compañía',
     phone: '+34 600 123 456',
   },
   theme: {
@@ -120,6 +121,11 @@ export const es: Dictionary = {
     invalidEmail: 'Ingresá un correo electrónico válido.',
     minMessage: 'El mensaje debe tener al menos 10 caracteres.',
     backHome: 'Volver al inicio',
+    headline: 'Contáctanos',
+    directionsCta: 'Cómo llegar',
+    viewOnMaps: 'Ver en Maps',
+    hoursLabel: 'Lun–Sáb, 9:00–19:00',
+    mapTitle: 'Ubicación de AeroDrive en Ourense',
   },
   vehicleDetail: {
     backToInventory: 'Volver al Inventario',
@@ -160,6 +166,18 @@ export const es: Dictionary = {
     value3Title: 'El Cliente Primero',
     value3Body:
       'Tu satisfacción impulsa todo lo que hacemos. Estamos aquí antes, durante y después de cada transacción.',
+    stat1Value: '+10',
+    stat1Label: 'Años de experiencia',
+    stat2Value: '+200',
+    stat2Label: 'Vehículos en flota',
+    stat3Value: '+5.000',
+    stat3Label: 'Clientes satisfechos',
+    stat4Value: '4,9★',
+    stat4Label: 'Valoración media',
+    commitmentTitle: 'Nuestro Compromiso con Vos',
+    commitmentBody:
+      'Desde la primera consulta hasta la entrega final, respaldamos cada vehículo, cada acuerdo, siempre.',
+    commitmentCta: 'Contactanos',
   },
   legal: {
     privacyTitle: 'Política de Privacidad',
@@ -168,6 +186,64 @@ export const es: Dictionary = {
     termsLastUpdated: 'Última actualización: enero de 2025',
     cookiesTitle: 'Configuración de Cookies',
     cookiesLastUpdated: 'Última actualización: enero de 2025',
+    privacy: {
+      sections: [
+        {
+          title: 'Recopilación de Información',
+          icon: 'contact_page',
+          content: 'Recopilamos la información que nos proporcionás directamente, como cuando creás una cuenta, hacés una reserva o nos contactás para soporte. Esto puede incluir tu nombre, correo electrónico, número de teléfono y detalles de la licencia de conducir.',
+        },
+        {
+          title: 'Uso de los Datos',
+          icon: 'database',
+          content: 'La información que recopilamos se utiliza para procesar tus transacciones, gestionar tus alquileres y mejorar nuestros servicios. También podemos usarla para enviarte mensajes administrativos y contenido promocional.',
+        },
+        {
+          title: 'Seguridad de Datos',
+          icon: 'shield_lock',
+          content: 'Implementamos medidas de seguridad estándar de la industria para proteger tu información personal contra el acceso, la divulgación o la destrucción no autorizados.',
+        }
+      ]
+    },
+    terms: {
+      sections: [
+        {
+          title: 'Aceptación de los Términos',
+          icon: 'gavel',
+          content: 'Al acceder o utilizar nuestros servicios, aceptás estar sujeto a estos Términos de Servicio. Si no estás de acuerdo con todos los términos, no podés utilizar los servicios.',
+        },
+        {
+          title: 'Responsabilidades del Usuario',
+          icon: 'person_check',
+          content: 'Sos responsable de mantener la confidencialidad de la información de tu cuenta y de todas las actividades que ocurran en ella. Aceptás proporcionar información precisa y completa.',
+        },
+        {
+          title: 'Responsabilidad',
+          icon: 'priority_high',
+          content: 'AeroDrive no será responsable por ningún daño indirecto, incidental o consecuente que resulte del uso o la imposibilidad de usar nuestros servicios.',
+        }
+      ]
+    },
+    cookies: {
+      intro: 'Utilizamos cookies para mejorar tu experiencia, analizar el tráfico del sitio y ofrecer contenido personalizado. Podés gestionar tus preferencias a continuación.',
+      essential: {
+        title: 'Cookies Esenciales',
+        description: 'Necesarias para el funcionamiento básico del sitio. No se pueden desactivar.',
+      },
+      analytics: {
+        title: 'Cookies Analíticas',
+        description: 'Nos ayudan a entender cómo los visitantes interactúan con el sitio.',
+      },
+      marketing: {
+        title: 'Cookies de Marketing',
+        description: 'Se utilizan para ofrecer anuncios relevantes y realizar un seguimiento del rendimiento de las campañas.',
+      },
+      save: 'Guardar Preferencias',
+      rejectAll: 'Rechazar No Esenciales',
+      requiredBadge: 'Requerido',
+      success: 'Tus preferencias de cookies han sido guardadas.',
+    },
+    backToMain: 'Volver al Inicio',
   },
   services: {
     title: 'Nuestros Servicios',
@@ -199,5 +275,8 @@ export const es: Dictionary = {
     subtitle: 'Ya sea que quieras alquilar, comprar o simplemente tengas una pregunta — estamos para vos.',
     cta: 'Contactanos',
     ctaPhone: 'Llamanos',
+  },
+  whatsapp: {
+    label: 'Chateá con nosotros por WhatsApp',
   },
 };

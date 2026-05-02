@@ -1,6 +1,6 @@
 ---
+import { getDictionary, getLocalizedPath } from '@/i18n/utils';
 import type { Locale } from '@/i18n/utils';
-import { getDictionary } from '@/i18n/utils';
 
 interface Props {
   locale: Locale;
@@ -38,9 +38,10 @@ const t = getDictionary(locale);
       <!-- Links Column 2 -->
       <div>
         <h4 class="font-display text-label-caps uppercase tracking-wider text-on-surface font-bold mb-md">
-          {t.footer.contact}
+          {t.footer.company}
         </h4>
         <ul class="space-y-sm">
+          <li><a href={`/${locale}/about/`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.about}</a></li>
           <li><a href={`/${locale}/contact/`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.contact}</a></li>
         </ul>
       </div>
@@ -69,7 +70,7 @@ const t = getDictionary(locale);
         {
           ['en', 'es'].map((l) => (
             <a 
-              href={`/${l}${Astro.url.pathname.substring(3)}`} 
+              href={getLocalizedPath(Astro.url, l as Locale)}
               class={`text-body-sm transition-colors duration-300 ${
                 locale === l 
                   ? 'text-primary font-black' 

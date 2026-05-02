@@ -1,7 +1,8 @@
 ---
 import '../assets/global.css';
-import type { Locale } from '@/i18n/utils';
 import { getDictionary } from '@/i18n/utils';
+import type { Locale } from '@/i18n/utils';
+import WhatsAppWidget from '@/components/ui/WhatsAppWidget.astro';
 
 interface Props {
   locale: Locale;
@@ -53,5 +54,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body class="bg-background text-on-surface antialiased">
     <slot />
+    <WhatsAppWidget locale={locale} />
   </body>
 </html>

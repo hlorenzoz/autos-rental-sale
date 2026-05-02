@@ -1,0 +1,59 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { Locale } from '@/i18n/utils';
+import { getDictionary } from '@/i18n/utils';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  lastUpdated?: string;
+}
+
+const { locale, title, lastUpdated } = Astro.props;
+const t = getDictionary(locale);
+const legal = t.legal;
+const homePath = `/${locale}`;
+---
+
+<BaseLayout locale={locale} title={title}>
+  <header class="sticky top-0 z-50 bg-surface-container-lowest backdrop-blur-md border-b border-outline-variant shadow-[0_20px_40px_rgba(0,67,200,0.05)]">
+    <div class="max-w-4xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="font-display text-h3 text-on-background tracking-tighter font-bold">
+        {t.site.name.toUpperCase()}
+      </div>
+
+      <a 
+        href={homePath} 
+        class="flex items-center gap-2 text-primary hover:text-primary-container transition-all duration-200 font-medium group"
+      >
+        <span class="material-symbols-outlined text-[20px] transition-transform group-hover:rotate-90">close</span>
+        <span class="text-xs font-bold tracking-widest uppercase">{legal.backToMain}</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-6 py-12 lg:py-20">
+    <div class="mb-12">
+      <h1 class="text-h1 font-display font-bold text-on-surface tracking-h1 mb-2">
+        {title}
+      </h1>
+      {lastUpdated && (
+        <p class="text-on-surface-variant text-sm">
+          {lastUpdated}
+        </p>
+      )}
+    </div>
+
+    <div class="space-y-8">
+      <slot />
+    </div>
+  </main>
+
+  <footer class="border-t border-outline-variant py-12 bg-surface-container-lowest">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="text-on-surface-variant text-sm">
+        {t.footer.copyright}
+      </p>
+    </div>
+  </footer>
+</BaseLayout>
