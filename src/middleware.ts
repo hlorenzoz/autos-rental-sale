@@ -1,21 +1,22 @@
 import type { MiddlewareHandler } from 'astro';
 
 export const onRequest: MiddlewareHandler = async (context, next) => {
-  const { url, locals } = context;
-  const { pathname } = url;
+  const { url } = context;
+  const { pathname, searchParams } = url;
 
-  // Check if this is an internal rewrite already handled by us
-  // Prevent infinite loops during internal rewrites
-  if (locals.isInternalRewrite) {
+  // Check if this is an internal rewrite already handled by us using a query param
+  // This is more reliable than locals which can be wiped during rewrite
+  if (searchParams.get('internal_rewrite') === 'true') {
     return next();
   }
 
   // Handle localized path rewrites
   if (pathname.startsWith('/es/')) {
     const handleRewrite = (target: string) => {
-      // Flag this as an internal rewrite to prevent loops
-      locals.isInternalRewrite = true;
-      return context.rewrite(target);
+      // Add a query param to flag the internal rewrite and prevent loops
+      const targetUrl = new URL(target, url.origin);
+      targetUrl.searchParams.set('internal_rewrite', 'true');
+      return context.rewrite(targetUrl.pathname + targetUrl.search);
     };
 
     // 1. Direct path matches (e.g., /es/vehiculos -> /es/vehicles)

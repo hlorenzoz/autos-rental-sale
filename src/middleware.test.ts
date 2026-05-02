@@ -3,10 +3,10 @@ import type { APIContext } from 'astro';
 import { onRequest } from './middleware';
 
 describe('Middleware', () => {
-  it('should skip processing if isInternalRewrite is true', async () => {
+  it('should skip processing if internal_rewrite query param is true', async () => {
     const context = {
-      url: new URL('https://example.com/es/vehiculos/'),
-      locals: { isInternalRewrite: true },
+      url: new URL('https://example.com/es/vehiculos/?internal_rewrite=true'),
+      locals: {},
       rewrite: vi.fn(),
     };
     const next = vi.fn().mockResolvedValue('next-result');
@@ -25,7 +25,7 @@ describe('Middleware', () => {
 
     await onRequest(context as unknown as APIContext, next);
 
-    expect(context.rewrite).toHaveBeenCalledWith('/es/vehicles/for-sell/');
+    expect(context.rewrite).toHaveBeenCalledWith('/es/vehicles/for-sell/?internal_rewrite=true');
   });
 
   it('should handle dynamic vehicle details', async () => {
@@ -38,7 +38,7 @@ describe('Middleware', () => {
 
     await onRequest(context as unknown as APIContext, next);
 
-    expect(context.rewrite).toHaveBeenCalledWith('/es/vehicles/byd-seal/');
+    expect(context.rewrite).toHaveBeenCalledWith('/es/vehicles/byd-seal/?internal_rewrite=true');
   });
 
   it('should redirect technical English paths to Spanish public paths in ES locale', async () => {
@@ -91,7 +91,7 @@ describe('Middleware', () => {
     };
     const next = vi.fn();
     await onRequest(context as unknown as APIContext, next);
-    expect(context.rewrite).toHaveBeenCalledWith('/es/vehicles/for-rent/');
+    expect(context.rewrite).toHaveBeenCalledWith('/es/vehicles/for-rent/?internal_rewrite=true');
   });
 
   it('should redirect /es/vehicles/for-rent/ to /es/vehiculos/en-alquiler/', async () => {
@@ -188,6 +188,6 @@ describe('Middleware', () => {
     };
     const next = vi.fn();
     await onRequest(context as unknown as APIContext, next);
-    expect(context.rewrite).toHaveBeenCalledWith('/es/vehicles/');
+    expect(context.rewrite).toHaveBeenCalledWith('/es/vehicles/?internal_rewrite=true');
   });
 });
