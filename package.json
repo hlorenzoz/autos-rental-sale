@@ -12,7 +12,8 @@
     "test:e2e:ui": "playwright test --ui",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "prepare": "lefthook install"
+    "prepare": "lefthook install",
+    "lighthouse": "bun run build && lhci autorun --config=.lighthouseci/lighthouserc.json"
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
