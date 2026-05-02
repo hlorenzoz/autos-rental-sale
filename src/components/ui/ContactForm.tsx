@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type ChangeEvent, type SyntheticEvent } from 'react';
 import { contactSchema } from '@/schemas/contact';
 
 interface ContactFormLabels {
@@ -31,7 +31,7 @@ export default function ContactForm({ labels }: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = e.target;
     setValues((prev) => ({ ...prev, [name]: value }));
     if (errors[name as keyof FieldErrors]) {
@@ -56,7 +56,7 @@ export default function ContactForm({ labels }: ContactFormProps) {
     return fieldErrors;
   }
 
-  function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
+  function handleSubmit(e: SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     const fieldErrors = validate();
     if (Object.keys(fieldErrors).length > 0) {

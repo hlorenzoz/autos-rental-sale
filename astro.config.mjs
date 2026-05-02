@@ -13,7 +13,7 @@ export default defineConfig({
   integrations: [
     react(),
     sentry(),
-    process.env.NODE_ENV === 'development' ? spotlightjs() : [],
+    ...(process.env.NODE_ENV === 'development' ? [spotlightjs()] : []),
     sitemap({
       serialize(item) {
         // Only vehicles still need mapping

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useState, useMemo, useRef, useEffect } from 'react';
 import SearchPill from './SearchPill';
 import { 
@@ -121,8 +122,8 @@ export default function HeroSearchIsland({
   }
 
   return (
-    <div ref={containerRef} className="relative w-full max-w-2xl z-30">
-      <div className="relative z-50">
+    <div ref={containerRef} className="relative w-full max-w-2xl z-40">
+      <div className="relative z-10">
         <SearchPill
           buyLabel={buyLabel}
           rentLabel={rentLabel}
@@ -144,7 +145,7 @@ export default function HeroSearchIsland({
       </div>
 
       {showDropdown && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-surface-container-lowest rounded-2xl border border-outline-variant/20 shadow-xl overflow-hidden z-40">
+        <div className="absolute top-full left-0 right-0 mt-2 bg-surface-container-lowest rounded-2xl border border-outline-variant/20 shadow-xl overflow-hidden z-20">
           {filtered.length === 0 ? (
             <div className="px-lg py-md text-center">
               <p className="text-on-surface font-semibold text-body-md">{noResults}</p>

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, type ChangeEvent } from 'react';
 
 interface FilterState {
   brand?: string;
@@ -63,7 +63,7 @@ export default function SearchPill({
     onModeChange?.(next);
   }
 
-  function handleQueryChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleQueryChange(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
     setQuery(value);
     onSearch?.(value);
