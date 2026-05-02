@@ -8,7 +8,7 @@ import spotlightjs from '@spotlightjs/astro';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'http://localhost:4321',
+  site: 'https://autos-rental.hlorenzoz.com',
   prefetch: true,
   integrations: [
     react(),
