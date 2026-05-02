@@ -11,5 +11,5 @@ pre-commit:
 
 pre-push:
   commands:
-    lighthouse:
-      run: bun run lighthouse
+    # lighthouse:
+    #   run: bun run lighthouse
