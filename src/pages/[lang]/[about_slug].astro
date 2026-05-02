@@ -5,8 +5,11 @@ import Footer from '@/components/domains/shared/Footer.astro';
 import { locales, getDictionary } from '@/i18n/utils';
 import type { Locale } from '@/i18n/utils';
 
-export function getStaticPaths() {
-  return locales.map((lang) => ({ params: { lang } }));
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'en', about_slug: 'about' } },
+    { params: { lang: 'es', about_slug: 'sobre-nosotros' } },
+  ];
 }
 
 const { lang } = Astro.params;

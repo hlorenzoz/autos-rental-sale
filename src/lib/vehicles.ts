@@ -8,6 +8,20 @@ export function getAllVehicles(): Vehicle[] {
   return vehicles;
 }
 
+export function getSearchableVehicles() {
+  return vehicles.map(v => ({
+    id: v.id,
+    brand: v.brand,
+    model: v.model,
+    year: v.year,
+    category: v.category,
+    slug: v.slug,
+    image: v.image,
+    type: v.type,
+    price: v.price
+  }));
+}
+
 export function getVehiclesByType(filter: 'sale' | 'rent'): Vehicle[] {
   return vehicles.filter(
     (v) => v.type === filter || v.type === 'both'
@@ -64,11 +78,11 @@ export function filterVehicles(
   });
 }
 
-export function getUniqueBrands(vehicleList: Vehicle[]): string[] {
+export function getUniqueBrands(vehicleList: { brand: string }[]): string[] {
   return [...new Set(vehicleList.map((v) => v.brand))].sort();
 }
 
-export function getUniqueCategories(vehicleList: Vehicle[]): string[] {
+export function getUniqueCategories(vehicleList: { category: string }[]): string[] {
   return [...new Set(vehicleList.map((v) => v.category))].sort();
 }
 

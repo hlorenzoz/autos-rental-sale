@@ -8,5 +8,8 @@ pre-commit:
       run: bun run typecheck
     test:
       run: bun run test:coverage
+
+pre-push:
+  commands:
     lighthouse:
       run: bun run lighthouse

@@ -1,15 +1,24 @@
 import { useState, useMemo, useRef, useEffect } from 'react';
 import SearchPill from './SearchPill';
 import { 
-  getAllVehicles, 
   getUniqueBrands, 
   getUniqueCategories 
 } from '@/lib/vehicles';
-import type { Vehicle } from '@/schemas/vehicle';
 
-const vehicles = getAllVehicles();
-const brands = getUniqueBrands(vehicles);
-const categories = getUniqueCategories(vehicles);
+interface SearchableVehicle {
+  id: string;
+  brand: string;
+  model: string;
+  year: number;
+  category: string;
+  slug: string;
+  image: string;
+  type: 'sale' | 'rent' | 'both';
+  price: {
+    sale?: number;
+    rent?: number;
+  };
+}
 
 interface HeroSearchIslandProps {
   locale: string;
@@ -21,6 +30,7 @@ interface HeroSearchIslandProps {
   noResultsHint: string;
   perDay: string;
   vehiclesSlug: string;
+  vehicles: SearchableVehicle[];
 }
 
 interface FilterState {
@@ -39,12 +49,16 @@ export default function HeroSearchIsland({
   noResultsHint,
   perDay,
   vehiclesSlug,
+  vehicles,
 }: HeroSearchIslandProps) {
   const [mode, setMode] = useState<'buy' | 'rent'>('buy');
   const [query, setQuery] = useState('');
   const [filters, setFilters] = useState<FilterState>({});
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const brands = useMemo(() => getUniqueBrands(vehicles as { brand: string }[]), [vehicles]);
+  const categories = useMemo(() => getUniqueCategories(vehicles as { category: string }[]), [vehicles]);
 
   const hasContent = query.trim().length > 0 || filters.brand || filters.category || filters.maxPrice;
   const showDropdown = isDropdownVisible && hasContent;
@@ -100,7 +114,7 @@ export default function HeroSearchIsland({
     };
   }, []);
 
-  function formatPrice(v: Vehicle): string {
+  function formatPrice(v: SearchableVehicle): string {
     if (mode === 'buy' && v.price.sale) return `$${v.price.sale.toLocaleString()}`;
     if (mode === 'rent' && v.price.rent) return `$${String(v.price.rent)} ${perDay}`;
     return '';

@@ -29,15 +29,6 @@ export const onRequest: MiddlewareHandler = async (context, next) => {
     if (pathname === '/es/vehiculos/en-venta' || pathname === '/es/vehiculos/en-venta/') {
       return handleRewrite('/es/vehicles/for-sell/');
     }
-    if (pathname === '/es/contacto' || pathname === '/es/contacto/') {
-      return handleRewrite('/es/contact/');
-    }
-    if (pathname === '/es/sobre-nosotros' || pathname === '/es/sobre-nosotros/') {
-      return handleRewrite('/es/about/');
-    }
-    if (pathname === '/es/mapa-del-sitio' || pathname === '/es/mapa-del-sitio/') {
-      return handleRewrite('/es/sitemap/');
-    }
     if (pathname.startsWith('/es/vehiculos/')) {
       const slug = pathname.replace('/es/vehiculos/', '').replace(/\/$/, '');
       if (slug && slug !== 'en-alquiler' && slug !== 'en-venta') {

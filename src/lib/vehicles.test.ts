@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   getAllVehicles,
+  getSearchableVehicles,
   getVehiclesByType,
   getFeaturedVehicles,
   filterVehicles,
@@ -24,6 +25,28 @@ describe('getAllVehicles', () => {
       expect(v.model).toBeTruthy();
       expect(v.image).toMatch(/^\/vehicles\/.+\.webp$/);
     }
+  });
+});
+
+describe('getSearchableVehicles', () => {
+  it('returns a lightweight version of all vehicles', () => {
+    const result = getSearchableVehicles();
+    expect(result).toHaveLength(22);
+    
+    // Check structure of first item
+    const v = result[0];
+    expect(v).toHaveProperty('id');
+    expect(v).toHaveProperty('brand');
+    expect(v).toHaveProperty('model');
+    expect(v).toHaveProperty('year');
+    expect(v).toHaveProperty('category');
+    expect(v).toHaveProperty('slug');
+    expect(v).toHaveProperty('image');
+    expect(v).toHaveProperty('type');
+    expect(v).toHaveProperty('price');
+    
+    // Ensure it doesn't have heavy fields like specs
+    expect(v).not.toHaveProperty('specs');
   });
 });
 

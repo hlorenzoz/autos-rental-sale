@@ -6,6 +6,7 @@ import { formatCurrency } from '@/lib/formatters';
 import { getVehiclePriceInfo } from '@/lib/vehicles';
 import Badge from '@/components/ui/Badge.astro';
 import Button from '@/components/ui/Button.astro';
+import { Image } from 'astro:assets';
 
 interface Props {
   vehicle: Vehicle;
@@ -21,19 +22,35 @@ const { price, isRent } = getVehiclePriceInfo(vehicle, preferredPriceType);
 const formattedPrice = price ? formatCurrency(price, locale) : '—';
 const priceSuffix = isRent ? ` ${t.vehicles.perDay}` : '';
 
-
 const cardLink = `/${locale}/vehicles/${vehicle.slug}`;
+
+// Dynamic image import for optimization
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/vehicles/*.{jpeg,jpg,png,gif,webp}');
+const imagePath = `/src/assets${vehicle.image}`;
+const imageAsset = images[imagePath];
+
+if (!imageAsset) {
+  console.warn(`Image not found: ${imagePath}`);
+}
 ---
 
 <article class="group bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/30 transition-all duration-500 hover:atmospheric-shadow hover:-translate-y-1">
   <!-- Image Container -->
   <div class="relative aspect-[16/10] overflow-hidden">
-    <img 
-      src={vehicle.image} 
-      alt={`${vehicle.brand} ${vehicle.model}`}
-      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-      loading="lazy"
-    />
+    {imageAsset ? (
+      <Image 
+        src={imageAsset()} 
+        alt={`${vehicle.brand} ${vehicle.model}`}
+        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        loading="lazy"
+        width={600}
+        height={375}
+      />
+    ) : (
+      <div class="w-full h-full bg-surface-container flex items-center justify-center text-on-surface-variant/40">
+        <span class="material-symbols-outlined text-4xl">image</span>
+      </div>
+    )}
     
     <!-- Top Badges -->
     <div class="absolute top-sm left-sm flex flex-row flex-wrap gap-xs max-w-[calc(100%-2rem)]">
