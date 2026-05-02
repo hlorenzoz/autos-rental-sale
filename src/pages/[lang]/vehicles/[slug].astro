@@ -1,0 +1,160 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TopNavBar from '@/components/domains/nav/TopNavBar.astro';
+import Footer from '@/components/domains/shared/Footer.astro';
+import Badge from '@/components/ui/Badge.astro';
+import { getAllVehicles } from '@/lib/vehicles';
+import { formatCurrency } from '@/lib/formatters';
+import type { Locale } from '@/i18n/utils';
+import { locales, getDictionary } from '@/i18n/utils';
+
+export function getStaticPaths() {
+  const vehicles = getAllVehicles();
+  return locales.flatMap((lang) =>
+    vehicles.map((vehicle) => ({
+      params: { lang, slug: vehicle.slug },
+      props: { vehicle },
+    }))
+  );
+}
+
+const { lang, slug } = Astro.params;
+const { vehicle } = Astro.props;
+const locale = lang as Locale;
+const t = getDictionary(locale);
+
+const title = `${vehicle.brand} ${vehicle.model} ${vehicle.year}`;
+const description = `${t.vehicleDetail.forSale}: ${vehicle.brand} ${vehicle.model} — ${t.vehicleDetail.specifications}`;
+
+const hasSale = vehicle.price.sale !== undefined;
+const hasRent = vehicle.price.rent !== undefined;
+
+const specsEntries = [
+  vehicle.specs.acceleration && { icon: 'speed', label: t.vehicles.acceleration, value: vehicle.specs.acceleration },
+  vehicle.specs.range && { icon: 'bolt', label: t.vehicles.range, value: vehicle.specs.range },
+  vehicle.specs.drivetrain && { icon: 'settings', label: t.vehicles.drivetrain, value: vehicle.specs.drivetrain },
+  vehicle.specs.seats && { icon: 'group', label: t.vehicles.seats, value: `${vehicle.specs.seats}` },
+  vehicle.specs.fuel && { icon: 'local_gas_station', label: t.vehicles.fuel, value: vehicle.specs.fuel },
+].filter(Boolean) as Array<{ icon: string; label: string; value: string }>;
+---
+
+<BaseLayout locale={locale} title={title} description={description}>
+  <TopNavBar
+    locale={locale}
+    currentPath={Astro.url.pathname}
+    lightLabel={t.theme.toggleLight}
+    darkLabel={t.theme.toggleDark}
+  />
+
+  <main class="pt-24 pb-xl">
+    <div class="max-w-7xl mx-auto px-8">
+      <!-- Back link -->
+      <a
+        href={`/${locale}/vehicles/`}
+        class="inline-flex items-center gap-xs text-body-sm text-on-surface-variant hover:text-primary transition-colors mb-lg"
+      >
+        <span class="material-symbols-outlined text-base">arrow_back</span>
+        {t.vehicleDetail.backToInventory}
+      </a>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-xl items-start">
+        <!-- Image -->
+        <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-surface-container-low border border-outline-variant/20">
+          <img
+            src={vehicle.image}
+            alt={`${vehicle.brand} ${vehicle.model}`}
+            class="w-full h-full object-contain p-8"
+          />
+          {!vehicle.available && (
+            <div class="absolute inset-0 bg-surface/70 backdrop-blur-sm flex items-center justify-center rounded-xl">
+              <span class="px-lg py-sm bg-surface/90 rounded-full text-on-surface font-bold uppercase tracking-wider text-label-caps">
+                {t.vehicleDetail.unavailable}
+              </span>
+            </div>
+          )}
+        </div>
+
+        <!-- Details -->
+        <div class="flex flex-col gap-lg">
+          <!-- Header -->
+          <div>
+            <div class="flex flex-wrap gap-xs mb-md">
+              <Badge variant="tertiary">{t.categories[vehicle.category as keyof typeof t.categories]}</Badge>
+              {vehicle.type === 'sale' && <Badge variant="primary">{t.vehicleDetail.forSale}</Badge>}
+              {vehicle.type === 'rent' && <Badge variant="secondary">{t.vehicleDetail.forRent}</Badge>}
+              {vehicle.type === 'both' && (
+                <>
+                  <Badge variant="primary">{t.vehicleDetail.forSale}</Badge>
+                  <Badge variant="secondary">{t.vehicleDetail.forRent}</Badge>
+                </>
+              )}
+            </div>
+            <p class="text-label-caps text-on-surface-variant tracking-wider mb-xs">{vehicle.year} · {vehicle.brand}</p>
+            <h1 class="text-h1 font-display font-black tracking-tight text-on-surface">{vehicle.model}</h1>
+          </div>
+
+          <!-- Pricing -->
+          <div class="flex flex-wrap gap-md">
+            {hasSale && (
+              <div class="bg-surface-container rounded-xl p-md flex-1 min-w-[140px]">
+                <p class="text-label-caps text-on-surface-variant tracking-wider mb-xs">{t.vehicleDetail.salePrice}</p>
+                <p class="text-h2 font-display font-black text-primary">{formatCurrency(vehicle.price.sale!, locale)}</p>
+              </div>
+            )}
+            {hasRent && (
+              <div class="bg-surface-container rounded-xl p-md flex-1 min-w-[140px]">
+                <p class="text-label-caps text-on-surface-variant tracking-wider mb-xs">{t.vehicleDetail.rentPrice}</p>
+                <p class="text-h2 font-display font-black text-secondary">
+                  {formatCurrency(vehicle.price.rent!, locale)}
+                  <span class="text-body-sm font-body font-normal text-on-surface-variant">{t.vehicleDetail.perDay}</span>
+                </p>
+              </div>
+            )}
+          </div>
+
+          <!-- Specs -->
+          {specsEntries.length > 0 && (
+            <div>
+              <h2 class="text-h3 font-display font-bold text-on-surface mb-md">{t.vehicleDetail.specifications}</h2>
+              <dl class="grid grid-cols-2 gap-sm">
+                {specsEntries.map(({ icon, label, value }) => (
+                  <div class="flex items-center gap-sm bg-surface-container rounded-lg p-sm">
+                    <span class="material-symbols-outlined text-xl text-primary opacity-70">{icon}</span>
+                    <div>
+                      <dt class="text-[10px] text-on-surface-variant uppercase tracking-wider">{label}</dt>
+                      <dd class="text-body-sm font-semibold text-on-surface">{value}</dd>
+                    </div>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          )}
+
+          <!-- CTA -->
+          <div class="flex flex-col sm:flex-row gap-sm pt-sm">
+            {vehicle.available ? (
+              <a
+                href={`/${locale}/contact/`}
+                class="flex-1 text-center bg-primary text-on-primary rounded-xl px-md py-sm text-label-caps uppercase tracking-[0.05em] font-semibold hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 active:scale-95"
+              >
+                {vehicle.type === 'rent' ? t.vehicleDetail.bookVehicle : t.vehicleDetail.inquireVehicle}
+              </a>
+            ) : (
+              <span class="flex-1 text-center bg-surface-container text-on-surface-variant rounded-xl px-md py-sm text-label-caps uppercase tracking-[0.05em] font-semibold">
+                {t.vehicleDetail.unavailable}
+              </span>
+            )}
+            <a
+              href={`/${locale}/vehicles/`}
+              class="flex-1 text-center bg-transparent text-on-surface border border-outline rounded-xl px-md py-sm text-label-caps uppercase tracking-[0.05em] font-semibold hover:bg-surface-container transition-all duration-300"
+            >
+              {t.vehicleDetail.viewAll}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>

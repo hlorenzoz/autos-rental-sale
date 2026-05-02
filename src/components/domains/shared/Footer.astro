@@ -29,9 +29,9 @@ const t = getDictionary(locale);
           {t.nav.inventory}
         </h4>
         <ul class="space-y-sm">
-          <li><a href={`/${locale}/cars/#rent`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.forRent}</a></li>
-          <li><a href={`/${locale}/cars/#sale`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.forSale}</a></li>
-          <li><a href={`/${locale}/cars/`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.overview}</a></li>
+          <li><a href={`/${locale}/vehicles/`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.inventory}</a></li>
+          <li><a href={`/${locale}/vehicles/rent/`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.forRent}</a></li>
+          <li><a href={`/${locale}/vehicles/sell/`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.forSale}</a></li>
         </ul>
       </div>
 
@@ -41,8 +41,7 @@ const t = getDictionary(locale);
           {t.footer.contact}
         </h4>
         <ul class="space-y-sm">
-          <li><a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.careers}</a></li>
-          <li><a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.contact}</a></li>
+          <li><a href={`/${locale}/contact/`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.contact}</a></li>
         </ul>
       </div>
 
@@ -52,9 +51,9 @@ const t = getDictionary(locale);
           Legal
         </h4>
         <ul class="space-y-sm">
-          <li><a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.privacy}</a></li>
-          <li><a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.terms}</a></li>
-          <li><a href="#" class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.cookies}</a></li>
+          <li><a href={`/${locale}/legal/privacy/`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.privacy}</a></li>
+          <li><a href={`/${locale}/legal/terms/`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.terms}</a></li>
+          <li><a href={`/${locale}/legal/cookies/`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.cookies}</a></li>
         </ul>
       </div>
     </div>
@@ -63,6 +62,9 @@ const t = getDictionary(locale);
       <p class="text-on-surface-variant font-body text-body-sm">
         {t.footer.copyright}
       </p>
+      <a href="tel:+34600123456" class="text-primary font-bold font-body text-body-sm hover:underline transition-colors">
+        {t.footer.phone}
+      </a>
       <div class="flex items-center space-x-lg">
         {
           ['en', 'es'].map((l) => (

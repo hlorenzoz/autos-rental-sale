@@ -1,0 +1,51 @@
+---
+import type { Locale } from '@/i18n/utils';
+import { getDictionary } from '@/i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+
+const reviews = [
+  { name: t.reviews.review1Name, role: t.reviews.review1Role, body: t.reviews.review1Body },
+  { name: t.reviews.review2Name, role: t.reviews.review2Role, body: t.reviews.review2Body },
+  { name: t.reviews.review3Name, role: t.reviews.review3Role, body: t.reviews.review3Body },
+] as const;
+---
+
+<section class="py-xl bg-surface-container-low/30" id="reviews">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="text-center mb-xl space-y-md">
+      <h2 class="text-h2 font-display font-black tracking-tight text-on-surface">
+        {t.reviews.title}
+      </h2>
+      <p class="text-body-lg text-on-surface-variant max-w-[60ch] mx-auto leading-relaxed">
+        {t.reviews.subtitle}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+      {reviews.map(({ name, role, body }) => (
+        <article class="p-lg rounded-xl border border-outline-variant/20 bg-surface-container-lowest flex flex-col gap-md">
+          <div class="flex text-secondary gap-xs">
+            <span class="material-symbols-outlined filled text-xl">star</span>
+            <span class="material-symbols-outlined filled text-xl">star</span>
+            <span class="material-symbols-outlined filled text-xl">star</span>
+            <span class="material-symbols-outlined filled text-xl">star</span>
+            <span class="material-symbols-outlined filled text-xl">star</span>
+          </div>
+          <p class="text-body-md font-body text-on-surface-variant leading-relaxed flex-1">
+            &ldquo;{body}&rdquo;
+          </p>
+          <div>
+            <p class="text-body-md font-semibold text-on-surface font-body">{name}</p>
+            <p class="text-body-sm text-on-surface-variant font-body">{role}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+---
+import type { Locale } from '@/i18n/utils';
+import { getDictionary } from '@/i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+
+const services = [
+  { icon: 'directions_car', title: t.services.rentalTitle, body: t.services.rentalBody },
+  { icon: 'sell', title: t.services.salesTitle, body: t.services.salesBody },
+  { icon: 'build', title: t.services.maintenanceTitle, body: t.services.maintenanceBody },
+  { icon: 'shield', title: t.services.insuranceTitle, body: t.services.insuranceBody },
+] as const;
+---
+
+<section class="py-xl bg-surface" id="services">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="text-center mb-xl space-y-md">
+      <h2 class="text-h2 font-display font-black tracking-tight text-on-surface">
+        {t.services.title}
+      </h2>
+      <p class="text-body-lg text-on-surface-variant max-w-[60ch] mx-auto leading-relaxed">
+        {t.services.subtitle}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg">
+      {services.map(({ icon, title, body }) => (
+        <article class="p-lg rounded-xl border border-outline-variant/20 bg-surface-container-lowest hover:atmospheric-shadow transition-all duration-300">
+          <div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center mb-md">
+            <span class="material-symbols-outlined filled text-2xl text-primary">{icon}</span>
+          </div>
+          <h3 class="text-h3 font-display font-semibold text-on-surface mb-sm">{title}</h3>
+          <p class="text-body-md font-body text-on-surface-variant leading-relaxed">{body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

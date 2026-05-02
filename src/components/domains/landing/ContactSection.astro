@@ -1,0 +1,45 @@
+---
+import type { Locale } from '@/i18n/utils';
+import { getDictionary } from '@/i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+---
+
+<section class="py-xl bg-primary/5 relative overflow-hidden" id="contact">
+  <div
+    class="absolute top-[-30%] right-[-10%] w-[50%] aspect-square bg-primary/10 rounded-full blur-[120px] pointer-events-none"
+    aria-hidden="true"
+  ></div>
+
+  <div class="max-w-7xl mx-auto px-8 relative z-10 text-center">
+    <div class="space-y-md mb-lg">
+      <h2 class="text-h2 font-display font-black tracking-tight text-on-surface">
+        {t.landingContact.title}
+      </h2>
+      <p class="text-body-lg text-on-surface-variant max-w-[60ch] mx-auto leading-relaxed">
+        {t.landingContact.subtitle}
+      </p>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-md">
+      <a
+        href={`/${locale}/contact/`}
+        class="rounded-full bg-primary text-on-primary px-xl py-3 text-label-caps uppercase tracking-[0.05em] font-semibold font-body hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 active:scale-95"
+      >
+        {t.landingContact.cta}
+      </a>
+      <a
+        href="tel:+34600123456"
+        class="rounded-full border border-outline-variant/40 text-on-surface px-xl py-3 text-label-caps uppercase tracking-[0.05em] font-semibold font-body hover:bg-surface-container transition-all duration-300 active:scale-95 flex items-center gap-sm"
+      >
+        <span class="material-symbols-outlined text-primary text-xl">phone</span>
+        {t.landingContact.ctaPhone}
+      </a>
+    </div>
+  </div>
+</section>

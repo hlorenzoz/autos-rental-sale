@@ -2,8 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import TopNavBar from '@/components/domains/nav/TopNavBar.astro';
 import Footer from '@/components/domains/shared/Footer.astro';
-import VehicleGrid from '@/components/domains/vehicles/VehicleGrid.astro';
-import SearchPill from '@/components/ui/SearchPill';
+import VehicleHubIsland from '@/components/ui/VehicleHubIsland';
 import { getAllVehicles } from '@/lib/vehicles';
 import type { Locale } from '@/i18n/utils';
 import { locales, getDictionary } from '@/i18n/utils';
@@ -17,24 +16,23 @@ const locale = lang as Locale;
 const t = getDictionary(locale);
 const vehicles = getAllVehicles();
 
-// SEO Metadata
 const title = `${t.nav.inventory} | ${t.site.name}`;
 const description = t.vehicles.allVehiclesSubline;
 ---
 
 <BaseLayout locale={locale} title={title} description={description}>
-  <TopNavBar 
-    locale={locale} 
+  <TopNavBar
+    locale={locale}
     currentPath={Astro.url.pathname}
     lightLabel={t.theme.toggleLight}
     darkLabel={t.theme.toggleDark}
   />
-  
+
   <main class="pt-24 pb-xl">
     <!-- Header Zone -->
-    <section class="mb-xl">
+    <section class="mb-lg">
       <div class="max-w-7xl mx-auto px-8">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-lg border-b border-outline-variant/20 pb-lg">
+        <div class="border-b border-outline-variant/20 pb-lg">
           <div class="space-y-sm">
             <h1 class="text-h1 font-display font-black tracking-tight text-on-surface">
               {t.vehicles.allVehicles}
@@ -43,24 +41,35 @@ const description = t.vehicles.allVehiclesSubline;
               {t.vehicles.allVehiclesSubline}
             </p>
           </div>
-          
-          <div class="w-full md:w-auto">
-             <SearchPill 
-              client:load
-              buyLabel={t.hero.buy}
-              rentLabel={t.hero.rent}
-              placeholder={t.hero.searchPlaceholder}
-              filterLabel={t.hero.filterLabel}
-            />
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- Inventory Grid -->
+    <!-- Interactive Hub Island -->
     <section>
       <div class="max-w-7xl mx-auto px-8">
-        <VehicleGrid vehicles={vehicles} locale={locale} columns={3} />
+        <VehicleHubIsland
+          client:load
+          vehicles={vehicles}
+          locale={locale}
+          labels={{
+            buyLabel: t.hero.buy,
+            rentLabel: t.hero.rent,
+            placeholder: t.hero.searchPlaceholder,
+            filterLabel: t.hero.filterLabel,
+            filters: [
+              { label: t.filters.electric, value: 'electric' },
+              { label: t.filters.suv, value: 'suv' },
+              { label: t.filters.luxury, value: 'luxury' },
+              { label: t.filters.budget, value: 'budget' },
+            ],
+            noResults: t.filters.noResults,
+            clearFilters: t.filters.clearFilters,
+            found: t.filters.searchLabel,
+            bookNow: t.vehicles.bookNow,
+            inquire: t.vehicles.inquire,
+          }}
+        />
       </div>
     </section>
   </main>

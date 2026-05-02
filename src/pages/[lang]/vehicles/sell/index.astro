@@ -1,0 +1,72 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TopNavBar from '@/components/domains/nav/TopNavBar.astro';
+import Footer from '@/components/domains/shared/Footer.astro';
+import VehicleFilterPanel from '@/components/ui/VehicleFilterPanel';
+import { getVehiclesByType } from '@/lib/vehicles';
+import type { Locale } from '@/i18n/utils';
+import { locales, getDictionary } from '@/i18n/utils';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const locale = lang as Locale;
+const t = getDictionary(locale);
+const vehicles = getVehiclesByType('sale');
+
+const title = `${t.vehicles.forSaleHeadline} | ${t.site.name}`;
+const description = t.vehicles.forSaleSubline;
+---
+
+<BaseLayout locale={locale} title={title} description={description}>
+  <TopNavBar
+    locale={locale}
+    currentPath={Astro.url.pathname}
+    lightLabel={t.theme.toggleLight}
+    darkLabel={t.theme.toggleDark}
+  />
+
+  <main class="pt-24 pb-xl">
+    <div class="max-w-7xl mx-auto px-8">
+      <!-- Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-lg border-b border-outline-variant/20 pb-lg mb-xl">
+        <div class="space-y-sm">
+          <h1 class="text-h1 font-display font-black tracking-tight text-on-surface">
+            {t.vehicles.forSaleHeadline}
+          </h1>
+          <p class="text-body-lg text-on-surface-variant max-w-2xl">
+            {t.vehicles.forSaleSubline}
+          </p>
+        </div>
+        <a
+          href={`/${locale}/vehicles/`}
+          class="hidden md:inline-flex items-center gap-xs text-body-sm text-on-surface-variant hover:text-primary transition-colors"
+        >
+          <span class="material-symbols-outlined text-base">arrow_back</span>
+          {t.vehicleDetail.backToInventory}
+        </a>
+      </div>
+
+      <!-- Filter panel + grid -->
+      <VehicleFilterPanel
+        client:load
+        vehicles={vehicles}
+        locale={locale}
+        mode="sale"
+        labels={{
+          brandLabel: t.filters.brand,
+          categoryLabel: t.filters.category,
+          maxPriceLabel: t.filters.priceRange,
+          clearFilters: t.filters.clearFilters,
+          noResults: t.filters.noResults,
+          found: t.vehicles.viewAll,
+          all: t.filters.all,
+        }}
+      />
+    </div>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>

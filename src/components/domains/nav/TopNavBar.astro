@@ -31,8 +31,8 @@ const landingLinks: NavLink[] = [
 
 const vehiclesLinks: NavLink[] = [
   { href: `/${locale}/vehicles/`, label: t.nav.inventory },
+  { href: `/${locale}/vehicles/rent/`, label: t.nav.rental },
   { href: `/${locale}/vehicles/sell/`, label: t.nav.sell },
-  { href: `/${locale}/vehicles/services/`, label: t.nav.services },
   { href: `/${locale}/about/`, label: t.nav.about },
 ];
 
@@ -100,10 +100,10 @@ function isActive(href: string): boolean {
         </div>
         <ThemeToggle lightLabel={lightLabel} darkLabel={darkLabel} client:load />
         <a
-          href="#"
+          href="tel:+34600123456"
           class="hidden md:inline-flex rounded-full bg-primary text-on-primary px-md py-2 text-label-caps uppercase tracking-[0.05em] font-semibold font-body hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 active:scale-95"
         >
-          {t.nav.signIn}
+          {t.nav.phone}
         </a>
       </div>
 

@@ -1,0 +1,123 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TopNavBar from '@/components/domains/nav/TopNavBar.astro';
+import Footer from '@/components/domains/shared/Footer.astro';
+import type { Locale } from '@/i18n/utils';
+import { locales, getDictionary } from '@/i18n/utils';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const locale = lang as Locale;
+const t = getDictionary(locale);
+
+const title = `${t.legal.privacyTitle} | ${t.site.name}`;
+const description = t.legal.privacyLastUpdated;
+
+const sections =
+  locale === 'es'
+    ? [
+        {
+          title: 'Responsable del Tratamiento',
+          body: 'AeroDrive, con domicilio en Ourense, Galicia, España, es el responsable del tratamiento de los datos personales que el usuario facilite a través de este sitio web.',
+        },
+        {
+          title: 'Datos Recogidos',
+          body: 'Recogemos datos de identificación (nombre, correo electrónico, teléfono), datos de navegación (cookies técnicas) y datos relativos a los vehículos de interés del usuario.',
+        },
+        {
+          title: 'Finalidad del Tratamiento',
+          body: 'Los datos se utilizan para gestionar solicitudes de alquiler y venta de vehículos, responder consultas, enviar comunicaciones comerciales (con consentimiento) y cumplir obligaciones legales.',
+        },
+        {
+          title: 'Base de Legitimación',
+          body: 'El tratamiento se basa en la ejecución de un contrato, el consentimiento del usuario y el cumplimiento de obligaciones legales según el Reglamento General de Protección de Datos (RGPD).',
+        },
+        {
+          title: 'Destinatarios',
+          body: 'No cedemos datos a terceros salvo obligación legal. Podemos compartir datos con proveedores de servicios tecnológicos bajo acuerdos de confidencialidad.',
+        },
+        {
+          title: 'Derechos del Usuario',
+          body: 'Podés ejercer tus derechos de acceso, rectificación, supresión, oposición y portabilidad enviando un correo a: privacidad@aerodrive.com.',
+        },
+        {
+          title: 'Conservación',
+          body: 'Los datos se conservarán durante el tiempo necesario para cumplir con la finalidad para la que fueron recogidos y para atender posibles responsabilidades legales.',
+        },
+      ]
+    : [
+        {
+          title: 'Data Controller',
+          body: 'AeroDrive, located in Ourense, Galicia, Spain, is the data controller responsible for the personal data you provide through this website.',
+        },
+        {
+          title: 'Data Collected',
+          body: 'We collect identification data (name, email address, phone number), browsing data (technical cookies), and data relating to vehicles of interest to the user.',
+        },
+        {
+          title: 'Purpose of Processing',
+          body: 'Data is used to manage vehicle rental and sale requests, respond to enquiries, send commercial communications (with consent), and comply with legal obligations.',
+        },
+        {
+          title: 'Legal Basis',
+          body: 'Processing is based on the performance of a contract, user consent, and compliance with legal obligations under the General Data Protection Regulation (GDPR).',
+        },
+        {
+          title: 'Recipients',
+          body: 'We do not share data with third parties except where legally required. We may share data with technology service providers under confidentiality agreements.',
+        },
+        {
+          title: 'User Rights',
+          body: 'You may exercise your rights of access, rectification, erasure, objection, and portability by sending an email to: privacy@aerodrive.com.',
+        },
+        {
+          title: 'Retention',
+          body: 'Data will be retained for as long as necessary to fulfil the purpose for which it was collected and to meet any potential legal obligations.',
+        },
+      ];
+---
+
+<BaseLayout locale={locale} title={title} description={description}>
+  <TopNavBar
+    locale={locale}
+    currentPath={Astro.url.pathname}
+    lightLabel={t.theme.toggleLight}
+    darkLabel={t.theme.toggleDark}
+  />
+
+  <main class="pt-24 pb-xl relative overflow-hidden">
+    <!-- Background glow -->
+    <div class="absolute top-0 right-0 w-[40%] aspect-square bg-primary/5 rounded-full blur-[120px] pointer-events-none" aria-hidden="true"></div>
+
+    <div class="max-w-3xl mx-auto px-8 relative z-10">
+
+      <!-- Hero section -->
+      <div class="text-center mb-2xl space-y-md">
+        <h1 class="text-h1 font-display font-black tracking-tight text-on-surface">
+          {t.legal.privacyTitle}
+        </h1>
+        <p class="text-body-lg text-on-surface-variant leading-relaxed">
+          {t.legal.privacyLastUpdated}
+        </p>
+      </div>
+
+      <!-- Sections -->
+      {sections.map(({ title: sectionTitle, body }) => (
+        <div class="bg-surface-container-lowest rounded-2xl p-lg border border-outline-variant/20 mb-xl shadow-sm">
+          <h2 class="text-h2 font-display font-bold text-on-surface mb-md">
+            {sectionTitle}
+          </h2>
+          <p class="text-body-lg text-on-surface-variant leading-relaxed">
+            {body}
+          </p>
+        </div>
+      ))}
+
+    </div>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>

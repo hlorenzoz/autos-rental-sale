@@ -1,7 +1,7 @@
 ---
 import type { Locale } from '@/i18n/utils';
 import { getDictionary } from '@/i18n/utils';
-import SearchPill from '@/components/ui/SearchPill';
+import HeroSearchIsland from '@/components/ui/HeroSearchIsland';
 
 interface Props {
   locale: Locale;
@@ -30,12 +30,16 @@ const t = getDictionary(locale);
 
       <!-- Search Island -->
       <div class="mt-lg animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300">
-        <SearchPill 
+        <HeroSearchIsland
           client:load
+          locale={locale}
           buyLabel={t.hero.buy}
           rentLabel={t.hero.rent}
           placeholder={t.hero.searchPlaceholder}
           filterLabel={t.hero.filterLabel}
+          noResults={t.filters.noResults}
+          noResultsHint={t.filters.noResultsHint}
+          perDay={t.vehicles.perDay}
         />
         
         <!-- Stats/Trust -->

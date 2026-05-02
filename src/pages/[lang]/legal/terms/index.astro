@@ -1,0 +1,115 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TopNavBar from '@/components/domains/nav/TopNavBar.astro';
+import Footer from '@/components/domains/shared/Footer.astro';
+import type { Locale } from '@/i18n/utils';
+import { locales, getDictionary } from '@/i18n/utils';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const locale = lang as Locale;
+const t = getDictionary(locale);
+
+const title = `${t.legal.termsTitle} | ${t.site.name}`;
+const description = t.legal.termsLastUpdated;
+
+const sections =
+  locale === 'es'
+    ? [
+        {
+          title: 'Aceptación',
+          body: 'Al utilizar este sitio web y contratar nuestros servicios, aceptás los presentes Términos de Servicio en su totalidad. Si no estás de acuerdo, te pedimos que no utilices nuestros servicios.',
+        },
+        {
+          title: 'Uso del Servicio',
+          body: 'Este sitio web está destinado a la búsqueda, alquiler y compra de vehículos. El usuario se compromete a no usar la plataforma para fines ilícitos o contrarios a estos términos.',
+        },
+        {
+          title: 'Reservas y Contratos',
+          body: 'Todas las reservas están sujetas a disponibilidad. AeroDrive se reserva el derecho de cancelar reservas en casos de fuerza mayor o error en los datos publicados.',
+        },
+        {
+          title: 'Precios',
+          body: 'Los precios mostrados incluyen IVA salvo indicación contraria. AeroDrive se reserva el derecho de modificar precios sin previo aviso. El precio confirmado al momento de la reserva es vinculante.',
+        },
+        {
+          title: 'Responsabilidad',
+          body: 'AeroDrive no será responsable de daños indirectos o consecuenciales derivados del uso de los vehículos o del sitio web, salvo en los casos previstos por la ley.',
+        },
+        {
+          title: 'Ley Aplicable',
+          body: 'Estos términos se rigen por la legislación española. Para cualquier controversia, las partes se someten a los juzgados y tribunales de Ourense, España.',
+        },
+      ]
+    : [
+        {
+          title: 'Acceptance',
+          body: 'By using this website and contracting our services, you fully accept these Terms of Service. If you do not agree, we ask that you do not use our services.',
+        },
+        {
+          title: 'Use of Service',
+          body: 'This website is intended for the search, rental, and purchase of vehicles. Users agree not to use the platform for unlawful purposes or contrary to these terms.',
+        },
+        {
+          title: 'Bookings and Contracts',
+          body: 'All bookings are subject to availability. AeroDrive reserves the right to cancel bookings in cases of force majeure or errors in published data.',
+        },
+        {
+          title: 'Pricing',
+          body: 'Prices shown include VAT unless otherwise stated. AeroDrive reserves the right to modify prices without prior notice. The price confirmed at the time of booking is binding.',
+        },
+        {
+          title: 'Liability',
+          body: 'AeroDrive shall not be liable for indirect or consequential damages arising from the use of vehicles or the website, except as required by law.',
+        },
+        {
+          title: 'Applicable Law',
+          body: 'These terms are governed by Spanish law. For any disputes, the parties submit to the courts and tribunals of Ourense, Spain.',
+        },
+      ];
+---
+
+<BaseLayout locale={locale} title={title} description={description}>
+  <TopNavBar
+    locale={locale}
+    currentPath={Astro.url.pathname}
+    lightLabel={t.theme.toggleLight}
+    darkLabel={t.theme.toggleDark}
+  />
+
+  <main class="pt-24 pb-xl relative overflow-hidden">
+    <!-- Background glow -->
+    <div class="absolute top-0 right-0 w-[40%] aspect-square bg-primary/5 rounded-full blur-[120px] pointer-events-none" aria-hidden="true"></div>
+
+    <div class="max-w-3xl mx-auto px-8 relative z-10">
+
+      <!-- Hero section -->
+      <div class="text-center mb-2xl space-y-md">
+        <h1 class="text-h1 font-display font-black tracking-tight text-on-surface">
+          {t.legal.termsTitle}
+        </h1>
+        <p class="text-body-lg text-on-surface-variant leading-relaxed">
+          {t.legal.termsLastUpdated}
+        </p>
+      </div>
+
+      <!-- Sections -->
+      {sections.map(({ title: sectionTitle, body }) => (
+        <div class="bg-surface-container-lowest rounded-2xl p-lg border border-outline-variant/20 mb-xl shadow-sm">
+          <h2 class="text-h2 font-display font-bold text-on-surface mb-md">
+            {sectionTitle}
+          </h2>
+          <p class="text-body-lg text-on-surface-variant leading-relaxed">
+            {body}
+          </p>
+        </div>
+      ))}
+
+    </div>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>

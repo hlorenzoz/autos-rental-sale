@@ -1,0 +1,107 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TopNavBar from '@/components/domains/nav/TopNavBar.astro';
+import Footer from '@/components/domains/shared/Footer.astro';
+import type { Locale } from '@/i18n/utils';
+import { locales, getDictionary } from '@/i18n/utils';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const locale = lang as Locale;
+const t = getDictionary(locale);
+
+const title = `${t.legal.cookiesTitle} | ${t.site.name}`;
+const description = t.legal.cookiesLastUpdated;
+
+const sections =
+  locale === 'es'
+    ? [
+        {
+          title: '¿Qué son las Cookies?',
+          body: 'Las cookies son pequeños archivos de texto que los sitios web depositan en tu dispositivo para recordar tus preferencias y mejorar tu experiencia de navegación.',
+        },
+        {
+          title: 'Cookies que Utilizamos',
+          body: 'Usamos cookies técnicas necesarias para el funcionamiento del sitio (sesión, autenticación) y cookies analíticas para entender cómo los usuarios interactúan con el sitio (Google Analytics, con consentimiento).',
+        },
+        {
+          title: 'Cookies de Terceros',
+          body: 'Algunos de nuestros servicios (mapas, análisis) pueden instalar cookies de terceros. Consultá la política de cookies de Google para más información.',
+        },
+        {
+          title: 'Cómo Gestionar tus Cookies',
+          body: 'Podés configurar tu navegador para bloquear o eliminar cookies. Ten en cuenta que desactivar ciertas cookies puede afectar al funcionamiento del sitio. Opciones: Chrome > Configuración > Privacidad, Firefox > Opciones > Privacidad.',
+        },
+        {
+          title: 'Actualizaciones',
+          body: 'Esta política puede actualizarse periódicamente. Te notificaremos cualquier cambio significativo a través de este sitio web.',
+        },
+      ]
+    : [
+        {
+          title: 'What Are Cookies?',
+          body: 'Cookies are small text files that websites place on your device to remember your preferences and improve your browsing experience.',
+        },
+        {
+          title: 'Cookies We Use',
+          body: 'We use technical cookies necessary for site operation (session, authentication) and analytical cookies to understand how users interact with the site (Google Analytics, with consent).',
+        },
+        {
+          title: 'Third-Party Cookies',
+          body: 'Some of our services (maps, analytics) may set third-party cookies. Please consult Google\'s cookie policy for more information.',
+        },
+        {
+          title: 'How to Manage Your Cookies',
+          body: 'You can configure your browser to block or delete cookies. Please note that disabling certain cookies may affect site functionality. Options: Chrome > Settings > Privacy, Firefox > Options > Privacy.',
+        },
+        {
+          title: 'Updates',
+          body: 'This policy may be updated periodically. We will notify you of any significant changes through this website.',
+        },
+      ];
+---
+
+<BaseLayout locale={locale} title={title} description={description}>
+  <TopNavBar
+    locale={locale}
+    currentPath={Astro.url.pathname}
+    lightLabel={t.theme.toggleLight}
+    darkLabel={t.theme.toggleDark}
+  />
+
+  <main class="pt-24 pb-xl relative overflow-hidden">
+    <!-- Background glow -->
+    <div class="absolute top-0 right-0 w-[40%] aspect-square bg-primary/5 rounded-full blur-[120px] pointer-events-none" aria-hidden="true"></div>
+
+    <div class="max-w-3xl mx-auto px-8 relative z-10">
+
+      <!-- Hero section -->
+      <div class="text-center mb-2xl space-y-md">
+        <h1 class="text-h1 font-display font-black tracking-tight text-on-surface">
+          {t.legal.cookiesTitle}
+        </h1>
+        <p class="text-body-lg text-on-surface-variant leading-relaxed">
+          {t.legal.cookiesLastUpdated}
+        </p>
+      </div>
+
+      <!-- Sections -->
+      {sections.map(({ title: sectionTitle, body }) => (
+        <div class="bg-surface-container-lowest rounded-2xl p-lg border border-outline-variant/20 mb-xl shadow-sm">
+          <h2 class="text-h2 font-display font-bold text-on-surface mb-md">
+            {sectionTitle}
+          </h2>
+          <p class="text-body-lg text-on-surface-variant leading-relaxed">
+            {body}
+          </p>
+        </div>
+      ))}
+
+    </div>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>

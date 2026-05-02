@@ -2,7 +2,11 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import TopNavBar from '@/components/domains/nav/TopNavBar.astro';
 import HeroSection from '@/components/domains/shared/HeroSection.astro';
+import OverviewSection from '@/components/domains/landing/OverviewSection.astro';
 import FeaturedVehicles from '@/components/domains/vehicles/FeaturedVehicles.astro';
+import ServicesSection from '@/components/domains/landing/ServicesSection.astro';
+import ReviewsSection from '@/components/domains/landing/ReviewsSection.astro';
+import ContactSection from '@/components/domains/landing/ContactSection.astro';
 import Footer from '@/components/domains/shared/Footer.astro';
 import type { Locale } from '@/i18n/utils';
 import { locales } from '@/i18n/utils';
@@ -27,18 +31,11 @@ const t = getDictionary(locale);
   
   <main>
     <HeroSection locale={locale} />
+    <OverviewSection locale={locale} />
     <FeaturedVehicles locale={locale} />
-    
-    <section id="locations" class="py-xl bg-surface">
-      <div class="max-w-7xl mx-auto px-8 text-center space-y-md">
-         <h2 class="text-h2 font-display font-black tracking-tight text-on-surface">
-          {t.nav.locations}
-        </h2>
-        <p class="text-body-lg text-on-surface-variant max-w-2xl mx-auto">
-          {t.features.networkBody}
-        </p>
-      </div>
-    </section>
+    <ServicesSection locale={locale} />
+    <ReviewsSection locale={locale} />
+    <ContactSection locale={locale} />
   </main>
 
   <Footer locale={locale} />

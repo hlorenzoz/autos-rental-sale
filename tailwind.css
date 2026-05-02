@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Class-based dark mode — Tailwind v4 */
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* FONTS */
   --font-display: "Space Grotesk", sans-serif;
@@ -130,6 +133,72 @@
 @layer base {
   :root {
     color-scheme: light dark;
+  }
+
+  /* Dark mode — all CSS variables overridden under .dark on <html> */
+  .dark {
+    color-scheme: dark;
+
+    /* Primary */
+    --color-primary: #b6c4ff;
+    --color-on-primary: #001550;
+    --color-primary-container: #003ab2;
+    --color-on-primary-container: #dce1ff;
+    --color-primary-fixed: #dce1ff;
+    --color-primary-fixed-dim: #b6c4ff;
+    --color-inverse-primary: #0043c8;
+    --color-on-primary-fixed: #001550;
+    --color-on-primary-fixed-variant: #003ab2;
+    --color-surface-tint: #b6c4ff;
+
+    /* Secondary */
+    --color-secondary: #00e475;
+    --color-on-secondary: #00210b;
+    --color-secondary-container: #005226;
+    --color-on-secondary-container: #62ff96;
+    --color-secondary-fixed: #62ff96;
+    --color-secondary-fixed-dim: #00e475;
+    --color-on-secondary-fixed: #00210b;
+    --color-on-secondary-fixed-variant: #005226;
+
+    /* Tertiary */
+    --color-tertiary: #ffb4a2;
+    --color-on-tertiary: #5c1200;
+    --color-tertiary-container: #8a1d00;
+    --color-on-tertiary-container: #ffdad2;
+    --color-tertiary-fixed: #ffdad2;
+    --color-tertiary-fixed-dim: #ffb4a2;
+    --color-on-tertiary-fixed: #3c0700;
+    --color-on-tertiary-fixed-variant: #8a1d00;
+
+    /* Error */
+    --color-error: #ffb4ab;
+    --color-on-error: #690005;
+    --color-error-container: #93000a;
+    --color-on-error-container: #ffdad6;
+
+    /* Surface */
+    --color-surface: #0d1422;
+    --color-surface-bright: #1f2c3e;
+    --color-surface-dim: #09101a;
+    --color-surface-variant: #43455a;
+    --color-surface-container-lowest: #09101a;
+    --color-surface-container-low: #141f2e;
+    --color-surface-container: #1a2535;
+    --color-surface-container-high: #1f2c3e;
+    --color-surface-container-highest: #252f40;
+    --color-background: #0d1422;
+    --color-on-background: #e1ecff;
+
+    /* On-surface */
+    --color-on-surface: #e1ecff;
+    --color-on-surface-variant: #c3c5d9;
+    --color-inverse-surface: #e1ecff;
+    --color-inverse-on-surface: #213145;
+
+    /* Outline */
+    --color-outline: #8d8fa6;
+    --color-outline-variant: #43455a;
   }
 
   *,
