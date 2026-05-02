@@ -137,18 +137,20 @@ export default function VehicleHubIsland({ vehicles, locale, labels }: VehicleHu
 
   return (
     <div className="w-full">
-      <SearchPill
-        buyLabel={labels.buyLabel}
-        rentLabel={labels.rentLabel}
-        placeholder={labels.placeholder}
-        filterLabel={labels.filterLabel}
-        brands={brands}
-        categories={categories}
-        initialMode={mode}
-        onModeChange={(m) => { setMode(m); }}
-        onSearch={(q) => { setQuery(q); }}
-        onFilterChange={setFilters}
-      />
+      <div className="relative z-30 mb-lg">
+        <SearchPill
+          buyLabel={labels.buyLabel}
+          rentLabel={labels.rentLabel}
+          placeholder={labels.placeholder}
+          filterLabel={labels.filterLabel}
+          brands={brands}
+          categories={categories}
+          initialMode={mode}
+          onModeChange={(m) => { setMode(m); }}
+          onSearch={(q) => { setQuery(q); }}
+          onFilterChange={setFilters}
+        />
+      </div>
 
       <QuickFilterTags
         filters={labels.filters}

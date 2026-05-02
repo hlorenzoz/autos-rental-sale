@@ -129,7 +129,7 @@ export default function SearchPill({
       {isFilterOpen && (
         <div 
           ref={menuRef}
-          className="absolute top-full right-0 mt-3 w-full sm:w-80 bg-surface/95 backdrop-blur-2xl rounded-2xl p-6 shadow-2xl border border-white/20 z-50 animate-in fade-in zoom-in-95 slide-in-from-top-2 duration-200"
+          className="absolute top-full right-0 mt-3 w-full sm:w-80 bg-surface/95 backdrop-blur-2xl rounded-2xl p-6 shadow-2xl border border-white/20 z-[60] animate-in fade-in zoom-in-95 slide-in-from-top-2 duration-200"
         >
           <div className="flex flex-col gap-5">
             <div className="flex items-center justify-between">

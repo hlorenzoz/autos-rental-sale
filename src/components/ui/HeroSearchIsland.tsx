@@ -94,22 +94,24 @@ export default function HeroSearchIsland({
   }
 
   return (
-    <div ref={containerRef} className="relative w-full max-w-2xl">
-      <SearchPill
-        buyLabel={buyLabel}
-        rentLabel={rentLabel}
-        placeholder={placeholder}
-        filterLabel={filterLabel}
-        brands={brands}
-        categories={categories}
-        onModeChange={setMode}
-        onSearch={setQuery}
-        onFilterChange={setFilters}
-        initialMode="buy"
-      />
+    <div ref={containerRef} className="relative w-full max-w-2xl z-30">
+      <div className="relative z-50">
+        <SearchPill
+          buyLabel={buyLabel}
+          rentLabel={rentLabel}
+          placeholder={placeholder}
+          filterLabel={filterLabel}
+          brands={brands}
+          categories={categories}
+          onModeChange={setMode}
+          onSearch={setQuery}
+          onFilterChange={setFilters}
+          initialMode="buy"
+        />
+      </div>
 
       {showDropdown && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-surface-container-lowest rounded-2xl border border-outline-variant/20 shadow-xl overflow-hidden z-50">
+        <div className="absolute top-full left-0 right-0 mt-2 bg-surface-container-lowest rounded-2xl border border-outline-variant/20 shadow-xl overflow-hidden z-40">
           {filtered.length === 0 ? (
             <div className="px-lg py-md text-center">
               <p className="text-on-surface font-semibold text-body-md">{noResults}</p>
