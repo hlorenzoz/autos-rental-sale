@@ -83,8 +83,17 @@ export default function HeroSearchIsland({
         setQuery('');
       }
     }
+    function onEsc(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        setQuery('');
+      }
+    }
     document.addEventListener('mousedown', onOutside);
-    return () => { document.removeEventListener('mousedown', onOutside); };
+    document.addEventListener('keydown', onEsc);
+    return () => {
+      document.removeEventListener('mousedown', onOutside);
+      document.removeEventListener('keydown', onEsc);
+    };
   }, []);
 
   function formatPrice(v: Vehicle): string {

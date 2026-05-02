@@ -38,15 +38,24 @@ export default function SearchPill({
   
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // Close menu when clicking outside
+  // Close menu when clicking outside or pressing Escape
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setIsFilterOpen(false);
       }
     }
+    function handleEsc(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setIsFilterOpen(false);
+      }
+    }
     document.addEventListener('mousedown', handleClickOutside);
-    return () => { document.removeEventListener('mousedown', handleClickOutside); };
+    document.addEventListener('keydown', handleEsc);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEsc);
+    };
   }, []);
 
   function handleModeChange(next: 'buy' | 'rent') {
