@@ -1,21 +1,15 @@
 import { useState, useMemo, useRef, useEffect } from 'react';
 import SearchPill from './SearchPill';
-import data from '@/data/vehicles.json';
+import { 
+  getAllVehicles, 
+  getUniqueBrands, 
+  getUniqueCategories 
+} from '@/lib/vehicles';
+import type { Vehicle } from '@/schemas/vehicle';
 
-type Vehicle = {
-  id: string;
-  slug: string;
-  brand: string;
-  model: string;
-  year: number;
-  category: string;
-  type: string;
-  image: string;
-  price?: { sale?: number; rent?: number };
-  available: boolean;
-};
-
-const vehicles = (data as { vehicles: Vehicle[] }).vehicles;
+const vehicles = getAllVehicles();
+const brands = getUniqueBrands(vehicles);
+const categories = getUniqueCategories(vehicles);
 
 interface HeroSearchIslandProps {
   locale: string;
@@ -26,6 +20,12 @@ interface HeroSearchIslandProps {
   noResults: string;
   noResultsHint: string;
   perDay: string;
+}
+
+interface FilterState {
+  brand?: string;
+  category?: string;
+  maxPrice?: number;
 }
 
 export default function HeroSearchIsland({
@@ -40,22 +40,42 @@ export default function HeroSearchIsland({
 }: HeroSearchIslandProps) {
   const [mode, setMode] = useState<'buy' | 'rent'>('buy');
   const [query, setQuery] = useState('');
+  const [filters, setFilters] = useState<FilterState>({});
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const showDropdown = query.trim().length > 0;
+  const showDropdown = query.trim().length > 0 || filters.brand || filters.category || filters.maxPrice;
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return [];
+    
     return vehicles
       .filter((v) => {
+        // Mode filter
         if (mode === 'buy' && v.type === 'rent') return false;
         if (mode === 'rent' && v.type === 'sale') return false;
-        const full = `${v.brand} ${v.model} ${v.category}`.toLowerCase();
-        return full.includes(q);
+        
+        // Brand filter
+        if (filters.brand && v.brand !== filters.brand) return false;
+        
+        // Category filter
+        if (filters.category && v.category !== filters.category) return false;
+        
+        // Price filter
+        if (filters.maxPrice) {
+          const price = mode === 'rent' ? v.price.rent : v.price.sale;
+          if (!price || price > filters.maxPrice) return false;
+        }
+
+        // Query search
+        if (q) {
+          const full = `${v.brand} ${v.model} ${v.category}`.toLowerCase();
+          return full.includes(q);
+        }
+        
+        return true;
       })
       .slice(0, 5);
-  }, [query, mode]);
+  }, [query, mode, filters]);
 
   useEffect(() => {
     function onOutside(e: MouseEvent) {
@@ -68,8 +88,8 @@ export default function HeroSearchIsland({
   }, []);
 
   function formatPrice(v: Vehicle): string {
-    if (mode === 'buy' && v.price?.sale) return `$${v.price.sale.toLocaleString()}`;
-    if (mode === 'rent' && v.price?.rent) return `$${String(v.price.rent)} ${perDay}`;
+    if (mode === 'buy' && v.price.sale) return `$${v.price.sale.toLocaleString()}`;
+    if (mode === 'rent' && v.price.rent) return `$${String(v.price.rent)} ${perDay}`;
     return '';
   }
 
@@ -80,8 +100,11 @@ export default function HeroSearchIsland({
         rentLabel={rentLabel}
         placeholder={placeholder}
         filterLabel={filterLabel}
+        brands={brands}
+        categories={categories}
         onModeChange={setMode}
         onSearch={setQuery}
+        onFilterChange={setFilters}
         initialMode="buy"
       />
 

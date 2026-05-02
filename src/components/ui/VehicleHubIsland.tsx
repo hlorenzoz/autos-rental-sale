@@ -1,10 +1,20 @@
 import { useState, useMemo } from 'react';
 import type { Vehicle } from '@/schemas/vehicle';
 import type { Locale } from '@/i18n/utils';
-import { filterVehicles } from '@/lib/vehicles';
+import { 
+  filterVehicles, 
+  getUniqueBrands, 
+  getUniqueCategories 
+} from '@/lib/vehicles';
 import { formatCurrency } from '@/lib/formatters';
 import SearchPill from './SearchPill';
 import QuickFilterTags from './QuickFilterTags';
+
+interface FilterState {
+  brand?: string;
+  category?: string;
+  maxPrice?: number;
+}
 
 interface VehicleHubLabels {
   buyLabel: string;
@@ -86,12 +96,20 @@ function VehicleCardMini({ vehicle, locale, mode, bookNow, inquire }: VehicleCar
 export default function VehicleHubIsland({ vehicles, locale, labels }: VehicleHubIslandProps) {
   const [mode, setMode] = useState<'buy' | 'rent'>('buy');
   const [query, setQuery] = useState('');
+  const [filters, setFilters] = useState<FilterState>({});
   const [activeTags, setActiveTags] = useState<string[]>([]);
+
+  const brands = useMemo(() => getUniqueBrands(vehicles), [vehicles]);
+  const categories = useMemo(() => getUniqueCategories(vehicles), [vehicles]);
 
   const filtered = useMemo(() => {
     let result = filterVehicles(vehicles, {
       type: mode === 'buy' ? 'sale' : 'rent',
       search: query || undefined,
+      brand: filters.brand,
+      category: filters.category,
+      maxPricePerDay: mode === 'rent' ? filters.maxPrice : undefined,
+      maxPriceSale: mode === 'buy' ? filters.maxPrice : undefined,
     });
 
     if (activeTags.length > 0) {
@@ -115,7 +133,7 @@ export default function VehicleHubIsland({ vehicles, locale, labels }: VehicleHu
     }
 
     return result;
-  }, [vehicles, mode, query, activeTags]);
+  }, [vehicles, mode, query, activeTags, filters]);
 
   return (
     <div className="w-full">
@@ -124,9 +142,12 @@ export default function VehicleHubIsland({ vehicles, locale, labels }: VehicleHu
         rentLabel={labels.rentLabel}
         placeholder={labels.placeholder}
         filterLabel={labels.filterLabel}
+        brands={brands}
+        categories={categories}
         initialMode={mode}
         onModeChange={(m) => { setMode(m); }}
         onSearch={(q) => { setQuery(q); }}
+        onFilterChange={setFilters}
       />
 
       <QuickFilterTags

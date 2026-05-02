@@ -32,4 +32,31 @@ describe('SearchPill', () => {
     fireEvent.change(input, { target: { value: 'Tesla' } });
     expect(props.onSearch).toHaveBeenCalledWith('Tesla');
   });
+
+  it('toggles filter menu when clicking filter button', () => {
+    render(<SearchPill {...props} />);
+    const filterButton = screen.getByText(/filter/i);
+    
+    // Open
+    fireEvent.click(filterButton);
+    expect(screen.getByText(/^filters$/i)).toBeDefined();
+    
+    // Close
+    fireEvent.click(filterButton);
+    expect(screen.queryByText(/^filters$/i)).toBeNull();
+  });
+
+  it('calls onFilterChange when updating filters', () => {
+    const onFilterChange = vi.fn();
+    render(<SearchPill {...props} brands={['Tesla']} onFilterChange={onFilterChange} />);
+    
+    // Open menu
+    fireEvent.click(screen.getByText(/filter/i));
+    
+    // Change brand
+    const select = screen.getByLabelText(/brand/i);
+    fireEvent.change(select, { target: { value: 'Tesla' } });
+    
+    expect(onFilterChange).toHaveBeenCalledWith({ brand: 'Tesla' });
+  });
 });
