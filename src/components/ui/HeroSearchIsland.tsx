@@ -41,9 +41,11 @@ export default function HeroSearchIsland({
   const [mode, setMode] = useState<'buy' | 'rent'>('buy');
   const [query, setQuery] = useState('');
   const [filters, setFilters] = useState<FilterState>({});
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const showDropdown = query.trim().length > 0 || filters.brand || filters.category || filters.maxPrice;
+  const hasContent = query.trim().length > 0 || filters.brand || filters.category || filters.maxPrice;
+  const showDropdown = isDropdownVisible && hasContent;
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -80,12 +82,12 @@ export default function HeroSearchIsland({
   useEffect(() => {
     function onOutside(e: MouseEvent) {
       if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
-        setQuery('');
+        setIsDropdownVisible(false);
       }
     }
     function onEsc(e: KeyboardEvent) {
       if (e.key === 'Escape') {
-        setQuery('');
+        setIsDropdownVisible(false);
       }
     }
     document.addEventListener('mousedown', onOutside);
@@ -113,8 +115,14 @@ export default function HeroSearchIsland({
           brands={brands}
           categories={categories}
           onModeChange={setMode}
-          onSearch={setQuery}
-          onFilterChange={setFilters}
+          onSearch={(q) => {
+            setQuery(q);
+            setIsDropdownVisible(true);
+          }}
+          onFilterChange={(f) => {
+            setFilters(f);
+            setIsDropdownVisible(true);
+          }}
           initialMode="buy"
         />
       </div>
