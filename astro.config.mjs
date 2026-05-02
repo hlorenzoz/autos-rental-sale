@@ -5,12 +5,33 @@ import tailwindcss from '@tailwindcss/vite';
 import sentry from '@sentry/astro';
 import spotlightjs from '@spotlightjs/astro';
 
+import sitemap from '@astrojs/sitemap';
+
 export default defineConfig({
   site: 'http://localhost:4321',
   integrations: [
     react(),
     sentry(),
     spotlightjs(),
+    sitemap({
+      serialize(item) {
+        // Map technical English paths to public Spanish paths in sitemap
+        if (item.url.includes('/es/vehicles/for-rent/')) {
+          item.url = item.url.replace('/es/vehicles/for-rent/', '/es/vehiculos/en-alquiler/');
+        } else if (item.url.includes('/es/vehicles/for-sell/')) {
+          item.url = item.url.replace('/es/vehicles/for-sell/', '/es/vehiculos/en-venta/');
+        } else if (item.url.includes('/es/vehicles/')) {
+          item.url = item.url.replace('/es/vehicles/', '/es/vehiculos/');
+        } else if (item.url.includes('/es/contact/')) {
+          item.url = item.url.replace('/es/contact/', '/es/contacto/');
+        } else if (item.url.includes('/es/about/')) {
+          item.url = item.url.replace('/es/about/', '/es/sobre-nosotros/');
+        } else if (item.url.includes('/es/sitemap/')) {
+          item.url = item.url.replace('/es/sitemap/', '/es/mapa-del-sitio/');
+        }
+        return item;
+      },
+    }),
   ],
   vite: {
     plugins: [tailwindcss()],

@@ -25,11 +25,23 @@ export const en = {
       forSale: '/vehicles/for-sell/',
       contact: '/contact/',
       about: '/about/',
+      sitemap: '/sitemap/',
     },
     slugs: {
       vehicles: 'vehicles',
       contact: 'contact',
       about: 'about',
+      sitemap: 'sitemap',
+    }
+  },
+  sitemap: {
+    title: 'Sitemap',
+    subtitle: 'Explore all sections of our platform and find what you need.',
+    sections: {
+      main: 'Main Navigation',
+      inventory: 'Inventory & Categories',
+      legal: 'Legal & Privacy',
+      support: 'Contact & Support'
     }
   },
   common: {
@@ -106,6 +118,7 @@ export const en = {
     cookies: 'Cookie Settings',
     contact: 'Contact',
     company: 'Company',
+    sitemap: 'Sitemap',
     phone: '+34 600 123 456',
     email: 'info@aerodrive.com',
   },

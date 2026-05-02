@@ -27,11 +27,23 @@ export const es: Dictionary = {
       forSale: '/vehiculos/en-venta/',
       contact: '/contacto/',
       about: '/sobre-nosotros/',
+      sitemap: '/mapa-del-sitio/',
     },
     slugs: {
       vehicles: 'vehiculos',
       contact: 'contacto',
       about: 'sobre-nosotros',
+      sitemap: 'mapa-del-sitio',
+    }
+  },
+  sitemap: {
+    title: 'Mapa del Sitio',
+    subtitle: 'Explorá todas las secciones de nuestra plataforma y encontrá lo que necesitás.',
+    sections: {
+      main: 'Navegación Principal',
+      inventory: 'Inventario y Categorías',
+      legal: 'Legal y Privacidad',
+      support: 'Contacto y Soporte'
     }
   },
   common: {
@@ -108,6 +120,7 @@ export const es: Dictionary = {
     cookies: 'Configuración de Cookies',
     contact: 'Contacto',
     company: 'Compañía',
+    sitemap: 'Mapa del sitio',
     phone: '+34 600 123 456',
     email: 'info@aerodrive.com',
   },

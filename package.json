@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
+    "@astrojs/sitemap": "^3.7.2",
     "@sentry/astro": "^10.51.0",
     "@spotlightjs/astro": "^3.2.6",
     "astro": "^5.7.0",

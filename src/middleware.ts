@@ -35,6 +35,9 @@ export const onRequest: MiddlewareHandler = async (context, next) => {
     if (pathname === '/es/sobre-nosotros' || pathname === '/es/sobre-nosotros/') {
       return handleRewrite('/es/about/');
     }
+    if (pathname === '/es/mapa-del-sitio' || pathname === '/es/mapa-del-sitio/') {
+      return handleRewrite('/es/sitemap/');
+    }
     if (pathname.startsWith('/es/vehiculos/')) {
       const slug = pathname.replace('/es/vehiculos/', '').replace(/\/$/, '');
       if (slug && slug !== 'en-alquiler' && slug !== 'en-venta') {
@@ -57,6 +60,9 @@ export const onRequest: MiddlewareHandler = async (context, next) => {
     }
     if (pathname === '/es/about' || pathname === '/es/about/') {
       return context.redirect('/es/sobre-nosotros/');
+    }
+    if (pathname === '/es/sitemap' || pathname === '/es/sitemap/') {
+      return context.redirect('/es/mapa-del-sitio/');
     }
   }
 
