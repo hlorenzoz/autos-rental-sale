@@ -26,10 +26,12 @@ export const es: Dictionary = {
       forRent: '/vehiculos/en-alquiler/',
       forSale: '/vehiculos/en-venta/',
       contact: '/contacto/',
+      about: '/sobre-nosotros/',
     },
     slugs: {
       vehicles: 'vehiculos',
       contact: 'contacto',
+      about: 'sobre-nosotros',
     }
   },
   common: {

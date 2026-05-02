@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Velocity - About</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary-container": "#ffe4dd",
+                        "inverse-on-surface": "#eaf1ff",
+                        "outline": "#737688",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#b6c4ff",
+                        "on-tertiary-fixed-variant": "#8a1d00",
+                        "surface-bright": "#f8f9ff",
+                        "error": "#ba1a1a",
+                        "background": "#f8f9ff",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#00210b",
+                        "inverse-surface": "#213145",
+                        "tertiary-container": "#c72e00",
+                        "outline-variant": "#c3c5d9",
+                        "on-tertiary-fixed": "#3c0700",
+                        "surface-tint": "#004ee7",
+                        "on-secondary-container": "#007237",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "primary": "#0043c8",
+                        "on-surface": "#0b1c30",
+                        "on-secondary-fixed-variant": "#005226",
+                        "tertiary-fixed": "#ffdad2",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-background": "#0b1c30",
+                        "secondary-fixed": "#62ff96",
+                        "primary-fixed": "#dce1ff",
+                        "on-primary-container": "#e5e8ff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#3fff8b",
+                        "primary-container": "#0057ff",
+                        "surface": "#f8f9ff",
+                        "on-surface-variant": "#434656",
+                        "secondary-fixed-dim": "#00e475",
+                        "on-primary-fixed-variant": "#003ab2",
+                        "secondary": "#006d35",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#cbdbf5",
+                        "tertiary-fixed-dim": "#ffb4a2",
+                        "tertiary": "#9c2200",
+                        "surface-container": "#e5eeff",
+                        "on-primary-fixed": "#001550"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "display": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    "fontSize": {}
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 shadow-sm shadow-blue-500/5">
+<div class="flex justify-between items-center w-full px-8 h-20 max-w-screen-2xl mx-auto">
+<div class="font-headline text-2xl font-bold tracking-tighter text-slate-900 dark:text-white">Aura</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors hover:bg-slate-50 dark:hover:bg-slate-900 transition-all duration-300 active:scale-[0.98] transition-transform font-body text-sm tracking-wide" href="#">Sales</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors hover:bg-slate-50 dark:hover:bg-slate-900 transition-all duration-300 active:scale-[0.98] transition-transform font-body text-sm tracking-wide" href="#">Rentals</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors hover:bg-slate-50 dark:hover:bg-slate-900 transition-all duration-300 active:scale-[0.98] transition-transform font-body text-sm tracking-wide" href="#">Fleet</a>
+<a class="text-blue-700 dark:text-blue-400 font-semibold border-b-2 border-blue-700 dark:border-blue-400 pb-1 font-body text-sm tracking-wide" href="#">About</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors hover:bg-slate-50 dark:hover:bg-slate-900 transition-all duration-300 active:scale-[0.98] transition-transform font-body text-sm tracking-wide" href="#">Concierge</a>
+</div>
+<div class="flex gap-4">
+<button class="font-body text-sm tracking-wide text-slate-500 hover:text-slate-900 transition-colors hidden sm:block">Sign In</button>
+<button class="font-body text-sm tracking-wide bg-primary text-on-primary px-6 py-2 rounded-full shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">Book Now</button>
+</div>
+</div>
+</nav>
+<main class="flex-grow pt-20">
+<!-- Hero Section -->
+<section class="relative h-[716px] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-surface-container-low/50 z-10"></div>
+<img alt="Design Studio" class="absolute inset-0 w-full h-full object-cover object-center z-0" data-alt="A brightly lit, minimalist automotive design studio or high-tech laboratory. The space is vast and pristine, featuring gleaming white floors and structural metallic elements. Soft, diffused lighting eliminates harsh shadows, creating an airy, futuristic atmosphere. The scene embodies technical precision and sophisticated engineering, adhering to a clean, high-key light mode aesthetic with subtle blue and metallic accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG8vuRpZzgWvt0p8NQTQVsxSKqKm5oRmB3fwCZBgcOaBvIYSNcfBVWJYYPCvsme06vIyrwUVLbxo8YiI1BafUk596sL4zgjIHuFKFyC6kILZ7y0uPcRyQjoqdSwIFF2yLjN4RliPYzPSImlZSA7bcJZKWlOd2An6_Gec2M_GrcQHhyJ_PQQeUETDVszGbPGqF7vvSSqOo74PCSMwHj2yj-GBdbolCONyVe5fbmINCUvWmtA6M45LjPnQ_df7OlwG2VsgjBmSeYGnFb"/>
+<div class="relative z-20 text-center px-4 max-w-4xl mx-auto">
+<h1 class="font-headline text-[48px] font-bold leading-[1.1] tracking-tight text-on-surface mb-6">Driven by Precision</h1>
+<p class="font-body text-[18px] text-on-surface-variant max-w-2xl mx-auto">Engineering the future of mobility with unyielding focus and uncompromising luxury.</p>
+</div>
+</section>
+<!-- Our Mission -->
+<section class="py-[64px] px-8 bg-surface-container-lowest">
+<div class="max-w-screen-md mx-auto text-center">
+<h2 class="font-headline text-[24px] font-semibold text-on-surface mb-8">Our Mission</h2>
+<p class="font-body text-[18px] text-on-surface-variant leading-relaxed">
+                    At Velocity, we are not just building vehicles; we are architecting experiences. Our commitment is to redefine the boundaries of mobility by seamlessly integrating advanced technology with unparalleled luxury. We believe in movement that is effortless, sustainable, and extraordinarily precise.
+                </p>
+</div>
+</section>
+<!-- Values Section (Bento Grid) -->
+<section class="py-[64px] px-8 bg-background">
+<div class="max-w-screen-xl mx-auto">
+<h2 class="font-headline text-[32px] font-semibold text-on-surface text-center mb-16">Core Values</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Value 1 -->
+<div class="bg-surface-container-lowest p-10 rounded-[1rem] shadow-[0_20px_40px_-15px_rgba(0,67,200,0.05)] border border-outline-variant/20 hover:-translate-y-1 transition-transform duration-300">
+<div class="w-16 h-16 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-3xl">lightbulb</span>
+</div>
+<h3 class="font-headline text-[20px] font-medium text-on-surface mb-4">Innovation</h3>
+<p class="font-body text-[16px] text-on-surface-variant">Pushing the boundaries of what is mechanically and digitally possible, everyday.</p>
+</div>
+<!-- Value 2 -->
+<div class="bg-surface-container-lowest p-10 rounded-[1rem] shadow-[0_20px_40px_-15px_rgba(0,67,200,0.05)] border border-outline-variant/20 hover:-translate-y-1 transition-transform duration-300">
+<div class="w-16 h-16 rounded-full bg-surface-container-high text-primary flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-3xl">verified</span>
+</div>
+<h3 class="font-headline text-[20px] font-medium text-on-surface mb-4">Integrity</h3>
+<p class="font-body text-[16px] text-on-surface-variant">Unwavering dedication to safety, sustainability, and ethical engineering practices.</p>
+</div>
+<!-- Value 3 -->
+<div class="bg-surface-container-lowest p-10 rounded-[1rem] shadow-[0_20px_40px_-15px_rgba(0,67,200,0.05)] border border-outline-variant/20 hover:-translate-y-1 transition-transform duration-300">
+<div class="w-16 h-16 rounded-full bg-surface-container-high text-primary flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-3xl">speed</span>
+</div>
+<h3 class="font-headline text-[20px] font-medium text-on-surface mb-4">Performance</h3>
+<p class="font-body text-[16px] text-on-surface-variant">Delivering flawless execution and unparalleled dynamic response in every interaction.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Our Story (Timeline grid) -->
+<section class="py-[64px] px-8 bg-surface-container-lowest">
+<div class="max-w-screen-xl mx-auto">
+<h2 class="font-headline text-[32px] font-semibold text-on-surface text-center mb-16">The Journey</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="relative pl-6 border-l border-outline-variant/30">
+<div class="absolute w-3 h-3 bg-primary rounded-full -left-[6.5px] top-2 shadow-[0_0_10px_rgba(0,67,200,0.3)]"></div>
+<div class="font-headline text-[20px] font-medium text-primary mb-2">2015</div>
+<h4 class="font-headline text-[18px] text-on-surface mb-2">Inception</h4>
+<p class="font-body text-[14px] text-on-surface-variant">Founded with a vision to merge software precision with automotive engineering.</p>
+</div>
+<div class="relative pl-6 border-l border-outline-variant/30">
+<div class="absolute w-3 h-3 bg-surface-variant rounded-full -left-[6.5px] top-2"></div>
+<div class="font-headline text-[20px] font-medium text-outline mb-2">2018</div>
+<h4 class="font-headline text-[18px] text-on-surface mb-2">First Prototype</h4>
+<p class="font-body text-[14px] text-on-surface-variant">The V1 Alpha concept is unveiled, demonstrating autonomous capabilities.</p>
+</div>
+<div class="relative pl-6 border-l border-outline-variant/30">
+<div class="absolute w-3 h-3 bg-surface-variant rounded-full -left-[6.5px] top-2"></div>
+<div class="font-headline text-[20px] font-medium text-outline mb-2">2021</div>
+<h4 class="font-headline text-[18px] text-on-surface mb-2">Global Expansion</h4>
+<p class="font-body text-[14px] text-on-surface-variant">Operations expand to Europe and Asia, establishing a global design language.</p>
+</div>
+<div class="relative pl-6 border-l border-outline-variant/30">
+<div class="absolute w-3 h-3 bg-surface-variant rounded-full -left-[6.5px] top-2"></div>
+<div class="font-headline text-[20px] font-medium text-outline mb-2">2024</div>
+<h4 class="font-headline text-[18px] text-on-surface mb-2">The Aura Era</h4>
+<p class="font-body text-[14px] text-on-surface-variant">Launch of our flagship mobility platform, redefining luxury transport.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Team Section -->
+<section class="py-[64px] px-8 bg-background">
+<div class="max-w-screen-xl mx-auto">
+<h2 class="font-headline text-[32px] font-semibold text-on-surface text-center mb-16">Leadership</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Team Member 1 -->
+<div class="text-center group">
+<div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border border-surface-variant bg-surface-container-highest shadow-[0_20px_40px_-15px_rgba(0,67,200,0.05)] group-hover:shadow-[0_20px_40px_-10px_rgba(0,67,200,0.1)] transition-all duration-300">
+<img alt="CEO" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A professional portrait of a distinguished executive. They are dressed in sleek, modern business attire against a pristine, minimalist white background. The lighting is high-key and flattering, emphasizing a confident and forward-thinking demeanor. The overall aesthetic is crisp, clean, and aligns with a high-end corporate technology brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC00_08OvCJJPPAbEPsy8Lu_iL_6P0cbGkqRQhHFXU8ZyVuN7aS7Krl6n1-JTgXRwJn78jNEWejm9lzUqx90YyO-duDVcHFkohMdHfD1n1ZHQF73kmPZek5sAopej1q2ebc2z9ziyopj8CnRQT3aTBskPMYcpIH8nxTslTg9KZGR09yOZHW11G9gJo4TjBJ_NyUxRt8QNK0SFv11gtoFl0fnDpcmoPy1dKHoBHHFxaJZNB6W1iwGajs92yJIVKJOFPASstWt9WMqxOX"/>
+</div>
+<h3 class="font-headline text-[20px] font-medium text-on-surface">Elena Rostova</h3>
+<p class="font-body text-[14px] text-primary uppercase tracking-wider mt-1">Chief Executive Officer</p>
+</div>
+<!-- Team Member 2 -->
+<div class="text-center group">
+<div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border border-surface-variant bg-surface-container-highest shadow-[0_20px_40px_-15px_rgba(0,67,200,0.05)] group-hover:shadow-[0_20px_40px_-10px_rgba(0,67,200,0.1)] transition-all duration-300">
+<img alt="CTO" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A professional portrait of a tech leader. They are wearing minimalist, high-quality clothing set against a bright, airy background. The lighting is soft and even, creating a polished, approachable yet authoritative look. The style matches a premium digital product aesthetic with high whitespace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_74MMeRUN5iVpqAwgPaCtAZcY46euX8O1dc0d0EJvzDg4zTp8EBECX6zcpOWTF-lx_P_WirEBQALbEXsHgqV-DuA9phsbLJMB9aW_6O2vhqiq8rih_prLrfX0eqEgofG45WOlDMEALftFcCp0lLAY3gVmfSTMmlNkVDgYLmIWnzMKvoUUVt72COTRfAOYz9CyLKjAkh1PiNRhMb9oO2dMV1JgEIqil-M03fllC2imUSHIkKRx5qZSHb1uS7_ZK6-dAIlvgkaQ2ZCJ"/>
+</div>
+<h3 class="font-headline text-[20px] font-medium text-on-surface">Marcus Chen</h3>
+<p class="font-body text-[14px] text-primary uppercase tracking-wider mt-1">Chief Technology Officer</p>
+</div>
+<!-- Team Member 3 -->
+<div class="text-center group">
+<div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border border-surface-variant bg-surface-container-highest shadow-[0_20px_40px_-15px_rgba(0,67,200,0.05)] group-hover:shadow-[0_20px_40px_-10px_rgba(0,67,200,0.1)] transition-all duration-300">
+<img alt="Head of Design" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A crisp, high-key portrait of a design executive. They have a refined, creative professional appearance, positioned against a pure white studio backdrop. The lighting highlights subtle textures while maintaining a clean, weightless feel consistent with a modern tech-luxury brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1OQfRKHBKAkr1sMTqL4E7hlYYybgYraKv_tl4dqQKOEEnRsAPnI645-oQyCaJwzq-2FBdESwu3mYvtabg6euiv3g7aAhipH8z8htr6DllhOTNcEUBfiGeHxwEM8b9DjLwLu1KTQ1-90OFwtW4Gd2OYRubepBkXcktIQyRGliGIg0J1QCMffZYaShmyr456t_2X1M6FRZjPsjtr5wgLyClvKF-pVVCI1fSrbza-tGG445juz5DFi0xvNnb6nAFBSsIhnRgB0MS_XpM"/>
+</div>
+<h3 class="font-headline text-[20px] font-medium text-on-surface">Julian Hayes</h3>
+<p class="font-body text-[14px] text-primary uppercase tracking-wider mt-1">Head of Design</p>
+</div>
+<!-- Team Member 4 -->
+<div class="text-center group">
+<div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border border-surface-variant bg-surface-container-highest shadow-[0_20px_40px_-15px_rgba(0,67,200,0.05)] group-hover:shadow-[0_20px_40px_-10px_rgba(0,67,200,0.1)] transition-all duration-300">
+<img alt="COO" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A bright, minimalist portrait of an operations executive. They are styled in clean, understated corporate wear against an expansive white background. The image relies on soft, atmospheric shadows and bright illumination to convey precision and efficiency within a high-tech corporate setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmw1NFI6YrYr_E9TkMqGm66n0LPvZFDEoMfdOQkdt8jfaN0Vo_0QCyORY3KlpnQXlTmU06r92_y3X21vR1_KJDXn91NEkBvZj0Kcnv3ZmjLaB7ecM4Nv1WkmbCrKBiP1NafE-wufrgGx7ECt7y_IQFpglyS04iMcQQL66E5DKyeUUsGHb5NRiDz2vSD9hFHye2oQwhjYbioVkfRbjAnK9gCkT9_dBzOpxmsK_mcuEEcCXX5EraFYibT1ivdVCd0Crj-RPyVNH-do4m"/>
+</div>
+<h3 class="font-headline text-[20px] font-medium text-on-surface">Sarah Jenkins</h3>
+<p class="font-body text-[14px] text-primary uppercase tracking-wider mt-1">Chief Operations Officer</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 flat">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-8 max-w-screen-2xl mx-auto">
+<div class="font-['Space_Grotesk'] text-lg font-bold text-slate-900 dark:text-white">Aura</div>
+<div class="flex flex-wrap gap-4 md:justify-end">
+<a class="text-slate-400 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 font-['Inter'] text-xs uppercase tracking-widest font-medium hover:translate-y-[-2px] transition-transform duration-200 cursor-pointer" href="#">Privacy</a>
+<a class="text-slate-400 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 font-['Inter'] text-xs uppercase tracking-widest font-medium hover:translate-y-[-2px] transition-transform duration-200 cursor-pointer" href="#">Terms</a>
+<a class="text-slate-400 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 font-['Inter'] text-xs uppercase tracking-widest font-medium hover:translate-y-[-2px] transition-transform duration-200 cursor-pointer" href="#">Sustainability</a>
+<a class="text-slate-400 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 font-['Inter'] text-xs uppercase tracking-widest font-medium hover:translate-y-[-2px] transition-transform duration-200 cursor-pointer" href="#">Milestones</a>
+<a class="text-slate-400 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 font-['Inter'] text-xs uppercase tracking-widest font-medium hover:translate-y-[-2px] transition-transform duration-200 cursor-pointer" href="#">Careers</a>
+</div>
+<div class="col-span-1 md:col-span-2 text-center md:text-left mt-4 md:mt-0 text-slate-400 font-['Inter'] text-xs uppercase tracking-widest font-medium">
+                © 2024 Aura Premium Mobility. Engineered for Excellence.
+            </div>
+</div>
+</footer>
+</body></html>

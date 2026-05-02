@@ -24,10 +24,12 @@ export const en = {
       forRent: '/vehicles/for-rent/',
       forSale: '/vehicles/for-sell/',
       contact: '/contact/',
+      about: '/about/',
     },
     slugs: {
       vehicles: 'vehicles',
       contact: 'contact',
+      about: 'about',
     }
   },
   common: {

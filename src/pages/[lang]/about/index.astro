@@ -24,9 +24,23 @@ const stats = [
 ];
 
 const values = [
-  { icon: 'verified', title: t.about.value1Title, body: t.about.value1Body },
-  { icon: 'visibility', title: t.about.value2Title, body: t.about.value2Body },
-  { icon: 'favorite', title: t.about.value3Title, body: t.about.value3Body },
+  { icon: 'lightbulb', title: t.about.value1Title, body: t.about.value1Body, bgColor: 'bg-primary-container', textColor: 'text-on-primary-container' },
+  { icon: 'verified', title: t.about.value2Title, body: t.about.value2Body, bgColor: 'bg-surface-container-high', textColor: 'text-primary' },
+  { icon: 'speed', title: t.about.value3Title, body: t.about.value3Body, bgColor: 'bg-surface-container-high', textColor: 'text-primary' },
+];
+
+const timeline = [
+  { year: '2015', title: 'Inception', body: 'Founded with a vision to merge software precision with automotive engineering.', active: true },
+  { year: '2018', title: 'First Prototype', body: 'The V1 Alpha concept is unveiled, demonstrating autonomous capabilities.', active: false },
+  { year: '2021', title: 'Global Expansion', body: 'Operations expand to Europe and Asia, establishing a global design language.', active: false },
+  { year: '2024', title: 'The Aura Era', body: 'Launch of our flagship mobility platform, redefining luxury transport.', active: false },
+];
+
+const team = [
+  { name: 'Elena Rostova', role: 'Chief Executive Officer', image: '/assets/images/about/elena-rostova.webp' },
+  { name: 'Marcus Chen', role: 'Chief Technology Officer', image: '/assets/images/about/marcus-chen.webp' },
+  { name: 'Julian Hayes', role: 'Head of Design', image: '/assets/images/about/julian-hayes.webp' },
+  { name: 'Sarah Jenkins', role: 'Chief Operations Officer', image: '/assets/images/about/sarah-jenkins.webp' },
 ];
 ---
 
@@ -38,146 +52,128 @@ const values = [
     darkLabel={t.theme.toggleDark}
   />
 
-  <main class="pb-0">
-
-    <!-- HERO -->
-    <section class="relative pt-40 pb-2xl overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-br from-primary/8 via-transparent to-transparent pointer-events-none" aria-hidden="true"></div>
-      <div class="absolute top-20 right-0 w-[700px] h-[700px] bg-primary/6 rounded-full blur-[160px] pointer-events-none" aria-hidden="true"></div>
-      <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/4 rounded-full blur-[120px] pointer-events-none" aria-hidden="true"></div>
-
-      <div class="max-w-7xl mx-auto px-8 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2xl items-center">
-
-          <!-- Left: text -->
-          <div class="space-y-lg">
-            <div class="inline-flex items-center gap-sm px-md py-2 rounded-full bg-primary/10 border border-primary/20">
-              <span class="material-symbols-outlined text-primary" style="font-size:14px;font-variation-settings:'FILL' 1">stars</span>
-              <span class="text-xs font-black uppercase tracking-[0.12em] text-primary font-display">AeroDrive</span>
-            </div>
-            <h1 class="text-h1 font-display font-black tracking-tight text-on-surface leading-none">
-              {t.about.title}
-            </h1>
-            <p class="text-body-lg text-on-surface-variant leading-relaxed max-w-lg">
-              {t.about.subtitle}
-            </p>
-            <a
-              href={`/${locale}/contact/`}
-              class="inline-flex items-center gap-sm rounded-full bg-primary text-on-primary px-xl py-3 text-label-caps uppercase tracking-[0.05em] font-semibold font-body hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 active:scale-95"
-            >
-              {t.about.commitmentCta}
-              <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>
-            </a>
-          </div>
-
-          <!-- Right: decorative card -->
-          <div class="relative flex items-center justify-center h-72 lg:h-auto" aria-hidden="true">
-            <div class="absolute w-80 h-80 rounded-full bg-primary/10 blur-[70px]"></div>
-            <div class="relative w-60 h-60 rounded-[2rem] bg-surface-container-lowest border border-outline-variant/30 shadow-xl flex items-center justify-center rotate-3">
-              <span class="material-symbols-outlined text-primary" style="font-size:100px;font-variation-settings:'FILL' 1,'wght' 300">directions_car</span>
-            </div>
-            <div class="absolute top-6 right-4 lg:right-0 bg-surface-container-lowest rounded-xl px-md py-2 border border-outline-variant/20 shadow-sm flex items-center gap-xs">
-              <span class="material-symbols-outlined text-[#4CAF50]" style="font-size:15px;font-variation-settings:'FILL' 1">verified</span>
-              <span class="text-xs font-semibold text-on-surface font-body">{t.about.stat3Value}</span>
-            </div>
-            <div class="absolute bottom-6 left-4 lg:left-0 bg-surface-container-lowest rounded-xl px-md py-2 border border-outline-variant/20 shadow-sm flex items-center gap-xs">
-              <span class="material-symbols-outlined text-primary" style="font-size:15px;font-variation-settings:'FILL' 1">star</span>
-              <span class="text-xs font-semibold text-on-surface font-body">{t.about.stat4Value}</span>
-            </div>
-          </div>
-        </div>
+  <main class="flex-grow pt-20">
+    <!-- Hero Section -->
+    <section class="relative h-[600px] lg:h-[716px] flex items-center justify-center overflow-hidden">
+      <div class="absolute inset-0 bg-surface-container-low/40 z-10"></div>
+      <img
+        alt="AeroDrive Design Studio"
+        class="absolute inset-0 w-full h-full object-cover object-center z-0"
+        src="/assets/images/about/hero-studio.webp"
+      />
+      <div class="relative z-20 text-center px-8 max-w-4xl mx-auto">
+        <h1 class="font-display text-[40px] md:text-[64px] lg:text-[80px] font-bold leading-[1.1] tracking-tight text-on-surface mb-6 drop-shadow-sm">
+          {t.about.title}
+        </h1>
+        <p class="font-body text-[18px] md:text-[20px] text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+          {t.about.subtitle}
+        </p>
       </div>
     </section>
 
-    <!-- STATS BAR -->
-    <section class="border-y border-outline-variant/20 bg-surface-container-lowest">
-      <div class="max-w-7xl mx-auto px-8 py-xl">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-lg">
+    <!-- Our Mission -->
+    <section class="py-xl px-8 bg-surface-container-lowest">
+      <div class="max-w-screen-md mx-auto text-center space-y-lg">
+        <h2 class="font-display text-label-caps text-primary uppercase tracking-widest">{t.about.missionTitle}</h2>
+        <p class="font-body text-[18px] md:text-[22px] text-on-surface leading-relaxed font-medium">
+          {t.about.missionBody}
+        </p>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="border-y border-outline-variant/20 bg-background">
+      <div class="max-w-screen-xl mx-auto px-8 py-xl">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-lg">
           {stats.map(({ value, label }) => (
             <div class="text-center space-y-xs">
-              <div class="text-h2 font-display font-black text-primary">{value}</div>
-              <div class="text-on-surface-variant font-body font-semibold uppercase tracking-wider" style="font-size:11px">{label}</div>
+              <div class="text-display text-[40px] font-bold text-primary leading-none">{value}</div>
+              <div class="text-label-caps text-on-surface-variant uppercase tracking-widest text-[11px] font-bold">{label}</div>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- MISSION -->
-    <section class="py-2xl">
-      <div class="max-w-7xl mx-auto px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2xl items-center">
-
-          <!-- Decorative quote card -->
-          <div class="relative order-2 lg:order-1">
-            <div class="relative p-xl bg-surface-container-lowest rounded-3xl border border-outline-variant/20 shadow-sm overflow-hidden">
-              <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-primary-container to-transparent"></div>
-              <div class="text-primary font-black leading-none mb-sm" style="font-size:72px;line-height:1">"</div>
-              <p class="text-h3 font-display font-bold text-on-surface leading-snug">
-                {t.about.missionBody}
-              </p>
-            </div>
-          </div>
-
-          <!-- Text -->
-          <div class="order-1 lg:order-2 space-y-lg">
-            <div class="space-y-sm">
-              <span class="text-xs font-black uppercase tracking-[0.12em] text-primary font-display">{t.about.missionTitle}</span>
-              <h2 class="text-h2 font-display font-bold text-on-surface">
-                {t.about.missionTitle}
-              </h2>
-            </div>
-            <p class="text-body-lg text-on-surface-variant leading-relaxed">
-              {t.about.missionBody}
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- VALUES -->
-    <section class="py-2xl bg-surface-container-lowest/60">
-      <div class="max-w-7xl mx-auto px-8">
-        <div class="text-center mb-2xl space-y-sm">
-          <span class="text-xs font-black uppercase tracking-[0.12em] text-primary font-display">{t.about.valuesTitle}</span>
-          <h2 class="text-h2 font-display font-bold text-on-surface">{t.about.valuesTitle}</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
-          {values.map(({ icon, title: valueTitle, body }) => (
-            <div class="group relative bg-surface-container-lowest rounded-2xl p-xl border border-outline-variant/20 shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-300 overflow-hidden">
-              <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary/0 via-primary/60 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-lg group-hover:bg-primary/20 transition-colors duration-300">
-                <span class="material-symbols-outlined text-primary" style="font-size:28px;font-variation-settings:'FILL' 1">{icon}</span>
+    <!-- Values Section (Bento Grid) -->
+    <section class="py-xl px-8 bg-background">
+      <div class="max-w-screen-xl mx-auto">
+        <h2 class="font-display text-[32px] md:text-[40px] font-bold text-on-surface text-center mb-16">{t.about.valuesTitle}</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {values.map((val) => (
+            <div class="bg-surface-container-lowest p-10 rounded-xl shadow-[0_20px_40px_-15px_rgba(0,67,200,0.05)] border border-outline-variant/20 hover:-translate-y-1 transition-all duration-300 group">
+              <div class={`w-16 h-16 rounded-full ${val.bgColor} ${val.textColor} flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300`}>
+                <span class="material-symbols-outlined text-3xl">{val.icon}</span>
               </div>
-              <h3 class="text-h3 font-display font-semibold text-on-surface mb-sm">{valueTitle}</h3>
-              <p class="text-body-md text-on-surface-variant leading-relaxed">{body}</p>
+              <h3 class="font-display text-[24px] font-bold text-on-surface mb-4">{val.title}</h3>
+              <p class="font-body text-[16px] text-on-surface-variant leading-relaxed">{val.body}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- COMMITMENT CTA -->
+    <!-- Our Story (Timeline grid) -->
+    <section class="py-xl px-8 bg-surface-container-lowest">
+      <div class="max-w-screen-xl mx-auto">
+        <h2 class="font-display text-[32px] md:text-[40px] font-bold text-on-surface text-center mb-16">The Journey</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {timeline.map((item) => (
+            <div class="relative pl-6 border-l border-outline-variant/30 group">
+              <div class={`absolute w-3 h-3 rounded-full -left-[6.5px] top-2 transition-all duration-300 ${item.active ? 'bg-primary shadow-[0_0_10px_rgba(0,67,200,0.3)] scale-125' : 'bg-surface-variant group-hover:bg-primary/40'}`}></div>
+              <div class={`font-display text-[20px] font-bold mb-2 transition-colors duration-300 ${item.active ? 'text-primary' : 'text-outline group-hover:text-primary/60'}`}>{item.year}</div>
+              <h4 class="font-display text-[18px] font-bold text-on-surface mb-2">{item.title}</h4>
+              <p class="font-body text-[14px] text-on-surface-variant leading-relaxed">{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-xl px-8 bg-background">
+      <div class="max-w-screen-xl mx-auto">
+        <h2 class="font-display text-[32px] md:text-[40px] font-bold text-on-surface text-center mb-16">Leadership</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {team.map((member) => (
+            <div class="text-center group">
+              <div class="w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border border-surface-variant bg-surface-container-highest shadow-[0_20px_40px_-15px_rgba(0,67,200,0.05)] group-hover:shadow-[0_20px_40px_-10px_rgba(0,67,200,0.1)] transition-all duration-300">
+                <img
+                  alt={member.name}
+                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100"
+                  src={member.image}
+                />
+              </div>
+              <h3 class="font-display text-[22px] font-bold text-on-surface">{member.name}</h3>
+              <p class="font-body text-[12px] text-primary font-black uppercase tracking-widest mt-1">{member.role}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Commitment CTA -->
     <section class="relative py-2xl bg-primary overflow-hidden">
       <div class="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-[80px] pointer-events-none" aria-hidden="true"></div>
       <div class="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-[60px] pointer-events-none" aria-hidden="true"></div>
-      <div class="max-w-4xl mx-auto px-8 text-center relative z-10">
-        <h2 class="text-h2 font-display font-black text-on-primary mb-md">
+      <div class="max-w-4xl mx-auto px-8 text-center relative z-10 space-y-lg">
+        <h2 class="font-display text-[32px] md:text-[48px] font-bold text-on-primary leading-tight">
           {t.about.commitmentTitle}
         </h2>
-        <p class="text-body-lg text-on-primary/80 mb-xl max-w-2xl mx-auto leading-relaxed">
+        <p class="font-body text-[18px] text-on-primary/80 max-w-2xl mx-auto leading-relaxed">
           {t.about.commitmentBody}
         </p>
-        <a
-          href={`/${locale}/contact/`}
-          class="inline-flex items-center gap-sm rounded-full bg-on-primary text-primary px-xl py-3 text-label-caps uppercase tracking-[0.05em] font-semibold font-body hover:bg-on-primary/90 transition-all duration-300 active:scale-95"
-        >
-          {t.about.commitmentCta}
-          <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>
-        </a>
+        <div class="pt-4">
+          <a
+            href={`/${locale}/contact/`}
+            class="inline-flex items-center gap-sm rounded-full bg-on-primary text-primary px-xl py-4 text-label-caps uppercase tracking-widest font-black font-body hover:bg-on-primary/90 transition-all duration-300 active:scale-95 shadow-xl shadow-black/10"
+          >
+            {t.about.commitmentCta}
+            <span class="material-symbols-outlined" style="font-size:20px">arrow_forward</span>
+          </a>
+        </div>
       </div>
     </section>
-
   </main>
 
   <Footer locale={locale} />

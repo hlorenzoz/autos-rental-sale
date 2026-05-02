@@ -6,6 +6,7 @@ const routes = [
   { en: '/en/vehicles/for-rent/', es: '/es/vehiculos/en-alquiler/' },
   { en: '/en/vehicles/for-sell/', es: '/es/vehiculos/en-venta/' },
   { en: '/en/contact/', es: '/es/contacto/' },
+  { en: '/en/about/', es: '/es/sobre-nosotros/' },
   { en: '/en/vehicles/tesla-model-s-plaid/', es: '/es/vehiculos/tesla-model-s-plaid/' },
 ];
 
@@ -32,5 +33,8 @@ test.describe('Global Navigation and i18n URL consistency', () => {
     
     await page.goto('/es/vehicles/for-rent/');
     await expect(page).toHaveURL(/\/es\/vehiculos\/en-alquiler\//);
+
+    await page.goto('/es/about/');
+    await expect(page).toHaveURL(/\/es\/sobre-nosotros\//);
   });
 });

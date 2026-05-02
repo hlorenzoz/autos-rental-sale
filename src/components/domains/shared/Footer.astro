@@ -41,7 +41,7 @@ const t = getDictionary(locale);
           {t.footer.company}
         </h4>
         <ul class="space-y-sm">
-          <li><a href={`/${locale}/about/`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.about}</a></li>
+          <li><a href={`/${locale}${t.nav.links.about}`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.nav.about}</a></li>
           <li><a href={`/${locale}${t.nav.links.contact}`} class="text-on-surface-variant hover:text-primary transition-colors text-body-sm">{t.footer.contact}</a></li>
         </ul>
       </div>
